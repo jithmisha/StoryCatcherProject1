@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1012532567799",
+    "project_id": "storycatcher-bd19a",
+    "storage_bucket": "storycatcher-bd19a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012532567799:android:3ebc5fd187626835bdfdf2",
+        "android_client_info": {
+          "package_name": "com.storycatcher.storycatcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012532567799-m243l0mj71ip5is5k2nd6jo0nr9gjkve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXYJElMqmjcXb2ewie0-b0p9zFX8e3mJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012532567799-m243l0mj71ip5is5k2nd6jo0nr9gjkve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
