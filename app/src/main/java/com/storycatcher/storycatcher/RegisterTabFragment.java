@@ -1,6 +1,7 @@
 package com.storycatcher.storycatcher;
 
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,52 @@ public class RegisterTabFragment extends Fragment {
     }
 
     public void createUser(){
+        String kname=kidsname.getText().toString().trim();
+        String uID=userId.getText().toString().trim();
+        String a=age.getText().toString().trim();
+        //int a=Integer.parseInt(age.getText().toString().trim());
+        String mail=email.getText().toString().trim();
+        String pass=password.getText().toString().trim();
+        String conpass=confpassword.getText().toString().trim();
+
+        if(kname.isEmpty()){
+            kidsname.setError("Plaese enter kids name");
+            kidsname.requestFocus();
+            return;
+        }
+        if(uID.isEmpty()){
+            userId.setError("Please Enter user ID");
+            userId.requestFocus();
+            return;
+        }
+        if (a.isEmpty()){
+            age.setError("Please enter kids age");
+            age.requestFocus();
+            return;
+        }
+        if(mail.isEmpty()){
+            email.setError("Please enter email address");
+            email.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
+            email.setError("Please enter vaild email address");
+            email.requestFocus();
+            return;
+        }
+        if(pass.isEmpty()){
+            password.setError("Please enter password");
+            password.requestFocus();
+            return;
+        }
+        if(pass.length()<8){
+            password.setError("Password langth should be more than  8 characters");
+            password.requestFocus();
+            return;
+        }
+        //Confirm password error not complete
+
+
         try{
             if(!email.getText().toString(). isEmpty() && !password.getText().toString().isEmpty()){
                     objectFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
@@ -46,7 +93,7 @@ public class RegisterTabFragment extends Fragment {
                             });
             }
             else{
-                Toast.makeText(getContext(), "Fill the fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Fill all the fields", Toast.LENGTH_SHORT).show();
             }
         }catch(Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
