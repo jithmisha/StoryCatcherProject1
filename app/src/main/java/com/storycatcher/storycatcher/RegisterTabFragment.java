@@ -35,14 +35,13 @@ public class RegisterTabFragment extends Fragment {
     public void createUser(){
         String kname=kidsname.getText().toString().trim();
         String uID=userId.getText().toString().trim();
-        String a=age.getText().toString().trim();
-        //int a=Integer.parseInt(age.getText().toString().trim());
+        String a =age.getText().toString().trim();
         String mail=email.getText().toString().trim();
         String pass=password.getText().toString().trim();
         String conpass=confpassword.getText().toString().trim();
 
         if(kname.isEmpty()){
-            kidsname.setError("Plaese enter kids name");
+            kidsname.setError("Please enter kids name");
             kidsname.requestFocus();
             return;
         }
@@ -51,7 +50,7 @@ public class RegisterTabFragment extends Fragment {
             userId.requestFocus();
             return;
         }
-        if (a.isEmpty()){
+        if(a.isEmpty()) {
             age.setError("Please enter kids age");
             age.requestFocus();
             return;
@@ -62,7 +61,7 @@ public class RegisterTabFragment extends Fragment {
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
-            email.setError("Please enter vaild email address");
+            email.setError("Please enter valid email address");
             email.requestFocus();
             return;
         }
@@ -72,11 +71,15 @@ public class RegisterTabFragment extends Fragment {
             return;
         }
         if(pass.length()<8){
-            password.setError("Password langth should be more than  8 characters");
+            password.setError("Password length should be more than  8 characters");
             password.requestFocus();
             return;
         }
-        //Confirm password error not complete
+        if(!pass.equals(conpass)){
+            confpassword.setError("Password Not matching");
+            confpassword.requestFocus();
+            return;
+        }
 
         /*objectFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
