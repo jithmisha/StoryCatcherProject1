@@ -12,10 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterTabFragment extends Fragment {
 
@@ -75,14 +78,50 @@ public class RegisterTabFragment extends Fragment {
         }
         //Confirm password error not complete
 
+        /*objectFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            User user=new User(kidsname.getText().toString(),userId.getText().toString(),
+                                    Integer.parseInt(age.getText().toString()),email.getText().toString());
+                            FirebaseDatabase.getInstance().getReference("User")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(getContext(),"User Created",Toast.LENGTH_SHORT).show();
+
+                                        //riderect to login layout
+                                    }
+                                    else{
+                                        Toast.makeText(getContext(),"Failed",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                        else{
+                            Toast.makeText(getContext(),"Failed to Create",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });*/
 
         try{
-            if(!email.getText().toString(). isEmpty() && !password.getText().toString().isEmpty()){
-                    objectFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            objectFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    Toast.makeText(getContext(), "User Created", Toast.LENGTH_SHORT).show();
+                                    User user=new User(kidsname.getText().toString(),userId.getText().toString(),
+                                            Integer.parseInt(age.getText().toString()),email.getText().toString());
+                                    FirebaseDatabase.getInstance().getReference("User")
+                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Toast.makeText(getContext(), "User Created", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -91,13 +130,9 @@ public class RegisterTabFragment extends Fragment {
                                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
-            }
-            else{
-                Toast.makeText(getContext(), "Fill all the fields", Toast.LENGTH_SHORT).show();
-            }
         }catch(Exception e){
-            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+           Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+       }
 
     }
     private void attachToXml(){
