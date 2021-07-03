@@ -21,21 +21,21 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginTabFragment extends Fragment {
 
     TextView logInmail;
-    TextView password;
-    TextView forgotPass;
+    TextView logInpassword;
+    TextView logInforgotPass;
 
     float v=0;
 
     private View objectLoginTabFragment;
     private FirebaseAuth objectFirebaseAuth;
-    private EditText loginEmail,passWord;
+    private EditText loginEmail,logInPassWord;
     private Button loginButton;//login button
 
     private void initializeVariable(){
         try{
             objectFirebaseAuth=FirebaseAuth.getInstance();
             loginEmail=objectLoginTabFragment.findViewById(R.id.logInEmail);
-            passWord=objectLoginTabFragment.findViewById(R.id.password);
+            logInPassWord=objectLoginTabFragment.findViewById(R.id.logInPassword);
             loginButton=objectLoginTabFragment.findViewById(R.id.loginbtn);
 
             loginButton.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +51,8 @@ public class LoginTabFragment extends Fragment {
 
     private void logInUser(){
         try{
-            if(!loginEmail.getText().toString().isEmpty() && !passWord.getText().toString().isEmpty()){
-                objectFirebaseAuth.signInWithEmailAndPassword(loginEmail.getText().toString(),passWord.getText().toString())
+            if(!loginEmail.getText().toString().isEmpty() && !logInPassWord.getText().toString().isEmpty()){
+                objectFirebaseAuth.signInWithEmailAndPassword(loginEmail.getText().toString(),logInPassWord.getText().toString())
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
@@ -84,27 +84,27 @@ public class LoginTabFragment extends Fragment {
 
 
         logInmail= objectLoginTabFragment.findViewById(R.id.logInEmail);
-        password= objectLoginTabFragment.findViewById(R.id.password);
-        forgotPass= objectLoginTabFragment.findViewById(R.id.forgotPassword);
+        logInpassword= objectLoginTabFragment.findViewById(R.id.logInPassword);
+        logInforgotPass= objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
         loginButton=objectLoginTabFragment.findViewById(R.id.loginbtn);
 
         logInmail.setTranslationX(800);
-         password.setTranslationX(800);
-         forgotPass.setTranslationX(800);
-         loginButton.setTranslationX(800);
+        logInpassword.setTranslationX(800);
+        logInforgotPass.setTranslationX(800);
+        loginButton.setTranslationX(800);
 
         logInmail.setAlpha(v);
-         password.setAlpha(v);
-         forgotPass.setAlpha(v);
-         loginButton.setAlpha(v);
+        logInpassword.setAlpha(v);
+        logInforgotPass.setAlpha(v);
+        loginButton.setAlpha(v);
 
          logInmail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-         password.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-         forgotPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
+         logInpassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
+         logInforgotPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
          loginButton.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
          //TextView forgotpass= (TextView) root.findViewById(R.id.forgotPassword);
-        TextView forgotpass= (TextView) objectLoginTabFragment.findViewById(R.id.forgotPassword);
+        TextView forgotpass= (TextView) objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
         forgotpass.setOnClickListener(new View.OnClickListener(){
              @Override
              public void onClick(View v){

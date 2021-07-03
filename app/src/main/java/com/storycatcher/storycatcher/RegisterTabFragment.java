@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterTabFragment extends Fragment {
 
-    private EditText kidsname, userId, age, email, password, confpassword;
+    private EditText kidsname, userId, age, registerEmail, registerPassword, confpassword;
     View objectRegisterTabFragment;
     private FirebaseAuth objectFirebaseAuth;
     private Button objectButton;//Register button
@@ -37,8 +37,8 @@ public class RegisterTabFragment extends Fragment {
         String kname=kidsname.getText().toString().trim();
         String uID=userId.getText().toString().trim();
         String a =age.getText().toString().trim();
-        String mail=email.getText().toString().trim();
-        String pass=password.getText().toString().trim();
+        String mail=registerEmail.getText().toString().trim();
+        String pass=registerPassword.getText().toString().trim();
         String conpass=confpassword.getText().toString().trim();
 
         if(kname.isEmpty()){
@@ -57,23 +57,23 @@ public class RegisterTabFragment extends Fragment {
             return;
         }
         if(mail.isEmpty()){
-            email.setError("Please enter email address");
-            email.requestFocus();
+            registerEmail.setError("Please enter email address");
+            registerEmail.requestFocus();
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
-            email.setError("Please enter valid email address");
-            email.requestFocus();
+            registerEmail.setError("Please enter valid email address");
+            registerEmail.requestFocus();
             return;
         }
         if(pass.isEmpty()){
-            password.setError("Please enter password");
-            password.requestFocus();
+            registerPassword.setError("Please enter password");
+            registerPassword.requestFocus();
             return;
         }
         if(pass.length()<8){
-            password.setError("Password length should be more than  8 characters");
-            password.requestFocus();
+            registerPassword.setError("Password length should be more than  8 characters");
+            registerPassword.requestFocus();
             return;
         }
         if(!pass.equals(conpass)){
@@ -112,12 +112,12 @@ public class RegisterTabFragment extends Fragment {
                 });*/
 
         try{
-            objectFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+            objectFirebaseAuth.createUserWithEmailAndPassword(registerEmail.getText().toString(), registerPassword.getText().toString())
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     User user=new User(kidsname.getText().toString(),userId.getText().toString(),
-                                            Integer.parseInt(age.getText().toString()),email.getText().toString());
+                                            Integer.parseInt(age.getText().toString()),registerEmail.getText().toString());
                                     FirebaseDatabase.getInstance().getReference("User")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -148,8 +148,8 @@ public class RegisterTabFragment extends Fragment {
             kidsname=objectRegisterTabFragment.findViewById(R.id.kidsName);
             userId=objectRegisterTabFragment.findViewById(R.id.userID);
             age=objectRegisterTabFragment.findViewById(R.id.age);
-            email=objectRegisterTabFragment.findViewById(R.id.email);
-            password=objectRegisterTabFragment.findViewById(R.id.password);
+            registerEmail=objectRegisterTabFragment.findViewById(R.id.registerEmail);
+            registerPassword=objectRegisterTabFragment.findViewById(R.id.registerPassword);
             confpassword=objectRegisterTabFragment.findViewById(R.id.confirmpassword);
             objectButton=objectRegisterTabFragment.findViewById(R.id.register);
             objectFirebaseAuth=FirebaseAuth.getInstance();
