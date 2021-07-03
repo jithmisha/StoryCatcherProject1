@@ -1,5 +1,6 @@
 package com.storycatcher.storycatcher;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -23,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterTabFragment extends Fragment {
 
     private EditText kidsname, userId, age, email, password, confpassword;
-    private Button register;
     View objectRegisterTabFragment;
     private FirebaseAuth objectFirebaseAuth;
     private Button objectButton;//Register button
@@ -123,6 +123,10 @@ public class RegisterTabFragment extends Fragment {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(getContext(), "User Created", Toast.LENGTH_SHORT).show();
+
+
+
+
                                         }
                                     });
                                 }
@@ -141,7 +145,7 @@ public class RegisterTabFragment extends Fragment {
     private void attachToXml(){
         try{
             kidsname=objectRegisterTabFragment.findViewById(R.id.kidsName);
-            userId=objectRegisterTabFragment.findViewById(R.id.userId);
+            userId=objectRegisterTabFragment.findViewById(R.id.userID);
             age=objectRegisterTabFragment.findViewById(R.id.age);
             email=objectRegisterTabFragment.findViewById(R.id.email);
             password=objectRegisterTabFragment.findViewById(R.id.password);
@@ -153,6 +157,7 @@ public class RegisterTabFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     createUser();
+
                 }
             });
         }
@@ -163,9 +168,6 @@ public class RegisterTabFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        //ViewGroup root = (ViewGroup)inflater.inflate(R.layout.register_tab_fragment, container, false);
-        //return root;
-
         objectRegisterTabFragment=inflater.inflate(R.layout.register_tab_fragment, container, false);
         attachToXml();
         return objectRegisterTabFragment;
