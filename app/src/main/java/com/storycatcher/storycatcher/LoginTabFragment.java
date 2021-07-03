@@ -88,6 +88,7 @@ public class LoginTabFragment extends Fragment {
         logInforgotPass= objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
         loginButton=objectLoginTabFragment.findViewById(R.id.loginbtn);
 
+
         logInmail.setTranslationX(800);
         logInpassword.setTranslationX(800);
         logInforgotPass.setTranslationX(800);
@@ -97,6 +98,17 @@ public class LoginTabFragment extends Fragment {
         logInpassword.setAlpha(v);
         logInforgotPass.setAlpha(v);
         loginButton.setAlpha(v);
+
+         logInmail.setTranslationX(800);
+         logInpassword.setTranslationX(800);
+         logInforgotPass.setTranslationX(800);
+         loginButton.setTranslationX(800);
+
+         logInmail.setAlpha(v);
+         logInpassword.setAlpha(v);
+         logInforgotPass.setAlpha(v);
+         loginButton.setAlpha(v);
+
 
          logInmail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
          logInpassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
