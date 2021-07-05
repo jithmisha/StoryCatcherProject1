@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class RegisterTabFragment extends Fragment {
     View objectRegisterTabFragment;
     private FirebaseAuth objectFirebaseAuth;
     private Button objectButton;//Register button
+    private ProgressBar objectProgressBar;
 
     public RegisterTabFragment(){
 
@@ -112,6 +114,9 @@ public class RegisterTabFragment extends Fragment {
                 });*/
 
         try{
+            objectProgressBar.setVisibility(View.VISIBLE);
+            objectButton.setEnabled(false);
+
             objectFirebaseAuth.createUserWithEmailAndPassword(registerEmail.getText().toString(), registerPassword.getText().toString())
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
@@ -124,6 +129,18 @@ public class RegisterTabFragment extends Fragment {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(getContext(), "User Created", Toast.LENGTH_SHORT).show();
+                                            objectProgressBar.setVisibility(View.INVISIBLE);
+                                            objectButton.setEnabled(true);
+                                            kidsname.setText("");
+                                            userId.setText("");
+                                            age.setText("");
+                                            registerEmail.setText("");
+                                            registerPassword.setText("");
+                                            confpassword.setText("");
+
+                                            Intent in= new Intent(getContext(),SignOrRegister.class);
+                                            startActivity(in);
+
 
 
 
@@ -135,6 +152,8 @@ public class RegisterTabFragment extends Fragment {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    objectProgressBar.setVisibility(View.INVISIBLE);
+                                    objectButton.setEnabled(true);
                                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -153,7 +172,7 @@ public class RegisterTabFragment extends Fragment {
             confpassword=objectRegisterTabFragment.findViewById(R.id.confirmpassword);
             objectButton=objectRegisterTabFragment.findViewById(R.id.register);
             objectFirebaseAuth=FirebaseAuth.getInstance();
-
+            objectProgressBar=objectRegisterTabFragment.findViewById(R.id.progressBarRegister);
             objectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
