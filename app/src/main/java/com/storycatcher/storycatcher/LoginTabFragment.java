@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class LoginTabFragment extends Fragment {
     private EditText loginEmail,logInPassWord;
     private Button loginButton;//login button
 
+    private ProgressBar objectProgressBar;
+
     private void initializeVariable(){
         try{
             objectFirebaseAuth=FirebaseAuth.getInstance();
@@ -38,12 +41,15 @@ public class LoginTabFragment extends Fragment {
             logInPassWord=objectLoginTabFragment.findViewById(R.id.logInPassword);
             loginButton=objectLoginTabFragment.findViewById(R.id.loginbtn);
 
+            objectProgressBar=objectLoginTabFragment.findViewById(R.id.progressBarLogin);
+
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     logInUser();
                 }
             });
+
         }catch(Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -51,12 +57,16 @@ public class LoginTabFragment extends Fragment {
 
     private void logInUser(){
         try{
+            objectProgressBar.setVisibility(View.VISIBLE);
+            loginButton.setEnabled(false);
             if(!loginEmail.getText().toString().isEmpty() && !logInPassWord.getText().toString().isEmpty()){
                 objectFirebaseAuth.signInWithEmailAndPassword(loginEmail.getText().toString(),logInPassWord.getText().toString())
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 startActivity(new Intent(getActivity().getApplicationContext(),Profile.class));
+                                objectProgressBar.setVisibility(View.INVISIBLE);
+                                loginButton.setEnabled(true);
                                 getActivity().finish();
 
                             }
@@ -64,6 +74,8 @@ public class LoginTabFragment extends Fragment {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                objectProgressBar.setVisibility(View.INVISIBLE);
+                                loginButton.setEnabled(true);
                                 Toast.makeText(getContext(),"Invalid email or password", Toast.LENGTH_SHORT).show();
                             }
                         });
