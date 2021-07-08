@@ -30,7 +30,7 @@ public class LoginTabFragment extends Fragment {
     private View objectLoginTabFragment;
     private FirebaseAuth objectFirebaseAuth;
     private EditText loginEmail,logInPassWord;
-    private Button loginButton;//login button
+    private Button loginButton;//login buttons
 
     private ProgressBar objectProgressBar;
 
