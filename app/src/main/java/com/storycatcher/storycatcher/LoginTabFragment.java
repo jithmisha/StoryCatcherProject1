@@ -2,10 +2,13 @@ package com.storycatcher.storycatcher;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ public class LoginTabFragment extends Fragment {
     TextView logInmail;
     TextView logInpassword;
     TextView logInforgotPass;
+    CheckBox checkBox;
 
     float v=0;
 
@@ -82,6 +86,8 @@ public class LoginTabFragment extends Fragment {
             }
             else{
                 Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+                objectProgressBar.setVisibility(View.INVISIBLE);
+                loginButton.setEnabled(true);
             }
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -99,33 +105,40 @@ public class LoginTabFragment extends Fragment {
         logInpassword= objectLoginTabFragment.findViewById(R.id.logInPassword);
         logInforgotPass= objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
         loginButton=objectLoginTabFragment.findViewById(R.id.loginbtn);
+        checkBox=objectLoginTabFragment.findViewById(R.id.chkBoxShowPass);
 
 
         logInmail.setTranslationX(800);
         logInpassword.setTranslationX(800);
         logInforgotPass.setTranslationX(800);
         loginButton.setTranslationX(800);
+        checkBox.setTranslationX(800);
 
         logInmail.setAlpha(v);
         logInpassword.setAlpha(v);
         logInforgotPass.setAlpha(v);
         loginButton.setAlpha(v);
+        checkBox.setAlpha(v);
 
          logInmail.setTranslationX(800);
          logInpassword.setTranslationX(800);
          logInforgotPass.setTranslationX(800);
          loginButton.setTranslationX(800);
+         checkBox.setTranslationX(800);
+
 
          logInmail.setAlpha(v);
          logInpassword.setAlpha(v);
          logInforgotPass.setAlpha(v);
          loginButton.setAlpha(v);
+         checkBox.setAlpha(v);
 
 
          logInmail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
          logInpassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
          logInforgotPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
          loginButton.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+         checkBox.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
          //TextView forgotpass= (TextView) root.findViewById(R.id.forgotPassword);
         TextView forgotpass= (TextView) objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
@@ -138,9 +151,27 @@ public class LoginTabFragment extends Fragment {
              }
 
          });
+
+        //added check box
+
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    logInPassWord.setTransformationMethod(null);
+
+                }
+                else{
+                    logInPassWord.setTransformationMethod(new PasswordTransformationMethod());
+                }
+            }
+        });
+
         //return root;
         initializeVariable();
         return objectLoginTabFragment;
+
 
 
     }

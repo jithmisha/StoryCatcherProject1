@@ -48,6 +48,21 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent=".8" />
 
+
+    <CheckBox
+        android:id="@+id/chkBoxShowPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="Show Password"
+        android:textColor="#656464"
+        app:layout_constraintBottom_toTopOf="@+id/loginbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logInPassword"
+        app:layout_constraintVertical_bias="0.164" />
+
     <Button
         android:id="@+id/loginbtn"
         android:layout_width="324dp"
@@ -74,10 +89,10 @@
         android:textColor="#656464"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logInPassword"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintVertical_bias="0.281" />
 
     <ProgressBar
         android:id="@+id/progressBarLogin"

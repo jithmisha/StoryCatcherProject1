@@ -22,6 +22,7 @@ public class PasswordActivity extends AppCompatActivity {
     private Button resetPassword;
     private ImageButton imgButtonBack;
     FirebaseAuth auth;
+    float v=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,25 @@ public class PasswordActivity extends AppCompatActivity {
                 openLoginAdapterActivity();
             }
         });
+        //animation
+        // emailPassword=(EditText)findViewById(R.id.recoverAccountEmail);
+        // resetPassword=(Button)findViewById(R.id.btnresetpassword);
+
+        emailPassword.setTranslationX(800);
+        resetPassword.setTranslationX(800);
+
+        emailPassword.setAlpha(v);
+        resetPassword.setAlpha(v);
+
+        emailPassword.setTranslationX(800);
+        resetPassword.setTranslationX(800);
+
+        emailPassword.setAlpha(v);
+        resetPassword.setAlpha(v);
+
+        emailPassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+        resetPassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
+
         }
 
     private void resetPassword(){
