@@ -13,26 +13,29 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterTabFragment extends Fragment {
 
+    //variables
     private EditText kidsname, userId, age, registerEmail, registerPassword, confpassword;
     View objectRegisterTabFragment;
     private FirebaseAuth objectFirebaseAuth;
     private Button objectButton;//Register button
     private ProgressBar objectProgressBar;
+    float v=0;
+    private FirebaseDatabase rootNode;
+    private DatabaseReference reference;
 
     public RegisterTabFragment(){
-
     }
 
     public void createUser(){
@@ -42,17 +45,27 @@ public class RegisterTabFragment extends Fragment {
         String mail=registerEmail.getText().toString().trim();
         String pass=registerPassword.getText().toString().trim();
         String conpass=confpassword.getText().toString().trim();
+        String noWhiteSpace="\\A\\w{4,20}\\z";
 
+        //validate kidsname
         if(kname.isEmpty()){
             kidsname.setError("Please enter kids name");
             kidsname.requestFocus();
             return;
         }
+
+        //validate userID
         if(uID.isEmpty()){
             userId.setError("Please Enter user ID");
             userId.requestFocus();
             return;
         }
+        else if(!uID.matches(noWhiteSpace)) {
+            userId.setError("White spaces are not allowed");
+            userId.requestFocus();
+            return;
+        }
+
         if(a.isEmpty()) {
             age.setError("Please enter kids age");
             age.requestFocus();
@@ -84,46 +97,43 @@ public class RegisterTabFragment extends Fragment {
             return;
         }
 
-        /*objectFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            User user=new User(kidsname.getText().toString(),userId.getText().toString(),
-                                    Integer.parseInt(age.getText().toString()),email.getText().toString());
-                            FirebaseDatabase.getInstance().getReference("User")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(getContext(),"User Created",Toast.LENGTH_SHORT).show();
-
-                                        //riderect to login layout
-                                    }
-                                    else{
-                                        Toast.makeText(getContext(),"Failed",Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        }
-                        else{
-                            Toast.makeText(getContext(),"Failed to Create",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });*/
-
         try{
             objectProgressBar.setVisibility(View.VISIBLE);
             objectButton.setEnabled(false);
+            rootNode=FirebaseDatabase.getInstance();
+            //reference= rootNode.getReference("Users");
+
+            /*rootNode=FirebaseDatabase.getInstance();
+            reference= rootNode.getReference("Users");
+            UserClass user= new UserClass(kname,uID,Integer.parseInt(a),mail);
+            reference.child(uID).setValue(user);*/
 
             objectFirebaseAuth.createUserWithEmailAndPassword(registerEmail.getText().toString(), registerPassword.getText().toString())
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    User user=new User(kidsname.getText().toString(),userId.getText().toString(),
-                                            Integer.parseInt(age.getText().toString()),registerEmail.getText().toString());
-                                    FirebaseDatabase.getInstance().getReference("User")
+                                    UserClass user= new UserClass(kname,uID,Integer.parseInt(a),mail);
+                                    reference= rootNode.getReference("User");
+                                    reference.child(uID).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Toast.makeText(getContext(), "User Created", Toast.LENGTH_SHORT).show();
+                                            objectProgressBar.setVisibility(View.INVISIBLE);
+                                            objectButton.setEnabled(true);
+                                            kidsname.setText("");
+                                            userId.setText("");
+                                            age.setText("");
+                                            registerEmail.setText("");
+                                            registerPassword.setText("");
+                                            confpassword.setText("");
+                                            Intent in= new Intent(getContext(),SignOrRegister.class);
+                                            startActivity(in);
+                                        }
+                                    });
+                                    // UserClass user=new UserClass(kidsname.getText().toString(),userId.getText().toString(),
+                                            //Integer.parseInt(age.getText().toString()),registerEmail.getText().toString());
+
+                                    /*FirebaseDatabase.getInstance().getReference("User")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -140,13 +150,8 @@ public class RegisterTabFragment extends Fragment {
 
                                             Intent in= new Intent(getContext(),SignOrRegister.class);
                                             startActivity(in);
-
-
-
-
-
                                         }
-                                    });
+                                    });*/
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -173,11 +178,11 @@ public class RegisterTabFragment extends Fragment {
             objectButton=objectRegisterTabFragment.findViewById(R.id.register);
             objectFirebaseAuth=FirebaseAuth.getInstance();
             objectProgressBar=objectRegisterTabFragment.findViewById(R.id.progressBarRegister);
+
             objectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     createUser();
-
                 }
             });
         }
