@@ -68,7 +68,7 @@ public class LoginTabFragment extends Fragment {
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                startActivity(new Intent(getActivity().getApplicationContext(),Profile.class));
+                                startActivity(new Intent(getActivity().getApplicationContext(), CreateProfile.class));
                                 objectProgressBar.setVisibility(View.INVISIBLE);
                                 loginButton.setEnabled(true);
                                 getActivity().finish();
