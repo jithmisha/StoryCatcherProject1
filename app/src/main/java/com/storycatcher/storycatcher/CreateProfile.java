@@ -26,6 +26,7 @@ public class CreateProfile extends AppCompatActivity {
     private DatabaseReference reference;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +37,9 @@ public class CreateProfile extends AppCompatActivity {
         createButton=findViewById(R.id.create);
         kidname=findViewById(R.id.createkidsName);
         textTV=findViewById(R.id.text);
+        rootNode=FirebaseDatabase.getInstance();
 
-        String kidsname=kidname.getText().toString();
+
         if(objectFirebaseAuth!=null){
             String currentUser=objectFirebaseAuth.getCurrentUser().getEmail();
             textTV.setText(currentUser);
@@ -46,9 +48,11 @@ public class CreateProfile extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProfileClass profile=new ProfileClass(kidsname);
+                String val=kidname.getText().toString();
+                ProfileClass profile=new ProfileClass(val);
                 reference=rootNode.getReference("User");
-                reference.child(kidsname).setValue(profile);
+                reference.child(val).setValue(profile);
+
             }
         });
 
