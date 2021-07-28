@@ -4,7 +4,6 @@ public class ProfileClass {
     public String kidsname;
 
     public ProfileClass(){
-
     }
     public ProfileClass(String kidsname) {
         this.kidsname = kidsname;

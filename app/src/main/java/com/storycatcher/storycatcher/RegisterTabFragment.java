@@ -113,7 +113,7 @@ public class RegisterTabFragment extends Fragment {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                         UserClass user= new UserClass(kname,uID,Integer.parseInt(a),mail);
-                                    reference= rootNode.getReference("User");
+                                        reference= rootNode.getReference("User");
                                         reference.child(uID).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
