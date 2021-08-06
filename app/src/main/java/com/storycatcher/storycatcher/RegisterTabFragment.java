@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterTabFragment extends Fragment {
 
     //variables
-    private EditText kidsname, userId, age, registerEmail, registerPassword, confpassword;
+    private EditText  registerEmail, registerPassword, confpassword;
     View objectRegisterTabFragment;
     private FirebaseAuth objectFirebaseAuth;
     private Button objectButton;//Register button
@@ -39,38 +39,12 @@ public class RegisterTabFragment extends Fragment {
     }
 
     public void createUser(){
-        String kname=kidsname.getText().toString().trim();
-        String uID=userId.getText().toString().trim();
-        String a =age.getText().toString().trim();
         String mail=registerEmail.getText().toString().trim();
         String pass=registerPassword.getText().toString().trim();
         String conpass=confpassword.getText().toString().trim();
         String noWhiteSpace="\\A\\w{4,20}\\z";
 
-        //validate kidsname
-        if(kname.isEmpty()){
-            kidsname.setError("Please enter kids name");
-            kidsname.requestFocus();
-            return;
-        }
 
-        //validate userID
-        if(uID.isEmpty()){
-            userId.setError("Please Enter user ID");
-            userId.requestFocus();
-            return;
-        }
-        else if(!uID.matches(noWhiteSpace)) {
-            userId.setError("White spaces are not allowed");
-            userId.requestFocus();
-            return;
-        }
-
-        if(a.isEmpty()) {
-            age.setError("Please enter kids age");
-            age.requestFocus();
-            return;
-        }
         if(mail.isEmpty()){
             registerEmail.setError("Please enter email address");
             registerEmail.requestFocus();
@@ -112,17 +86,14 @@ public class RegisterTabFragment extends Fragment {
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                        UserClass user= new UserClass(kname,uID,Integer.parseInt(a),mail);
+                                        UserClass user= new UserClass();
                                         reference= rootNode.getReference("User");
-                                        reference.child(uID).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        reference.child(String.valueOf(registerEmail)).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(getContext(), "User Created", Toast.LENGTH_SHORT).show();
                                             objectProgressBar.setVisibility(View.INVISIBLE);
                                             objectButton.setEnabled(true);
-                                            kidsname.setText("");
-                                            userId.setText("");
-                                            age.setText("");
                                             registerEmail.setText("");
                                             registerPassword.setText("");
                                             confpassword.setText("");
@@ -169,9 +140,6 @@ public class RegisterTabFragment extends Fragment {
     }
     private void attachToXml(){
         try{
-            kidsname=objectRegisterTabFragment.findViewById(R.id.kidsName);
-            userId=objectRegisterTabFragment.findViewById(R.id.userID);
-            age=objectRegisterTabFragment.findViewById(R.id.age);
             registerEmail=objectRegisterTabFragment.findViewById(R.id.registerEmail);
             registerPassword=objectRegisterTabFragment.findViewById(R.id.registerPassword);
             confpassword=objectRegisterTabFragment.findViewById(R.id.confirmpassword);

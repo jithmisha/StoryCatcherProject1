@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,12 +19,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateProfile extends AppCompatActivity {
-    FirebaseAuth objectFirebaseAuth;
-    TextView textTV;
-    private EditText kidname;
-    private Button logOutButton,createButton;
-    private FirebaseDatabase rootNode;
-    private DatabaseReference reference;
+   //FirebaseAuth objectFirebaseAuth;
+    //TextView textTV;
+    //private EditText kidname;
+    private Button createButton;
+    private ImageButton backButton;
+   // private FirebaseDatabase rootNode;
+    //private DatabaseReference reference;
 
 
 
@@ -32,20 +34,36 @@ public class CreateProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
-        objectFirebaseAuth=FirebaseAuth.getInstance();
-        logOutButton=findViewById(R.id.SignOutbutton);
-        createButton=findViewById(R.id.create);
-        kidname=findViewById(R.id.createkidsName);
-        textTV=findViewById(R.id.text);
-        rootNode=FirebaseDatabase.getInstance();
+        createButton=findViewById(R.id.ProfileCreatebtn);
+        backButton=findViewById(R.id.imgBackBtnProfile);
 
-
-        if(objectFirebaseAuth!=null){
-            String currentUser=objectFirebaseAuth.getCurrentUser().getEmail();
-            textTV.setText(currentUser);
-        }
 
         createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreateProfile.this,SignOrRegister.class));
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreateProfile.this,SignOrRegister.class));
+            }
+        });
+
+       // objectFirebaseAuth=FirebaseAuth.getInstance();
+       // createButton=findViewById(R.id.ProfileCreatebtn);
+       // textTV=findViewById(R.id.text);
+       // rootNode=FirebaseDatabase.getInstance();
+
+
+       // if(objectFirebaseAuth!=null){
+         //   String currentUser=objectFirebaseAuth.getCurrentUser().getEmail();
+         //   textTV.setText(currentUser);
+        }
+
+       /* createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String val=kidname.getText().toString();
@@ -56,7 +74,7 @@ public class CreateProfile extends AppCompatActivity {
             }
         });
 
-        logOutButton.setOnClickListener(new View.OnClickListener() {
+        createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(objectFirebaseAuth!=null){
@@ -66,5 +84,5 @@ public class CreateProfile extends AppCompatActivity {
                 }
             }
         });
-    }
+    }*/
 }
