@@ -19,8 +19,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class RegisterTabFragment extends Fragment {
@@ -28,12 +28,14 @@ public class RegisterTabFragment extends Fragment {
     //variables
     private EditText  registerEmail, registerPassword, confpassword;
     View objectRegisterTabFragment;
-    private FirebaseAuth objectFirebaseAuth;
+    FirebaseAuth mAuth;
+    FirebaseFirestore fstore;
     private Button objectButton;//Register button
     private ProgressBar objectProgressBar;
     float v=0;
-    private FirebaseDatabase rootNode;
-    private DatabaseReference reference;
+    String userID;
+//    private FirebaseDatabase rootNode;
+//    private DatabaseReference reference;
 
     public RegisterTabFragment(){
     }
@@ -74,21 +76,16 @@ public class RegisterTabFragment extends Fragment {
         try{
             objectProgressBar.setVisibility(View.VISIBLE);
             objectButton.setEnabled(false);
-            rootNode=FirebaseDatabase.getInstance();
-            //reference= rootNode.getReference("Users");
 
-            /*rootNode=FirebaseDatabase.getInstance();
-            reference= rootNode.getReference("Users");
-            UserClass user= new UserClass(kname,uID,Integer.parseInt(a),mail);
-            reference.child(uID).setValue(user);*/
 
-            objectFirebaseAuth.createUserWithEmailAndPassword(registerEmail.getText().toString(), registerPassword.getText().toString())
+            mAuth.createUserWithEmailAndPassword(mail, pass)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                        UserClass user= new UserClass();
-                                        reference= rootNode.getReference("User");
-                                        reference.child(String.valueOf(registerEmail)).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        UserClass userInfo= new UserClass(mail);
+                                        userID=mAuth.getCurrentUser().getUid();
+                                        DocumentReference documentReference=fstore.collection("Users").document(userID);
+                                        documentReference.set(userInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(getContext(), "User Created", Toast.LENGTH_SHORT).show();
@@ -101,28 +98,7 @@ public class RegisterTabFragment extends Fragment {
                                             startActivity(in);
                                         }
                                     });
-                                    // UserClass user=new UserClass(kidsname.getText().toString(),userId.getText().toString(),
-                                            //Integer.parseInt(age.getText().toString()),registerEmail.getText().toString());
 
-                                    /*FirebaseDatabase.getInstance().getReference("User")
-                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(getContext(), "User Created", Toast.LENGTH_SHORT).show();
-                                            objectProgressBar.setVisibility(View.INVISIBLE);
-                                            objectButton.setEnabled(true);
-                                            kidsname.setText("");
-                                            userId.setText("");
-                                            age.setText("");
-                                            registerEmail.setText("");
-                                            registerPassword.setText("");
-                                            confpassword.setText("");
-
-                                            Intent in= new Intent(getContext(),SignOrRegister.class);
-                                            startActivity(in);
-                                        }
-                                    });*/
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -144,7 +120,8 @@ public class RegisterTabFragment extends Fragment {
             registerPassword=objectRegisterTabFragment.findViewById(R.id.registerPassword);
             confpassword=objectRegisterTabFragment.findViewById(R.id.confirmpassword);
             objectButton=objectRegisterTabFragment.findViewById(R.id.register);
-            objectFirebaseAuth=FirebaseAuth.getInstance();
+            mAuth =FirebaseAuth.getInstance();
+            fstore=FirebaseFirestore.getInstance();
             objectProgressBar=objectRegisterTabFragment.findViewById(R.id.progressBarRegister);
 
             objectButton.setOnClickListener(new View.OnClickListener() {

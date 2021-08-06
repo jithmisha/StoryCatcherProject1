@@ -29,14 +29,11 @@ public class LoginTabFragment extends Fragment {
     TextView logInpassword;
     TextView logInforgotPass;
     CheckBox checkBox;
-
     float v=0;
-
     private View objectLoginTabFragment;
     private FirebaseAuth objectFirebaseAuth;
     private EditText loginEmail,logInPassWord;
     private Button loginButton;//login buttons
-
     private ProgressBar objectProgressBar;
 
     private void initializeVariable(){
@@ -61,11 +58,13 @@ public class LoginTabFragment extends Fragment {
     }
 
     private void logInUser(){
+        String mail=loginEmail.getText().toString();
+        String pass=logInPassWord.getText().toString();
         try{
             objectProgressBar.setVisibility(View.VISIBLE);
             loginButton.setEnabled(false);
-            if(!loginEmail.getText().toString().isEmpty() && !logInPassWord.getText().toString().isEmpty()){
-                objectFirebaseAuth.signInWithEmailAndPassword(loginEmail.getText().toString(),logInPassWord.getText().toString())
+            if(!mail.isEmpty() && !pass.isEmpty()){
+                objectFirebaseAuth.signInWithEmailAndPassword(mail,pass)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
@@ -73,7 +72,6 @@ public class LoginTabFragment extends Fragment {
                                 objectProgressBar.setVisibility(View.INVISIBLE);
                                 loginButton.setEnabled(true);
                                 getActivity().finish();
-
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -97,10 +95,8 @@ public class LoginTabFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        //ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
 
         objectLoginTabFragment=(ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
-
 
         logInmail= objectLoginTabFragment.findViewById(R.id.logInEmail);
         logInpassword= objectLoginTabFragment.findViewById(R.id.logInPassword);
@@ -141,20 +137,18 @@ public class LoginTabFragment extends Fragment {
          loginButton.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
          checkBox.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
-         //TextView forgotpass= (TextView) root.findViewById(R.id.forgotPassword);
-        TextView forgotpass= (TextView) objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
-        forgotpass.setOnClickListener(new View.OnClickListener(){
+
+         TextView forgotpass= (TextView) objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
+         forgotpass.setOnClickListener(new View.OnClickListener(){
              @Override
              public void onClick(View v){
                  Intent in = new Intent(getActivity(), PasswordActivity.class);
-
                  startActivity(in);
              }
 
          });
 
         //added check box
-
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
