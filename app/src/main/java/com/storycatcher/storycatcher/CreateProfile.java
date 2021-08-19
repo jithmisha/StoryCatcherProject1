@@ -94,7 +94,7 @@ public class CreateProfile extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CreateProfile.this,SignOrRegister.class));
+                startActivity(new Intent(CreateProfile.this,UserList.class));
             }
         });
 

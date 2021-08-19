@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFD85B"
+    tools:context=".UserList">
+
+    <TextView
+        android:id="@+id/selectprofiletxt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/risque"
+        android:text="SELECT"
+        android:textColor="#6B302F"
+        android:textSize="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/selectprofiletxt2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBackBtnSelectProfile"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/imgBackBtnSelectProfile"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#FFD85B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005"
+        app:srcCompat="@drawable/yellowback" />
+
+    <TextView
+        android:id="@+id/selectprofiletxt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/risque"
+        android:text="PROFILE"
+        android:textColor="#6B302F"
+        android:textSize="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/userListrecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ProfileCreatebtn"
+        android:layout_width="324dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
+        android:text="CREATE NEW PROFILE"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#FFBB33"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userListrecyclerView"
+        android:layout_width="406dp"
+        android:layout_height="395dp"
+        app:layout_constraintBottom_toTopOf="@+id/ProfileCreatebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
