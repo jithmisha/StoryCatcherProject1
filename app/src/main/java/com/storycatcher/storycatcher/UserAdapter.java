@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
+public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
 
     Context context;
 
-    ArrayList<User> list;
+    ArrayList<User> list; //User class
 
     public UserAdapter(Context context, ArrayList<User> list) {
         this.context = context;
@@ -33,9 +33,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         User user =list.get(position);
-        holder.kidsId.setText(user.getKidsId());
+        holder.kidsId.setText(user.getKidID());
         holder.kidsName.setText(user.getKidsName());
-        holder.kidsAge.setText(user.getKidsAge());
+        holder.kidsAge.setText(String.valueOf(user.getKidsAge()));
 
 
     }

@@ -2,17 +2,39 @@ package com.storycatcher.storycatcher;
 
 public class User {
 
-    String kidsId,kidsName,kidsAge;
+    String kidID,kidsName;
+    int kidsAge;
 
-    public String getKidsId() {
-        return kidsId;
+    public User() {
+
     }
+    public User(String kidID, String kidsName, int kidsAge) {
+        this.kidID = kidID;
+        this.kidsName = kidsName;
+        this.kidsAge = kidsAge;
+    }
+
+    public String getKidID() {
+        return kidID;
+    }
+
+    public void setKidID(String kidID) {
+        this.kidID = kidID;
+    } 
 
     public String getKidsName() {
         return kidsName;
     }
 
-    public String getKidsAge() {
+    public void setKidsName(String kidsName) {
+        this.kidsName = kidsName;
+    }
+
+    public int getKidsAge() {
         return kidsAge;
+    }
+
+    public void setKidsAge(int kidsAge) {
+        this.kidsAge = kidsAge;
     }
 }
