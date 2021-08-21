@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 public class  UserList extends AppCompatActivity {
     
     RecyclerView recyclerView;
-    DatabaseReference database;
+    FirebaseAuth mAuth;
     UserAdapter userAdapter;
     ArrayList<User> list;
     FirebaseFirestore fStore;
@@ -90,7 +91,9 @@ public class  UserList extends AppCompatActivity {
     }
 
     private void EventChangeListerner() {
-        fStore.collection("Kids").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mAuth=FirebaseAuth.getInstance();
+        fStore.collection("Kids").whereEqualTo("parentID",mAuth.getCurrentUser().getUid()).
+                addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                     if(error !=null){

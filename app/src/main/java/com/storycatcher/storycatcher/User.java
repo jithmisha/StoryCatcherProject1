@@ -20,7 +20,7 @@ public class User {
 
     public void setKidID(String kidID) {
         this.kidID = kidID;
-    } 
+    }
 
     public String getKidsName() {
         return kidsName;
