@@ -38,7 +38,7 @@
         android:id="@+id/selectprofiletxt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="64dp"
         android:fontFamily="@font/risque"
         android:text="PROFILE"
         android:textColor="#6B302F"
@@ -62,8 +62,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userListrecyclerView"
-        android:layout_width="406dp"
-        android:layout_height="395dp"
+        android:layout_width="403dp"
+        android:layout_height="427dp"
         app:layout_constraintBottom_toTopOf="@+id/ProfileCreatebtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
