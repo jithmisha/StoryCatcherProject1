@@ -168,6 +168,5 @@ public class LoginTabFragment extends Fragment {
         return objectLoginTabFragment;
 
 
-
     }
 }

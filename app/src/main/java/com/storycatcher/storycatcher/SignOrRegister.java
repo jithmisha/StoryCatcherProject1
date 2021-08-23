@@ -25,11 +25,13 @@ public class SignOrRegister extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+    FirebaseAuth mAuth;
     float v=0;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth=FirebaseAuth.getInstance();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sign_or_register);
 
@@ -67,6 +69,13 @@ public class SignOrRegister extends AppCompatActivity {
                 Log.i("TAG", "onTabReselected: " + tab.getPosition());
             }
         });
+
+        if(mAuth.getCurrentUser()!=null){
+            startActivity(new Intent(getApplicationContext(),UserList.class));
+            finish();
+
+        }
+
     }
 
 
