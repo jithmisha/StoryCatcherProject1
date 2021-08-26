@@ -1,6 +1,7 @@
 package com.storycatcher.storycatcher;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,15 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>
             kidsId=itemView.findViewById(R.id.txtviewKidsId);
             kidsName=itemView.findViewById(R.id.txtviewKidsName);
             kidsAge=itemView.findViewById(R.id.txtviewKidsAge);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i= new Intent(v.getContext(),LibraryScreen.class);
+                    //i.putExtra("kidsName",list.get(getAdapterPosition()));
+                    v.getContext().startActivity(i);
+                }
+            });
         }
     }
 
