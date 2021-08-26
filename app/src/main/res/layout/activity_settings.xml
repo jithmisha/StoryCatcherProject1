@@ -45,6 +45,7 @@
         android:text="CHANGE PASSWORD"
         android:textColor="#D9F6FC"
         android:textSize="16sp"
+        android:stateListAnimator="@null"
         android:textStyle="bold"
         app:backgroundTint="#59C0EE"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -155,6 +156,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.992"
         app:srcCompat="@drawable/layer_2" />
+
+    <ImageButton
+        android:id="@+id/imgBackBtnSettings"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#2B5CA7"
+        app:layout_constraintBottom_toTopOf="@+id/settingsprofilebutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.012"
+        app:srcCompat="@drawable/back_2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

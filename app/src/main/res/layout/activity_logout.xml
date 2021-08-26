@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="#FFD85B"
     android:layout_height="match_parent"
-    tools:context=".logout">
+    tools:context=".Logout">
 
     <TextView
         android:id="@+id/textView4"
@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:text="Are you sure you want to "
         android:textSize="24dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +49,7 @@
         android:layout_height="wrap_content"
         android:text="logout now?"
         android:textSize="24dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/imageView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.252"
@@ -56,10 +58,10 @@
         app:layout_constraintVertical_bias="0.141" />
 
     <Button
-        android:id="@+id/okBtn"
+        android:id="@+id/yesBtn"
         android:layout_width="317dp"
         android:layout_height="56dp"
-        android:text="OK"
+        android:text="YES"
         android:onClick="logout"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -81,6 +83,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/okBtn"
+        app:layout_constraintTop_toBottomOf="@+id/yesBtn"
         app:layout_constraintVertical_bias="0.156" />
+
+    <ImageButton
+        android:id="@+id/imgBackBtnLogout"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="88dp"
+        android:backgroundTint="#FFD85B"
+        app:layout_constraintBottom_toTopOf="@+id/imageView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/yellowback" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="197dp"
+        android:layout_height="209dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancelBtn"
+        app:layout_constraintVertical_bias="0.142"
+        app:srcCompat="@drawable/cat" />
 </androidx.constraintlayout.widget.ConstraintLayout>
