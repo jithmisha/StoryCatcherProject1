@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class LibraryScreen extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+    //private  Button settingBtn;
     float v=0;
 
 
@@ -31,7 +33,7 @@ public class LibraryScreen extends AppCompatActivity {
 
         tabLayout=findViewById(R.id.tab_layout);
         viewPager=findViewById(R.id.view_pager);
-
+        //settingBtn=findViewById(R.id.SettingButton);
 
         tabLayout.addTab(tabLayout.newTab().setText("English"));
         tabLayout.addTab(tabLayout.newTab().setText("Sinhala"));
@@ -85,7 +87,12 @@ public class LibraryScreen extends AppCompatActivity {
                 return false;
             }
         });
-
+        /*settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Settings.class));
+            }
+        });*/
 
 
 
