@@ -60,26 +60,6 @@
         app:layout_constraintVertical_bias="0.098"
         app:srcCompat="@drawable/seahorse" />
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="356dp"
-        android:layout_height="375dp"
-        android:layout_marginTop="48dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:text="Spend your time
-                         enjoyable and
-                            profitably with Story Catcher.
-                            Let the kids spend their free time in a learning enviorenment reading stories and listening to songs and pems.The library consists of children's material in English and Sinhala. We focus on time spent profitably with fun and leisure experience.In addition. kids devolop their reading and listening skill in early childhood."
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView14"
-        app:layout_constraintVertical_bias="0.115" />
 
     <TextView
         android:id="@+id/textView7"
@@ -104,6 +84,7 @@
         android:textColor="#FA1010"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="@+id/imageView14"
         app:layout_constraintEnd_toEndOf="@+id/imageView14"
         app:layout_constraintHorizontal_bias="0.187"
@@ -123,6 +104,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/back3" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="356dp"
+        android:layout_height="375dp"
+        android:inputType="textMultiLine"
+        android:text="Spend your time enjoyable \nand profitably with \nStory Catcher. Let the kids \nspend their free time in a learning enviorenment reading stories and listening to songs and pems.The library \nconsists of children's material in English and Sinhala. We focus on time spent profitably with fun and leisure experience.In addition. kids devolop their reading and listening skill in early childhood."
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.097" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
