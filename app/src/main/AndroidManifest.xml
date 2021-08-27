@@ -12,14 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryCatcher">
         <activity
-<<<<<<< Updated upstream
-            android:name=".Logout"
-=======
             android:name=".About"
             android:exported="true" />
         <activity
-            android:name=".logout"
->>>>>>> Stashed changes
+            android:name=".Logout"
             android:exported="true" />
         <activity
             android:name=".Settings"
