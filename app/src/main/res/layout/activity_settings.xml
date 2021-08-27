@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".Settings">
 
     <TextView
@@ -15,90 +15,85 @@
         android:text="SETTINGS"
         android:textColor="#D9F6FC"
         android:textSize="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settingsprofilebutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.423" />
 
     <Button
         android:id="@+id/settingsprofilebutton"
         android:layout_width="317dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="40dp"
         android:stateListAnimator="@null"
         android:text="PROFILE"
         android:textColor="#D9F6FC"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="#59C0EE"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settingsscreentimebutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.157" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/settingschangepasswordbutton"
         android:layout_width="317dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="40dp"
+        android:stateListAnimator="@null"
         android:text="CHANGE PASSWORD"
         android:textColor="#D9F6FC"
         android:textSize="16sp"
-        android:stateListAnimator="@null"
         android:textStyle="bold"
         app:backgroundTint="#59C0EE"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settingaboutbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.496" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/settingsscreentimebutton"
         android:layout_width="317dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="40dp"
         android:text="SCREEN TIME"
         android:textColor="#D9F6FC"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="#59C0EE"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settingschangepasswordbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/settingaboutbutton"
         android:layout_width="317dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="40dp"
         android:text="ABOUT"
         android:textColor="#D9F6FC"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="#59C0EE"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settingslogoutbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.664" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/settingslogoutbutton"
         android:layout_width="317dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="84dp"
+        android:stateListAnimator="@null"
         android:text="LOGOUT"
         android:textColor="#D9F6FC"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="#59C0EE"
-        android:stateListAnimator="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.823" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -118,15 +113,14 @@
         android:id="@+id/imageView8"
         android:layout_width="44dp"
         android:layout_height="51dp"
-        android:elevation="2dp
-"
+        android:elevation="2dp"
         android:rotation="-13"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876"
+        app:layout_constraintVertical_bias="0.872"
         app:srcCompat="@drawable/star" />
 
     <ImageView
@@ -151,10 +145,10 @@
         android:rotation="21"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.992"
+        app:layout_constraintVertical_bias="0.993"
         app:srcCompat="@drawable/layer_2" />
 
     <ImageButton

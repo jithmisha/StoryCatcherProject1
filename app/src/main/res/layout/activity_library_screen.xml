@@ -9,24 +9,22 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="408dp"
-        android:layout_height="488dp"
+        android:layout_width="match_parent"
+        android:layout_height="540dp"
         android:background="@drawable/bg_curve_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772">
+        app:layout_constraintVertical_bias="0.713">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
-            android:layout_width="412dp"
-            android:layout_height="416dp"
+            android:layout_width="match_parent"
+            android:layout_height="442dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent=".7"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tab_layout"
             app:layout_constraintVertical_bias="1.0" />
@@ -40,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.036" />
+            app:layout_constraintVertical_bias="0.06" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -75,21 +73,17 @@
 
     <ImageButton
         android:id="@+id/SettingButton"
-        android:layout_width="63dp"
-        android:layout_height="57dp"
+        android:layout_width="57dp"
+        android:layout_height="51dp"
         android:backgroundTint="#63F0AA"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/txtKidsName"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.09"
-        app:srcCompat="@drawable/settings" /><![CDATA[
+        app:layout_constraintVertical_bias="0.069"
+        app:srcCompat="@drawable/settings" />
 
-    "
-    tools:layout_editor_absoluteX="319dp"
-    tools:layout_editor_absoluteY="12dp" />
 
-]]>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

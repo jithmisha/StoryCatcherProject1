@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#FFD85B"
     android:layout_height="match_parent"
+    android:background="#FFD85B"
     tools:context=".Logout">
 
     <TextView
@@ -36,8 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Are you sure you want to "
-        android:textSize="24dp"
         android:textColor="@color/black"
+        android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,8 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="logout now?"
-        android:textSize="24dp"
         android:textColor="@color/black"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.252"
@@ -61,16 +61,15 @@
         android:id="@+id/yesBtn"
         android:layout_width="317dp"
         android:layout_height="56dp"
-        android:text="YES"
+        android:layout_marginTop="36dp"
         android:onClick="logout"
+        android:text="YES"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="#FFBB33"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
         android:id="@+id/cancelBtn"
