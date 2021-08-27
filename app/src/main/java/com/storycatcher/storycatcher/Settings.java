@@ -37,6 +37,7 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mp.start();
+                startActivity(new Intent(getApplicationContext(), About.class));
             }
         });
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +46,19 @@ public class Settings extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), Logout.class));
         }
     });
+        changepasswordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ChangePassword.class));
+            }
+        });
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Profile.class));
+            }
+        });
 
 
     }

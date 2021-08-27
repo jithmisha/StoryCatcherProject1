@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class About extends AppCompatActivity {
+public class ChangePassword extends AppCompatActivity {
     private ImageButton BackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
-        BackBtn=findViewById(R.id.imgBackBtnAbout);
+        setContentView(R.layout.activity_change_password);
+        BackBtn=findViewById(R.id.imgBackBtnChange);
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -22,5 +22,6 @@ public class About extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Settings.class));
             }
         });
-    }
-}
+
+
+}}

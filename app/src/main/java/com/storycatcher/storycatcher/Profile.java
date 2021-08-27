@@ -7,16 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class About extends AppCompatActivity {
-    private ImageButton BackBtn;
+public class Profile extends AppCompatActivity {
+    private ImageButton BackButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
-        BackBtn=findViewById(R.id.imgBackBtnAbout);
+        setContentView(R.layout.activity_profile);
+        BackButton=findViewById(R.id.imgBackBtnProfile);
 
-        BackBtn.setOnClickListener(new View.OnClickListener() {
+        BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Settings.class));
