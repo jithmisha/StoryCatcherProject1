@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/drawable/bg_all_curve.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/drawable/edit_text_bg.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/drawable/edit_text_bg_white.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/drawable/gradient.xml" value="0.2755208333333333" />
@@ -14,6 +15,7 @@
         <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/layout/activity_logout.xml" value="0.2441123188405797" />
         <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/layout/activity_password.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/layout/activity_profile.xml" value="0.2" />
+        <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/layout/activity_screen_time.xml" value="0.264" />
         <entry key="..\:/Users/Minol Hettiarachchi/Documents/GitHub/StoryCatcherProject1/app/src/main/res/layout/activity_settings.xml" value="0.176" />
       </map>
     </option>

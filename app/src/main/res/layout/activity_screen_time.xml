@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScreenTime">
+
+    <TextView
+        android:id="@+id/textViewScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/risque"
+        android:text="SCREEN TIME"
+        android:textColor="#D9F6FC"
+        android:textSize="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105" />
+
+    <ImageButton
+        android:id="@+id/Screentime15"
+        android:layout_width="147dp"
+        android:layout_height="100dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.415"
+        app:srcCompat="@drawable/bg_all_curve" />
+
+    <ImageButton
+        android:id="@+id/Screentime20"
+        android:layout_width="147dp"
+        android:layout_height="100dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.787"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.415"
+        app:srcCompat="@drawable/bg_all_curve" />
+
+    <ImageButton
+        android:id="@+id/Screentime25"
+        android:layout_width="147dp"
+        android:layout_height="96dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.587"
+        app:srcCompat="@drawable/bg_all_curve" />
+
+    <ImageButton
+        android:id="@+id/Screentime30"
+        android:layout_width="147dp"
+        android:layout_height="96dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.787"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.587"
+        app:srcCompat="@drawable/bg_all_curve" />
+
+    <ImageButton
+        android:id="@+id/Screentime35"
+        android:layout_width="147dp"
+        android:layout_height="98dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759"
+        app:srcCompat="@drawable/bg_all_curve" />
+
+    <ImageButton
+        android:id="@+id/Screentime40"
+        android:layout_width="147dp"
+        android:layout_height="98dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.787"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759"
+        app:srcCompat="@drawable/bg_all_curve" />
+
+
+
+    <ImageButton
+        android:id="@+id/imgBackBtnScreenTime"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#9651CC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/back3" />
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15 MINUTES"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Screentime15"
+        app:layout_constraintEnd_toEndOf="@+id/Screentime15"
+        app:layout_constraintStart_toStartOf="@+id/Screentime15"
+        app:layout_constraintTop_toTopOf="@+id/Screentime15" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20 MINUTES"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Screentime20"
+        app:layout_constraintEnd_toEndOf="@+id/Screentime20"
+        app:layout_constraintStart_toStartOf="@+id/Screentime20"
+        app:layout_constraintTop_toTopOf="@+id/Screentime20" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25 MINUTES"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Screentime25"
+        app:layout_constraintEnd_toEndOf="@+id/Screentime25"
+        app:layout_constraintStart_toStartOf="@+id/Screentime25"
+        app:layout_constraintTop_toTopOf="@+id/Screentime25" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30 MINUTES"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Screentime30"
+        app:layout_constraintEnd_toEndOf="@+id/Screentime30"
+        app:layout_constraintStart_toStartOf="@+id/Screentime30"
+        app:layout_constraintTop_toTopOf="@+id/Screentime30" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="35 MINUTES"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Screentime35"
+        app:layout_constraintEnd_toEndOf="@+id/Screentime35"
+        app:layout_constraintStart_toStartOf="@+id/Screentime35"
+        app:layout_constraintTop_toTopOf="@+id/Screentime35" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="82dp"
+        android:layout_height="17dp"
+        android:text="40 MINUTES"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Screentime40"
+        app:layout_constraintEnd_toEndOf="@+id/Screentime40"
+        app:layout_constraintStart_toStartOf="@+id/Screentime40"
+        app:layout_constraintTop_toTopOf="@+id/Screentime40" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

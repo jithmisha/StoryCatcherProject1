@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryCatcher">
         <activity
+            android:name=".ScreenTime"
+            android:exported="true" />
+        <activity
             android:name=".Profile"
             android:exported="true" />
         <activity
