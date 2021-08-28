@@ -98,13 +98,12 @@
         app:layout_constraintVertical_bias="0.635" />
 
     <EditText
-        android:id="@+id/kidsEmailPro"
+        android:id="@+id/UserEmail"
         android:layout_width="317dp"
         android:layout_height="46dp"
         android:background="@drawable/edit_text_bg"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
-        android:hint="Eg:parent22@gmail.com"
         android:inputType="textEmailAddress"
         android:paddingStart="20dp"
         android:paddingLeft="20dp"

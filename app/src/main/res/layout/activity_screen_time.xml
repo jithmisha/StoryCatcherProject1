@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/gradient1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient1"
     tools:context=".ScreenTime">
 
     <TextView
@@ -22,86 +22,6 @@
         app:layout_constraintVertical_bias="0.105" />
 
     <ImageButton
-        android:id="@+id/Screentime15"
-        android:layout_width="147dp"
-        android:layout_height="100dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415"
-        app:srcCompat="@drawable/bg_all_curve" />
-
-    <ImageButton
-        android:id="@+id/Screentime20"
-        android:layout_width="147dp"
-        android:layout_height="100dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.787"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415"
-        app:srcCompat="@drawable/bg_all_curve" />
-
-    <ImageButton
-        android:id="@+id/Screentime25"
-        android:layout_width="147dp"
-        android:layout_height="96dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587"
-        app:srcCompat="@drawable/bg_all_curve" />
-
-    <ImageButton
-        android:id="@+id/Screentime30"
-        android:layout_width="147dp"
-        android:layout_height="96dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.787"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587"
-        app:srcCompat="@drawable/bg_all_curve" />
-
-    <ImageButton
-        android:id="@+id/Screentime35"
-        android:layout_width="147dp"
-        android:layout_height="98dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759"
-        app:srcCompat="@drawable/bg_all_curve" />
-
-    <ImageButton
-        android:id="@+id/Screentime40"
-        android:layout_width="147dp"
-        android:layout_height="98dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.787"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759"
-        app:srcCompat="@drawable/bg_all_curve" />
-
-
-
-    <ImageButton
         android:id="@+id/imgBackBtnScreenTime"
         android:layout_width="51dp"
         android:layout_height="49dp"
@@ -113,77 +33,198 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/back3" />
+
+    <ImageButton
+        android:id="@+id/Screentime15"
+        android:layout_width="150dp"
+        android:layout_height="78.23dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.447"
+        app:srcCompat="@drawable/screen_time_button" />
+
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="15 MINUTES"
+        android:text="15 \nMINUTES"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:fontFamily="@font/seoul_hangang_cb"
+        android:gravity="center"
+        android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="@+id/Screentime15"
         app:layout_constraintEnd_toEndOf="@+id/Screentime15"
         app:layout_constraintStart_toStartOf="@+id/Screentime15"
         app:layout_constraintTop_toTopOf="@+id/Screentime15" />
 
+    <ImageButton
+        android:id="@+id/Screentime20"
+        android:layout_width="150dp"
+        android:layout_height="78.23dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.447"
+        app:srcCompat="@drawable/screen_time_button" />
+
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20 MINUTES"
+        android:text="20 \nMINUTES"
+        android:gravity="center"
+        android:textSize="27dp"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:fontFamily="@font/seoul_hangang_cb"
         app:layout_constraintBottom_toBottomOf="@+id/Screentime20"
         app:layout_constraintEnd_toEndOf="@+id/Screentime20"
         app:layout_constraintStart_toStartOf="@+id/Screentime20"
         app:layout_constraintTop_toTopOf="@+id/Screentime20" />
 
+    <ImageButton
+        android:id="@+id/Screentime25"
+        android:layout_width="150dp"
+        android:layout_height="78.23dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/screen_time_button" />
+
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="25 MINUTES"
+        android:fontFamily="@font/seoul_hangang_cb"
+        android:gravity="center"
+        android:text="25 \nMINUTES"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="@+id/Screentime25"
         app:layout_constraintEnd_toEndOf="@+id/Screentime25"
         app:layout_constraintStart_toStartOf="@+id/Screentime25"
         app:layout_constraintTop_toTopOf="@+id/Screentime25" />
 
+    <ImageButton
+        android:id="@+id/Screentime30"
+        android:layout_width="150dp"
+        android:layout_height="78.23dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/screen_time_button" />
+
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30 MINUTES"
+        android:fontFamily="@font/seoul_hangang_cb"
+        android:gravity="center"
+        android:text="30 \nMINUTES"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="@+id/Screentime30"
         app:layout_constraintEnd_toEndOf="@+id/Screentime30"
         app:layout_constraintStart_toStartOf="@+id/Screentime30"
         app:layout_constraintTop_toTopOf="@+id/Screentime30" />
 
+    <ImageButton
+        android:id="@+id/Screentime35"
+        android:layout_width="150dp"
+        android:layout_height="78.23dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759"
+        app:srcCompat="@drawable/screen_time_button" />
+
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textView35"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="35 MINUTES"
+        android:fontFamily="@font/seoul_hangang_cb"
+        android:gravity="center"
+        android:text="35 \nMINUTES"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="@+id/Screentime35"
         app:layout_constraintEnd_toEndOf="@+id/Screentime35"
         app:layout_constraintStart_toStartOf="@+id/Screentime35"
         app:layout_constraintTop_toTopOf="@+id/Screentime35" />
 
+    <ImageButton
+        android:id="@+id/Screentime40"
+        android:layout_width="150dp"
+        android:layout_height="78.23dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759"
+        app:srcCompat="@drawable/screen_time_button" />
+
     <TextView
-        android:id="@+id/textView20"
-        android:layout_width="82dp"
-        android:layout_height="17dp"
-        android:text="40 MINUTES"
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/seoul_hangang_cb"
+        android:gravity="center"
+        android:text="40 \nMINUTES"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="@+id/Screentime40"
         app:layout_constraintEnd_toEndOf="@+id/Screentime40"
         app:layout_constraintStart_toStartOf="@+id/Screentime40"
         app:layout_constraintTop_toTopOf="@+id/Screentime40" />
+
+    <Button
+        android:id="@+id/btnSaveScreenTime"
+        android:layout_width="317dp"
+        android:layout_height="56dp"
+        android:text="SAVE"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#63419B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888" />
+
+    <Button
+        android:id="@+id/btnResetScreenTime"
+        android:layout_width="317dp"
+        android:layout_height="56dp"
+        android:text="RESET"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#63419B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

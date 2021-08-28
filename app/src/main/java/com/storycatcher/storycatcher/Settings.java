@@ -40,12 +40,14 @@ public class Settings extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), About.class));
             }
         });
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             startActivity(new Intent(getApplicationContext(), Logout.class));
-        }
-    });
+         }
+        });
+
         changepasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,10 +64,12 @@ public class Settings extends AppCompatActivity {
 
         screentimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ScreenTime.class));
             }
         });
 
     }
+
+
 }

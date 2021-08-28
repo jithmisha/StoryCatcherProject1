@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryCatcher">
-        <activity
-            android:name=".ScreenTime"
-            android:exported="true" />
+        <activity android:name=".ScreenTime"></activity>
         <activity
             android:name=".Profile"
             android:exported="true" />

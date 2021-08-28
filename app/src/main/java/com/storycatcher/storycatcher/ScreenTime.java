@@ -8,21 +8,19 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class ScreenTime extends AppCompatActivity {
-    private ImageButton BackButton;
+    private ImageButton backBtn;
 
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_time);
-        BackButton.findViewById(R.id.imgBackBtnScreenTime);
+        backBtn=findViewById(R.id.imgBackBtnScreenTime);
 
-        BackButton.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Settings.class));
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Settings.class));
             }
         });
     }
-
-
 }
