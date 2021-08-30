@@ -15,11 +15,11 @@
         android:text="SCREEN TIME"
         android:textColor="#D9F6FC"
         android:textSize="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/btnResetScreenTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBackBtnScreenTime"
+        app:layout_constraintVertical_bias="0.019" />
 
     <ImageButton
         android:id="@+id/imgBackBtnScreenTime"
@@ -37,24 +37,23 @@
     <ImageButton
         android:id="@+id/Screentime15"
         android:layout_width="150dp"
-        android:layout_height="78.23dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="52dp"
         android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintEnd_toStartOf="@+id/Screentime20"
+        app:layout_constraintHorizontal_bias="0.661"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.447"
+        app:layout_constraintTop_toBottomOf="@+id/textViewScreen"
         app:srcCompat="@drawable/screen_time_button" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="15 \nMINUTES"
-        android:textColor="@color/black"
         android:fontFamily="@font/seoul_hangang_cb"
         android:gravity="center"
+        android:text="15 \nMINUTES"
+        android:textColor="@color/black"
         android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="@+id/Screentime15"
         app:layout_constraintEnd_toEndOf="@+id/Screentime15"
@@ -64,25 +63,24 @@
     <ImageButton
         android:id="@+id/Screentime20"
         android:layout_width="150dp"
-        android:layout_height="78.23dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.831"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.447"
+        app:layout_constraintTop_toBottomOf="@+id/textViewScreen"
         app:srcCompat="@drawable/screen_time_button" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20 \nMINUTES"
-        android:gravity="center"
-        android:textSize="27dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/seoul_hangang_cb"
+        android:gravity="center"
+        android:text="20 \nMINUTES"
+        android:textColor="@color/black"
+        android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="@+id/Screentime20"
         app:layout_constraintEnd_toEndOf="@+id/Screentime20"
         app:layout_constraintStart_toStartOf="@+id/Screentime20"
@@ -91,14 +89,13 @@
     <ImageButton
         android:id="@+id/Screentime25"
         android:layout_width="150dp"
-        android:layout_height="78.23dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="40dp"
         android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintEnd_toStartOf="@+id/Screentime30"
+        app:layout_constraintHorizontal_bias="0.661"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintTop_toBottomOf="@+id/Screentime15"
         app:srcCompat="@drawable/screen_time_button" />
 
     <TextView
@@ -118,14 +115,13 @@
     <ImageButton
         android:id="@+id/Screentime30"
         android:layout_width="150dp"
-        android:layout_height="78.23dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.831"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintTop_toBottomOf="@+id/Screentime20"
         app:srcCompat="@drawable/screen_time_button" />
 
     <TextView
@@ -145,14 +141,15 @@
     <ImageButton
         android:id="@+id/Screentime35"
         android:layout_width="150dp"
-        android:layout_height="78.23dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="40dp"
         android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveScreenTime"
+        app:layout_constraintEnd_toStartOf="@+id/Screentime40"
+        app:layout_constraintHorizontal_bias="0.661"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759"
+        app:layout_constraintTop_toBottomOf="@+id/Screentime25"
+        app:layout_constraintVertical_bias="0.054"
         app:srcCompat="@drawable/screen_time_button" />
 
     <TextView
@@ -172,14 +169,15 @@
     <ImageButton
         android:id="@+id/Screentime40"
         android:layout_width="150dp"
-        android:layout_height="78.23dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveScreenTime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.831"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759"
+        app:layout_constraintTop_toBottomOf="@+id/Screentime30"
+        app:layout_constraintVertical_bias="0.054"
         app:srcCompat="@drawable/screen_time_button" />
 
     <TextView
@@ -200,16 +198,14 @@
         android:id="@+id/btnSaveScreenTime"
         android:layout_width="317dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="24dp"
         android:text="SAVE"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="#63419B"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnResetScreenTime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnResetScreenTime"
@@ -221,10 +217,7 @@
         app:backgroundTint="#63419B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

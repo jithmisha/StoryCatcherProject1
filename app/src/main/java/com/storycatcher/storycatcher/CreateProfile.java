@@ -35,43 +35,43 @@ public class CreateProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
-        kidID=findViewById(R.id.txtKidsId);
-        kidName=findViewById(R.id.txtKidsName);
-        kidAge=findViewById(R.id.txtKidsAge);
-        createButton=findViewById(R.id.ProfileCreatebtn);
-        backButton=findViewById(R.id.imgBackBtnProfile);
-        mAuth=FirebaseAuth.getInstance();
-        fStore=FirebaseFirestore.getInstance();
+        kidID = findViewById(R.id.txtKidsId);
+        kidName = findViewById(R.id.txtKidsName);
+        kidAge = findViewById(R.id.txtKidsAge);
+        createButton = findViewById(R.id.ProfileCreatebtn);
+        backButton = findViewById(R.id.imgBackBtnProfile);
+        mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String kidsID=kidID.getText().toString();
-                String kidsName=kidName.getText().toString();
-                String kidsAge=kidAge.getText().toString();
-                String parentID=mAuth.getCurrentUser().getUid();
+                String kidsID = kidID.getText().toString();
+                String kidsName = kidName.getText().toString();
+                String kidsAge = kidAge.getText().toString();
+                String parentID = mAuth.getCurrentUser().getUid();
 
 
-                if(kidsID.isEmpty()){
+                if (kidsID.isEmpty()) {
                     kidID.setError("Please enter a kids ID");
                     kidID.requestFocus();
                     return;
                 }
-                if(kidsName.isEmpty()){
+                if (kidsName.isEmpty()) {
                     kidName.setError("Please enter kids name");
                     kidName.requestFocus();
                     return;
                 }
-                if(kidsAge.isEmpty()){
+                if (kidsAge.isEmpty()) {
                     kidAge.setError("Enter kids age");
                     kidAge.requestFocus();
                     return;
                 }
 
                 try {
-                    CreateProfileClass kidsProfile=new CreateProfileClass(kidsID,kidsName,Integer.parseInt(kidsAge),parentID);
-                    DocumentReference documentReference=fStore.collection("Kids").document(kidsID);
+                    CreateProfileClass kidsProfile = new CreateProfileClass(kidsID, kidsName, Integer.parseInt(kidsAge), parentID);
+                    DocumentReference documentReference = fStore.collection("Kids").document(kidsID);
                     documentReference.set(kidsProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -84,7 +84,7 @@ public class CreateProfile extends AppCompatActivity {
                             Toast.makeText(CreateProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-                }catch(Exception e){
+                } catch (Exception e) {
                     Toast.makeText(CreateProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -94,7 +94,7 @@ public class CreateProfile extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CreateProfile.this,UserList.class));
+                startActivity(new Intent(CreateProfile.this, UserList.class));
             }
         });
 
@@ -118,4 +118,5 @@ public class CreateProfile extends AppCompatActivity {
             }
         });
     }*/
+    }
 }

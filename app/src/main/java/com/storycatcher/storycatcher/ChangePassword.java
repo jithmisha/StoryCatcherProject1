@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ public class ChangePassword extends AppCompatActivity {
     private EditText currentPassword, newPassword, confirmNewPassword;
     private Button saveBtn;
     FirebaseAuth mAuth;
+    private ProgressBar ProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class ChangePassword extends AppCompatActivity {
         saveBtn=findViewById(R.id.btnSave);
         mAuth=FirebaseAuth.getInstance();
         FirebaseUser currentUser=mAuth.getCurrentUser();
+        ProgressBar=findViewById(R.id.progressBarChangePassword);
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,11 +87,13 @@ public class ChangePassword extends AppCompatActivity {
                 currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        ProgressBar.setVisibility(View.VISIBLE);
                         if(task.isSuccessful()){
                             currentUser.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
+                                        ProgressBar.setVisibility(View.INVISIBLE);
                                         Toast.makeText(ChangePassword.this, "Password Changed Successfully", Toast.LENGTH_SHORT).show();
                                     }else{
                                         Toast.makeText(ChangePassword.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -97,6 +102,7 @@ public class ChangePassword extends AppCompatActivity {
                             });
                         }else{
                             currentPassword.setError("Incorrect password entered");
+                            ProgressBar.setVisibility(View.INVISIBLE);
                             currentPassword.requestFocus();
                             return;
                         }
