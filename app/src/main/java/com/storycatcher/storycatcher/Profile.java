@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile extends AppCompatActivity {
     private ImageButton BackButton;
-    private EditText userEmail;
+    private EditText userEmail,kidsName,kidsId,kidsAge;
     FirebaseAuth mAuth;
 
 
@@ -22,9 +22,10 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         BackButton=findViewById(R.id.imgBackBtnProfile);
         userEmail=findViewById(R.id.UserEmail);
+        kidsName=findViewById(R.id.kidsNamePro);
+        kidsId=findViewById(R.id.kidsIdPro);
+        kidsAge=findViewById(R.id.kidsAgePro);
         mAuth=FirebaseAuth.getInstance();
-
-
         String mail=mAuth.getCurrentUser().getEmail();
         userEmail.setText(mail);
         userEmail.setEnabled(false);

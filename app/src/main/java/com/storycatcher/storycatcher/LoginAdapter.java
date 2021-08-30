@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
             this.context=context;
             this.totalTabs=totalTabs;
         }
-
         @Override
         public int getCount() {
             return totalTabs;

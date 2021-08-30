@@ -69,7 +69,6 @@ public class ChangePassword extends AppCompatActivity {
                     confirmNewPassword.requestFocus();
                     return;
                 }
-
                 if(newPass.length()<8){
                     newPassword.setError("Password length should be more than  8 characters");
                     newPassword.requestFocus();
@@ -92,31 +91,17 @@ public class ChangePassword extends AppCompatActivity {
                                     if(task.isSuccessful()){
                                         Toast.makeText(ChangePassword.this, "Password Changed Successfully", Toast.LENGTH_SHORT).show();
                                     }else{
-                                        Toast.makeText(ChangePassword.this, task.getException().getMessage()
-                                                , Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ChangePassword.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
                         }else{
-                            Toast.makeText(ChangePassword.this, task.getException().getMessage()
-                                    , Toast.LENGTH_SHORT).show();
+                            currentPassword.setError("Incorrect password entered");
+                            currentPassword.requestFocus();
+                            return;
                         }
                     }
                 });
-
-                /*currentUser.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(ChangePassword.this, "Password Changed Successfully", Toast.LENGTH_SHORT).show();
-                            //Log.d("tag","Password Changed Successfully");
-                        }else{
-                            Toast.makeText(ChangePassword.this, task.getException().getMessage()
-                                    , Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });*/
-
             }
         });
 

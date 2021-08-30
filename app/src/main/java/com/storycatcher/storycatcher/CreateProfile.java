@@ -98,17 +98,6 @@ public class CreateProfile extends AppCompatActivity {
             }
         });
 
-
-
-       // textTV=findViewById(R.id.text);
-
-
-
-       // if(objectFirebaseAuth!=null){
-         //   String currentUser=objectFirebaseAuth.getCurrentUser().getEmail();
-         //   textTV.setText(currentUser);
-        }
-
        /* createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,10 +105,8 @@ public class CreateProfile extends AppCompatActivity {
                 ProfileClass profile=new ProfileClass(val);
                 reference=rootNode.getReference("User");
                 reference.child(val).setValue(profile);
-
             }
         });
-
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
