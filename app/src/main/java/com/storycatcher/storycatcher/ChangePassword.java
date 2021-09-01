@@ -94,6 +94,10 @@ public class ChangePassword extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         ProgressBar.setVisibility(View.INVISIBLE);
+                                        saveBtn.setEnabled(true);
+                                        currentPassword.setText("");
+                                        newPassword.setText("");
+                                        confirmNewPassword.setText("");
                                         Toast.makeText(ChangePassword.this, "Password Changed Successfully", Toast.LENGTH_SHORT).show();
                                     }else{
                                         Toast.makeText(ChangePassword.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

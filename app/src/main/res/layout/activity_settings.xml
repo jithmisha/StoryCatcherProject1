@@ -103,10 +103,10 @@
         android:rotation="29"
         app:layout_constraintBottom_toBottomOf="@+id/settingsprofilebutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958"
+        app:layout_constraintVertical_bias="0.926"
         app:srcCompat="@drawable/star" />
 
     <ImageView

@@ -13,7 +13,9 @@ public class User {
         this.kidsName = kidsName;
         this.kidsAge = kidsAge;
     }
-
+    /*public User(String kidName){
+        this.kidsName=getKidsName();
+    }*/
     public String getKidID() {
         return kidID;
     }

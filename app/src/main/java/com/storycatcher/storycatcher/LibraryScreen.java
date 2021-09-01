@@ -21,6 +21,7 @@ public class LibraryScreen extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     private ImageButton settingBtn;
+    private  TextView kidName;
     float v=0;
 
     @Override
@@ -32,6 +33,12 @@ public class LibraryScreen extends AppCompatActivity {
         tabLayout=findViewById(R.id.tab_layout);
         viewPager=findViewById(R.id.view_pager);
         settingBtn=findViewById(R.id.SettingButton);
+
+        /*kidName=findViewById(R.id.txtKidsName);
+        String name=kidName.getText().toString();
+        User user=new User(name);
+        kidName.setText(user.kidsName);*/
+
 
         tabLayout.addTab(tabLayout.newTab().setText("English"));
         tabLayout.addTab(tabLayout.newTab().setText("Sinhala"));
