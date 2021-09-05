@@ -2,14 +2,14 @@ package com.storycatcher.storycatcher;
 
 public class LibraryDataClass {
     String imageUrl;
-    String title;
+    String Title;
 
     public LibraryDataClass() {
 
     }
-    public LibraryDataClass(String imageUrl) {
+    public LibraryDataClass(String imageUrl, String Title) {
         this.imageUrl = imageUrl;
-        this.title=title;
+        this.Title = this.Title;
     }
 
     public String getImageUrl() {
@@ -23,10 +23,10 @@ public class LibraryDataClass {
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.Title = title;
     }
 }
