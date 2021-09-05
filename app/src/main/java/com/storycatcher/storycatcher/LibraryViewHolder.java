@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +34,7 @@ public class LibraryViewHolder extends RecyclerView.Adapter<LibraryViewHolder.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.bookName.setText(bookList.get(position).getTitle());
         Glide.with(bContext).load(bookList.get(position).getImageUrl()).into(holder.bookImage);
     }
 
@@ -43,11 +45,13 @@ public class LibraryViewHolder extends RecyclerView.Adapter<LibraryViewHolder.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView bookImage;
+        TextView bookName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             bookImage =itemView.findViewById(R.id.imgBook);
+            bookName =itemView.findViewById(R.id.txtBookName);
         }
     }
 
