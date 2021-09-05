@@ -9,14 +9,16 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class LibraryViewHolder extends RecyclerView.Adapter<LibraryViewHolder.ViewHolder> {
     public static final String Tag ="RecyclerView";
     private Context bContext;
-    private ArrayList<LibraryData> bookList;
+    private ArrayList<LibraryDataClass> bookList;
 
-    public LibraryViewHolder(Context bContext, ArrayList<LibraryData> bookList) {
+    public LibraryViewHolder(Context bContext, ArrayList<LibraryDataClass> bookList) {
         this.bContext = bContext;
         this.bookList = bookList;
     }
@@ -27,15 +29,11 @@ public class LibraryViewHolder extends RecyclerView.Adapter<LibraryViewHolder.Vi
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_item,parent,false);
         return new ViewHolder(view);
 
-
-
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-
+        Glide.with(bContext).load(bookList.get(position).getImageUrl()).into(holder.bookImage);
     }
 
     @Override
