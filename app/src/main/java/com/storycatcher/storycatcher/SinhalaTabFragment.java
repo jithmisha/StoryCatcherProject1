@@ -34,6 +34,7 @@ public class SinhalaTabFragment extends Fragment {
     private DatabaseReference myRef;
     //private Context bContext;
     private ArrayList<LibraryDataClass> bookList;
+    private ArrayList<LibraryCatTitleClass> titleList;
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
