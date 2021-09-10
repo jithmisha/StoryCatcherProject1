@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -23,73 +22,91 @@ import java.util.List;
 
 public class SinhalaTabFragment extends Fragment {
     private View root;
-    RecyclerView storyRecyclerView,songsRecyclerView,poemsRecyclerView;
+    RecyclerView booksRecyclerView,songsRecyclerView,poemsRecyclerView;
     FirebaseFirestore fstore;
-    private DatabaseReference myRef;
-    //private Context bContext;
 
-    LibraryViewHolder libraryViewHolder;
-    private ArrayList<LibraryDataClass> bookList;
+    //Book category
+    SinhalaBookViewHolder sinhalaBookViewHolder;
+    ArrayList<SinhalaBookDataClass> sinhalaBooksList;
 
     //Song category
-    SongViewHolder songViewHolder;
-    List<SongsDataClass> songsList;
+    SinhalaSongViewHolder sinhalaSongViewHolder;
+    List<SinhalaSongDataClass> sinhalaSongsList;
 
     //poem category
-    PoemViewHolder poemViewHolder;
-    List<PoemDataClass> poemsList;
+    SinhalaPoemViewHolder sinhalaPoemViewHolder;
+    List<SinhalaPoemDataClass> sinhalaPoemsList;
 
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = (ViewGroup) inflater.inflate(R.layout.sinhala_tab_fragment, container, false);
 
-        storyRecyclerView=root.findViewById(R.id.storyBookRecycleView);
+        booksRecyclerView =root.findViewById(R.id.storyBookRecycleView);
         songsRecyclerView=root.findViewById(R.id.songsRecyclerView);
         poemsRecyclerView=root.findViewById(R.id.PoemsRecyclerView);
 
-        GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),3);
-        storyRecyclerView.setLayoutManager(layoutManager);
-        storyRecyclerView.setHasFixedSize(true);
+        GridLayoutManager layoutManager1=new GridLayoutManager(getActivity(),3);
+        booksRecyclerView.setLayoutManager(layoutManager1);
+        booksRecyclerView.setHasFixedSize(true);
+
+        GridLayoutManager layoutManager2=new GridLayoutManager(getActivity(),3);
+        songsRecyclerView.setLayoutManager(layoutManager2);
+        songsRecyclerView.setHasFixedSize(true);
+
+        GridLayoutManager layoutManager3=new GridLayoutManager(getActivity(),3);
+        poemsRecyclerView.setLayoutManager(layoutManager3);
+        poemsRecyclerView.setHasFixedSize(true);
 
         //Firebase
         fstore=FirebaseFirestore.getInstance();
-        //myRef= FirebaseDatabase.getInstance().getReference();
 
         //arraylist
-        bookList =new ArrayList<>();
+        sinhalaBooksList = new ArrayList<>();
+        sinhalaSongsList = new ArrayList<>();
+        sinhalaPoemsList = new ArrayList<>();
 
         //claear Arrray list
         clearAll();
+
         //Get Data method
-        GetDataFromFirebase();
+        GetSBDataFromFirebase();
+        GetSSDataFromFirebase();
+        GetSPDataFromFirebase();
 
         //libraryViewHolder=new LibraryViewHolder(getActivity().getApplicationContext(),bookList);
-        libraryViewHolder=new LibraryViewHolder(getActivity(),bookList);
-        storyRecyclerView.setAdapter(libraryViewHolder);
+        sinhalaBookViewHolder =new SinhalaBookViewHolder(getActivity(), sinhalaBooksList);
+        booksRecyclerView.setAdapter(sinhalaBookViewHolder);
 
+        sinhalaSongViewHolder =new SinhalaSongViewHolder(getActivity(), sinhalaSongsList);
+        songsRecyclerView.setAdapter(sinhalaSongViewHolder);
+
+        sinhalaPoemViewHolder =new SinhalaPoemViewHolder(getActivity(), sinhalaPoemsList);
+        poemsRecyclerView.setAdapter(sinhalaPoemViewHolder);
 
         return root;
     }
-    private void GetDataFromFirebase() {
-        /*Query query=myRef.child("Bool");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                clearAll();
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    LibraryDataClass data= new LibraryDataClass();
-                    data.setImageUrl(snapshot.child("imageUrl").getValue().toString());
-                    bookList.add(data);
-                }
-                libraryViewHolder=new LibraryViewHolder(getActivity().getApplicationContext(),bookList);
-                recyclerview.setAdapter(libraryViewHolder);
-                libraryViewHolder.notifyDataSetChanged();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });*/
+
+    private void GetSBDataFromFirebase() {
+        fstore.collection("Library").document("Books").collection("SBooks")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for (QueryDocumentSnapshot document:task.getResult()){
+                                SinhalaBookDataClass data= document.toObject(SinhalaBookDataClass.class);
+                                sinhalaBooksList.add(data);
+                                sinhalaBookViewHolder.notifyDataSetChanged();
+                            }
+                        }else {
+                            Toast.makeText(getContext(),"Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void GetSSDataFromFirebase() {
         fstore.collection("Library").document("Songs").collection("ESongs")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -97,24 +114,43 @@ public class SinhalaTabFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             for (QueryDocumentSnapshot document:task.getResult()){
-                                LibraryDataClass data= document.toObject(LibraryDataClass.class);
-                                bookList.add(data);
-                                libraryViewHolder.notifyDataSetChanged();
+                                SinhalaSongDataClass data= document.toObject(SinhalaSongDataClass.class);
+                                sinhalaSongsList.add(data);
+                                sinhalaSongViewHolder.notifyDataSetChanged();
                             }
                         }else {
-                            Toast.makeText(getContext(),"Invalid email or password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(),"Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void GetSPDataFromFirebase() {
+        fstore.collection("Library").document("Poems").collection("SPoems")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for (QueryDocumentSnapshot document:task.getResult()){
+                                SinhalaPoemDataClass data= document.toObject(SinhalaPoemDataClass.class);
+                                sinhalaPoemsList.add(data);
+                                sinhalaPoemViewHolder.notifyDataSetChanged();
+                            }
+                        }else {
+                            Toast.makeText(getContext(),"Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
     private void clearAll(){
-        if(bookList != null){
-            bookList.clear();
-            if(libraryViewHolder!=null){
-                libraryViewHolder.notifyDataSetChanged();
+        if(sinhalaBooksList != null){
+            sinhalaBooksList.clear();
+            if(sinhalaBookViewHolder !=null){
+                sinhalaBookViewHolder.notifyDataSetChanged();
             }
         }
-        bookList=new ArrayList<>();
+        sinhalaBooksList =new ArrayList<>();
     }
 }

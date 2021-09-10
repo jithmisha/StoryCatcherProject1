@@ -1,24 +1,23 @@
 package com.storycatcher.storycatcher;
 
-public class LibraryDataClass {
+public class EnglishPoemDataClass {
     String imageUrl;
     String Title;
 
-    public LibraryDataClass() {
+    public EnglishPoemDataClass() {
 
     }
-    public LibraryDataClass(String imageUrl, String Title) {
+
+    public EnglishPoemDataClass(String imageUrl, String title) {
         this.imageUrl = imageUrl;
-        this.Title = this.Title;
+        Title = title;
     }
 
     public String getImageUrl() {
-
         return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-
         this.imageUrl = imageUrl;
     }
 
@@ -27,6 +26,6 @@ public class LibraryDataClass {
     }
 
     public void setTitle(String title) {
-        this.Title = title;
+        Title = title;
     }
 }

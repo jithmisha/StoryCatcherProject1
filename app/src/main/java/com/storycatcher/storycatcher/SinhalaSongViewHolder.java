@@ -10,16 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
-public class SongViewHolder extends RecyclerView.Adapter<SongViewHolder.ViewHolder> {
+public class SinhalaSongViewHolder extends RecyclerView.Adapter<SinhalaSongViewHolder.ViewHolder> {
 
     Context context;
-    List<SongsDataClass> songsList;
+    List<SinhalaSongDataClass> sinhalaSongsList;
 
-    public SongViewHolder(Context context, List<SongsDataClass> songsList) {
+    public SinhalaSongViewHolder(Context context, List<SinhalaSongDataClass> songsList) {
         this.context = context;
-        this.songsList = songsList;
+        this.sinhalaSongsList = songsList;
     }
 
     @NonNull
@@ -31,12 +33,13 @@ public class SongViewHolder extends RecyclerView.Adapter<SongViewHolder.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.name.setText(sinhalaSongsList.get(position).getTitle());
+        Glide.with(context).load(sinhalaSongsList.get(position).getImageUrl()).into(holder.SongImg);
     }
 
     @Override
     public int getItemCount() {
-        return songsList.size();
+        return sinhalaSongsList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -47,7 +50,6 @@ public class SongViewHolder extends RecyclerView.Adapter<SongViewHolder.ViewHold
             super(itemView);
             SongImg= itemView.findViewById(R.id.imgSong);
             name= itemView.findViewById(R.id.txtSongName);
-
         }
     }
 

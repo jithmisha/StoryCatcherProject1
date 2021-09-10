@@ -14,19 +14,19 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class LibraryViewHolder extends RecyclerView.Adapter<LibraryViewHolder.ViewHolder> {
+public class SinhalaBookViewHolder extends RecyclerView.Adapter<SinhalaBookViewHolder.ViewHolder> {
     public static final String Tag ="RecyclerView";
     private Context bContext;
-    private ArrayList<LibraryDataClass> bookList;
+    private ArrayList<SinhalaBookDataClass> sinhalaBookList;
 
-    public LibraryViewHolder(Context bContext, ArrayList<LibraryDataClass> bookList) {
+    public SinhalaBookViewHolder(Context bContext, ArrayList<SinhalaBookDataClass> bookList) {
         this.bContext = bContext;
-        this.bookList = bookList;
+        this.sinhalaBookList = bookList;
     }
 
     @NonNull
     @Override
-    public LibraryViewHolder.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SinhalaBookViewHolder.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_item,parent,false);
         return new ViewHolder(view);
 
@@ -34,13 +34,13 @@ public class LibraryViewHolder extends RecyclerView.Adapter<LibraryViewHolder.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bookName.setText(bookList.get(position).getTitle());
-        Glide.with(bContext).load(bookList.get(position).getImageUrl()).into(holder.bookImage);
+        holder.bookName.setText(sinhalaBookList.get(position).getTitle());
+        Glide.with(bContext).load(sinhalaBookList.get(position).getImageUrl()).into(holder.bookImage);
     }
 
     @Override
     public int getItemCount() {
-        return bookList.size();
+        return sinhalaBookList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

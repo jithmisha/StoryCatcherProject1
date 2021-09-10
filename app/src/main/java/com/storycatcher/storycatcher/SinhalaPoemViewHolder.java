@@ -10,15 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
-public class PoemViewHolder extends RecyclerView.Adapter<PoemViewHolder.ViewHolder> {
+public class SinhalaPoemViewHolder extends RecyclerView.Adapter<SinhalaPoemViewHolder.ViewHolder> {
     Context context;
-    List<PoemDataClass> poemsList;
+    List<SinhalaPoemDataClass> sinhalaPoemsList;
 
-    public PoemViewHolder(Context context, List<PoemDataClass> poemsList) {
+    public SinhalaPoemViewHolder(Context context, List<SinhalaPoemDataClass> poemsList) {
         this.context = context;
-        this.poemsList = poemsList;
+        this.sinhalaPoemsList = poemsList;
     }
 
     @NonNull
@@ -30,12 +32,13 @@ public class PoemViewHolder extends RecyclerView.Adapter<PoemViewHolder.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.poemName.setText(sinhalaPoemsList.get(position).getTitle());
+        Glide.with(context).load(sinhalaPoemsList.get(position).getImageUrl()).into(holder.poemImg);
     }
 
     @Override
     public int getItemCount() {
-        return poemsList.size();
+        return sinhalaPoemsList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
