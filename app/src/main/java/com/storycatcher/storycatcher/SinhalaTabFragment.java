@@ -1,6 +1,5 @@
 package com.storycatcher.storycatcher;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,37 +13,44 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SinhalaTabFragment extends Fragment {
     private View root;
-    RecyclerView recyclerview;
-    LibraryViewHolder libraryViewHolder;
+    RecyclerView storyRecyclerView,songsRecyclerView,poemsRecyclerView;
     FirebaseFirestore fstore;
     private DatabaseReference myRef;
     //private Context bContext;
+
+    LibraryViewHolder libraryViewHolder;
     private ArrayList<LibraryDataClass> bookList;
-    private ArrayList<LibraryCatTitleClass> titleList;
+
+    //Song category
+    SongViewHolder songViewHolder;
+    List<SongsDataClass> songsList;
+
+    //poem category
+    PoemViewHolder poemViewHolder;
+    List<PoemDataClass> poemsList;
+
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = (ViewGroup) inflater.inflate(R.layout.sinhala_tab_fragment, container, false);
 
-        recyclerview=root.findViewById(R.id.sinhalaRecycleView);
+        storyRecyclerView=root.findViewById(R.id.storyBookRecycleView);
+        songsRecyclerView=root.findViewById(R.id.songsRecyclerView);
+        poemsRecyclerView=root.findViewById(R.id.PoemsRecyclerView);
 
         GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),3);
-        recyclerview.setLayoutManager(layoutManager);
-        recyclerview.setHasFixedSize(true);
+        storyRecyclerView.setLayoutManager(layoutManager);
+        storyRecyclerView.setHasFixedSize(true);
 
         //Firebase
         fstore=FirebaseFirestore.getInstance();
@@ -60,7 +66,7 @@ public class SinhalaTabFragment extends Fragment {
 
         //libraryViewHolder=new LibraryViewHolder(getActivity().getApplicationContext(),bookList);
         libraryViewHolder=new LibraryViewHolder(getActivity(),bookList);
-        recyclerview.setAdapter(libraryViewHolder);
+        storyRecyclerView.setAdapter(libraryViewHolder);
 
 
         return root;
