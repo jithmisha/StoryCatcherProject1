@@ -5,18 +5,20 @@ public class SinhalaPoemDataClass {
     String Title;
 
     public SinhalaPoemDataClass() {
-    }
 
-    public SinhalaPoemDataClass(String imageUrl, String name) {
+    }
+    public SinhalaPoemDataClass(String imageUrl, String Title) {
         this.imageUrl = imageUrl;
-        this.Title = name;
+        this.Title = this.Title;
     }
 
     public String getImageUrl() {
+
         return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
+
         this.imageUrl = imageUrl;
     }
 

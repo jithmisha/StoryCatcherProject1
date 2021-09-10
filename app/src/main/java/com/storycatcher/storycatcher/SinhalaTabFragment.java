@@ -66,22 +66,22 @@ public class SinhalaTabFragment extends Fragment {
         sinhalaSongsList = new ArrayList<>();
         sinhalaPoemsList = new ArrayList<>();
 
-        //claear Arrray list
-        clearAll();
+        /*claear Arrray list
+        clearAll();*/
 
         //Get Data method
         GetSBDataFromFirebase();
         GetSSDataFromFirebase();
         GetSPDataFromFirebase();
 
-        //libraryViewHolder=new LibraryViewHolder(getActivity().getApplicationContext(),bookList);
-        sinhalaBookViewHolder =new SinhalaBookViewHolder(getActivity(), sinhalaBooksList);
+        //Setting Adapter
+        sinhalaBookViewHolder = new SinhalaBookViewHolder(getActivity(), sinhalaBooksList);
         booksRecyclerView.setAdapter(sinhalaBookViewHolder);
 
-        sinhalaSongViewHolder =new SinhalaSongViewHolder(getActivity(), sinhalaSongsList);
+        sinhalaSongViewHolder = new SinhalaSongViewHolder(getActivity(), sinhalaSongsList);
         songsRecyclerView.setAdapter(sinhalaSongViewHolder);
 
-        sinhalaPoemViewHolder =new SinhalaPoemViewHolder(getActivity(), sinhalaPoemsList);
+        sinhalaPoemViewHolder = new SinhalaPoemViewHolder(getActivity(), sinhalaPoemsList);
         poemsRecyclerView.setAdapter(sinhalaPoemViewHolder);
 
         return root;
@@ -107,7 +107,7 @@ public class SinhalaTabFragment extends Fragment {
     }
 
     private void GetSSDataFromFirebase() {
-        fstore.collection("Library").document("Songs").collection("ESongs")
+        fstore.collection("Library").document("Songs").collection("SSongs")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -144,7 +144,7 @@ public class SinhalaTabFragment extends Fragment {
                 });
     }
 
-    private void clearAll(){
+   /* private void clearAll(){
         if(sinhalaBooksList != null){
             sinhalaBooksList.clear();
             if(sinhalaBookViewHolder !=null){
@@ -152,5 +152,5 @@ public class SinhalaTabFragment extends Fragment {
             }
         }
         sinhalaBooksList =new ArrayList<>();
-    }
+    }*/
 }
