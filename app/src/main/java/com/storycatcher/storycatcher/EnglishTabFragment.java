@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class EnglishTabFragment extends Fragment {
     private View root;
     //Recyceler View
+    RecyclerView engBooksRecyclerView,engSongsRecyclerView,engPoemsRecyclerView;
 
     FirebaseFirestore fstore;
 
@@ -42,6 +44,22 @@ public class EnglishTabFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.english_tab_fragment, container, false);
 
         //Jithmi do your thing
+        engBooksRecyclerView =root.findViewById(R.id.EngStoryBookRecycleView);
+        engSongsRecyclerView =root.findViewById(R.id.EngSongsRecyclerView);
+        engPoemsRecyclerView =root.findViewById(R.id.EngPoemsRecyclerView);
+
+        GridLayoutManager layoutManager1=new GridLayoutManager(getActivity(),3);
+        engBooksRecyclerView.setLayoutManager(layoutManager1);
+        engBooksRecyclerView.setHasFixedSize(true);
+
+        GridLayoutManager layoutManager2=new GridLayoutManager(getActivity(),3);
+        engSongsRecyclerView.setLayoutManager(layoutManager2);
+        engSongsRecyclerView.setHasFixedSize(true);
+
+        GridLayoutManager layoutManager3=new GridLayoutManager(getActivity(),3);
+        engPoemsRecyclerView.setLayoutManager(layoutManager3);
+        engPoemsRecyclerView.setHasFixedSize(true);
+
 
         //Firebase
         fstore=FirebaseFirestore.getInstance();
@@ -58,13 +76,13 @@ public class EnglishTabFragment extends Fragment {
 
         //Setting Adapter
         englishBookViewHolder = new EnglishBookViewHolder(getActivity(),englishBooksList);
-        //______.setAdapter(englishBookViewHolder);
+        engBooksRecyclerView.setAdapter(englishBookViewHolder);
 
         englishSongViewHolder = new EnglishSongViewHolder(getActivity(), englishSongsList);
-        //______.setAdapter(englishSongViewHolder);
+        engSongsRecyclerView.setAdapter(englishSongViewHolder);
 
         englishPoemViewHolder = new EnglishPoemViewHolder(getActivity(), englishPoemsList);
-        //______.setAdapter(englishPoemViewHolder);
+        engPoemsRecyclerView.setAdapter(englishPoemViewHolder);
 
         return root;
     }

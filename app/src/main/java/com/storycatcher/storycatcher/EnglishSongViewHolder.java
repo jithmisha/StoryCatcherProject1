@@ -1,6 +1,7 @@
 package com.storycatcher.storycatcher;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,7 +27,8 @@ public class EnglishSongViewHolder extends RecyclerView.Adapter<EnglishSongViewH
     @NonNull
     @Override
     public EnglishSongViewHolder.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.song_item,parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -47,8 +49,8 @@ public class EnglishSongViewHolder extends RecyclerView.Adapter<EnglishSongViewH
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            /*SongImg= itemView.findViewById(R.id.imgSong);
-            name= itemView.findViewById(R.id.txtSongName);*/
+            SongImg= itemView.findViewById(R.id.imgSong);
+            name= itemView.findViewById(R.id.txtSongName);
 
         }
     }

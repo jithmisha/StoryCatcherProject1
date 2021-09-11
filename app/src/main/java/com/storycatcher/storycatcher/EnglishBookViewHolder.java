@@ -1,6 +1,7 @@
 package com.storycatcher.storycatcher;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,8 +27,8 @@ public class EnglishBookViewHolder extends RecyclerView.Adapter<EnglishBookViewH
     @NonNull
     @Override
     public EnglishBookViewHolder.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_item,parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -48,8 +49,8 @@ public class EnglishBookViewHolder extends RecyclerView.Adapter<EnglishBookViewH
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            /*bookImage =itemView.findViewById(R.id.imgBook);
-            bookName =itemView.findViewById(R.id.txtBookName);*/
+            bookImage =itemView.findViewById(R.id.imgBook);
+            bookName =itemView.findViewById(R.id.txtBookName);
 
         }
     }
