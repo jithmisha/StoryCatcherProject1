@@ -1,6 +1,7 @@
 package com.storycatcher.storycatcher;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,15 @@ public class EnglishSongViewHolder extends RecyclerView.Adapter<EnglishSongViewH
     public void onBindViewHolder(@NonNull EnglishSongViewHolder.ViewHolder holder, int position) {
         holder.name.setText(englishSongList.get(position).getTitle());
         Glide.with(bContext).load(englishSongList.get(position).getImageUrl()).into(holder.SongImg);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),VideoPlayer.class);
+                //intent.putExtra("videoId",item.getId());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

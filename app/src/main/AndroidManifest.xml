@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryCatcher">
-        <activity android:name=".ScreenTime"></activity>
+        <activity android:name=".VideoPlayer"></activity>
+        <activity android:name=".ScreenTime" />
         <activity
             android:name=".Profile"
             android:exported="true" />

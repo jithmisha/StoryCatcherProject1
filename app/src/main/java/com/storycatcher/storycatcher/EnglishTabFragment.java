@@ -126,7 +126,7 @@ public class EnglishTabFragment extends Fragment {
     }
 
     private void GetEPDataFromFirebase() {
-        fstore.collection("Library").document("Poem").collection("EPoems")
+        fstore.collection("Library").document("Poems").collection("EPoems")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
