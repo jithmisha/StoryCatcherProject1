@@ -13,8 +13,8 @@ public class LibraryAdapter extends FragmentPagerAdapter {
 
     public LibraryAdapter (FragmentManager fm, Context context, int totalTabs){
         super(fm);
-        this.context=context;
-        this.totalTabs=totalTabs;
+        this.context = context;
+        this.totalTabs = totalTabs;
     }
 
     @Override

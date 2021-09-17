@@ -97,26 +97,5 @@ public class CreateProfile extends AppCompatActivity {
                 startActivity(new Intent(CreateProfile.this, UserList.class));
             }
         });
-
-       /* createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String val=kidname.getText().toString();
-                ProfileClass profile=new ProfileClass(val);
-                reference=rootNode.getReference("User");
-                reference.child(val).setValue(profile);
-            }
-        });
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(objectFirebaseAuth!=null){
-                    objectFirebaseAuth.signOut();
-                    startActivity(new Intent(CreateProfile.this,SignOrRegister.class));
-                    finish();
-                }
-            }
-        });
-    }*/
     }
 }

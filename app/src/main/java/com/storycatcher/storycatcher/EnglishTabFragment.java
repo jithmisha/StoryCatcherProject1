@@ -44,9 +44,9 @@ public class EnglishTabFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.english_tab_fragment, container, false);
 
         //Jithmi do your thing
-        engBooksRecyclerView =root.findViewById(R.id.EngStoryBookRecycleView);
-        engSongsRecyclerView =root.findViewById(R.id.EngSongsRecyclerView);
-        engPoemsRecyclerView =root.findViewById(R.id.EngPoemsRecyclerView);
+        engBooksRecyclerView = root.findViewById(R.id.EngStoryBookRecycleView);
+        engSongsRecyclerView = root.findViewById(R.id.EngSongsRecyclerView);
+        engPoemsRecyclerView = root.findViewById(R.id.EngPoemsRecyclerView);
 
         GridLayoutManager layoutManager1=new GridLayoutManager(getActivity(),3);
         engBooksRecyclerView.setLayoutManager(layoutManager1);

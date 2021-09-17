@@ -8,15 +8,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Settings extends AppCompatActivity {
     private Button profileBtn,screentimeBtn,changepasswordBtn,aboutBtn,logoutBtn;
     private ImageButton backButton;
+    String currentKidID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
         profileBtn=findViewById(R.id.settingsprofilebutton);
         screentimeBtn=findViewById(R.id.settingsscreentimebutton);
         changepasswordBtn=findViewById(R.id.settingschangepasswordbutton);
@@ -25,11 +30,17 @@ public class Settings extends AppCompatActivity {
         backButton=findViewById(R.id.imgBackBtnSettings);
         final MediaPlayer mp=MediaPlayer.create(this,R.raw.goat);
 
+        currentKidID = getIntent().getStringExtra("currentKid_ID");
+        Toast.makeText(Settings.this,"Hi: "+currentKidID,Toast.LENGTH_LONG).show();
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), LibraryScreen.class));
+              /*Intent intent = new Intent(Settings.this,LibraryScreen.class);
+                intent.putExtra("name",kidID);
+                startActivity(intent);*/
+                //startActivity(new Intent(getApplicationContext(), LibraryScreen.class));
+                finish();
             }
         });
 

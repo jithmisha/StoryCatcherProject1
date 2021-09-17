@@ -2,6 +2,7 @@ package com.storycatcher.storycatcher;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,15 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>
 
     Context context;
     ArrayList<User> list; //User class
+    private onRecyclerViewClick listner;
+
+    public interface onRecyclerViewClick{
+        void onItemClick(int position);
+    }
+
+    public void onRecyclerViewClick(onRecyclerViewClick listner){
+        this.listner = listner;
+    }
 
     public UserAdapter(Context context, ArrayList<User> list) {
         this.context = context;
@@ -26,18 +36,16 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.item,parent,false);
-        return new MyViewHolder(v);
+        return new MyViewHolder(v,listner);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        User user =list.get(position);
-        holder.kidsId.setText(user.getKidID() );
+        User user = list.get(position);
+        holder.kidsId.setText(user.getKidID());
         holder.kidsName.setText(user.getKidsName());
         holder.kidsAge.setText(String.valueOf(user.getKidsAge()));
-
-
     }
 
     @Override
@@ -50,19 +58,22 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>
         TextView kidsId,kidsName,kidsAge;
 
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, onRecyclerViewClick listner) {
             super(itemView);
 
-            kidsId=itemView.findViewById(R.id.txtviewKidsId);
-            kidsName=itemView.findViewById(R.id.txtviewKidsName);
-            kidsAge=itemView.findViewById(R.id.txtviewKidsAge);
+            kidsId = itemView.findViewById(R.id.txtviewKidsId);
+            kidsName = itemView.findViewById(R.id.txtviewKidsName);
+            kidsAge = itemView.findViewById(R.id.txtviewKidsAge);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i= new Intent(v.getContext(),LibraryScreen.class);
+                    if(listner != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                        listner.onItemClick(getAdapterPosition());
+                    }
+                    /*Intent i = new Intent(v.getContext(),LibraryScreen.class);
                     //i.putExtra("kidsName",list.get(getAdapterPosition()));
-                    v.getContext().startActivity(i);
+                    v.getContext().startActivity(i);*/
                 }
             });
         }

@@ -31,7 +31,7 @@ public class LoginTabFragment extends Fragment {
     TextView logInpassword;
     TextView logInforgotPass;
     CheckBox checkBox;
-    float v=0;
+    float v = 0;
     private View objectLoginTabFragment;
     private FirebaseAuth objectFirebaseAuth;
     private EditText loginEmail,logInPassWord;
@@ -40,11 +40,10 @@ public class LoginTabFragment extends Fragment {
 
     private void initializeVariable(){
         try{
-            objectFirebaseAuth=FirebaseAuth.getInstance();
-            loginEmail=objectLoginTabFragment.findViewById(R.id.logInEmail);
-            logInPassWord=objectLoginTabFragment.findViewById(R.id.logInPassword);
-            loginButton=objectLoginTabFragment.findViewById(R.id.loginbtn);
-
+            objectFirebaseAuth = FirebaseAuth.getInstance();
+            loginEmail = objectLoginTabFragment.findViewById(R.id.logInEmail);
+            logInPassWord = objectLoginTabFragment.findViewById(R.id.logInPassword);
+            loginButton = objectLoginTabFragment.findViewById(R.id.loginbtn);
             objectProgressBar=objectLoginTabFragment.findViewById(R.id.progressBarLogin);
 
             loginButton.setOnClickListener(new View.OnClickListener() {
@@ -60,8 +59,8 @@ public class LoginTabFragment extends Fragment {
     }
 
     private void logInUser(){
-        String mail=loginEmail.getText().toString();
-        String pass=logInPassWord.getText().toString();
+        String mail = loginEmail.getText().toString();
+        String pass = logInPassWord.getText().toString();
         try{
             objectProgressBar.setVisibility(View.VISIBLE);
             loginButton.setEnabled(false);
@@ -98,13 +97,13 @@ public class LoginTabFragment extends Fragment {
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
-        objectLoginTabFragment=(ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
+        objectLoginTabFragment = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
 
-        logInmail= objectLoginTabFragment.findViewById(R.id.logInEmail);
-        logInpassword= objectLoginTabFragment.findViewById(R.id.logInPassword);
-        logInforgotPass= objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
-        loginButton=objectLoginTabFragment.findViewById(R.id.loginbtn);
-        checkBox=objectLoginTabFragment.findViewById(R.id.chkBoxShowPass);
+        logInmail = objectLoginTabFragment.findViewById(R.id.logInEmail);
+        logInpassword = objectLoginTabFragment.findViewById(R.id.logInPassword);
+        logInforgotPass = objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
+        loginButton = objectLoginTabFragment.findViewById(R.id.loginbtn);
+        checkBox = objectLoginTabFragment.findViewById(R.id.chkBoxShowPass);
 
 
         logInmail.setTranslationX(800);
@@ -140,7 +139,7 @@ public class LoginTabFragment extends Fragment {
          checkBox.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
 
-         TextView forgotpass= (TextView) objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
+         TextView forgotpass = (TextView) objectLoginTabFragment.findViewById(R.id.logInForgotPassword);
          forgotpass.setOnClickListener(new View.OnClickListener(){
              @Override
              public void onClick(View v){

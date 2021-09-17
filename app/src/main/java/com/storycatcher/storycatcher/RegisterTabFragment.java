@@ -34,7 +34,6 @@ public class RegisterTabFragment extends Fragment {
     private ProgressBar objectProgressBar;
     float v=0;
     String userID;
-//    private FirebaseDatabase rootNode;
 //    private DatabaseReference reference;
 
     public RegisterTabFragment(){
@@ -76,8 +75,6 @@ public class RegisterTabFragment extends Fragment {
         try{
             objectProgressBar.setVisibility(View.VISIBLE);
             objectButton.setEnabled(false);
-
-
             mAuth.createUserWithEmailAndPassword(mail, pass)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
@@ -98,7 +95,6 @@ public class RegisterTabFragment extends Fragment {
                                             startActivity(in);
                                         }
                                     });
-
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {

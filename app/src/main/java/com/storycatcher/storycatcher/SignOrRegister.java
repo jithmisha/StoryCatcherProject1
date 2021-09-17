@@ -71,7 +71,7 @@ public class SignOrRegister extends AppCompatActivity {
         });
 
         if(mAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),LibraryScreen.class));
+            startActivity(new Intent(getApplicationContext(),UserList.class));
             finish();
         }
 

@@ -13,8 +13,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
         public LoginAdapter (FragmentManager fm, Context context, int totalTabs){
             super(fm);
-            this.context=context;
-            this.totalTabs=totalTabs;
+            this.context = context;
+            this.totalTabs = totalTabs;
         }
         @Override
         public int getCount() {

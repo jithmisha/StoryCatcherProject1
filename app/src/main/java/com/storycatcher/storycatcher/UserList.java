@@ -1,5 +1,9 @@
 package com.storycatcher.storycatcher;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,12 +11,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +36,7 @@ import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 
 public class  UserList extends AppCompatActivity {
-    
+
     RecyclerView recyclerView;
     FirebaseAuth mAuth;
     UserAdapter userAdapter;
@@ -39,42 +45,29 @@ public class  UserList extends AppCompatActivity {
     private ImageButton backbutton;
     private Button createNewProfilebtn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
-
-        recyclerView = findViewById(R.id.userListrecyclerView);
         fStore = FirebaseFirestore.getInstance();
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        recyclerView = findViewById(R.id.userListrecyclerView);
         backbutton=findViewById(R.id.imgBackBtnSelectProfile);
         createNewProfilebtn=findViewById(R.id.ProfileCreatebtn);
 
+
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //Array list
         list = new ArrayList<>();
+
+        //Setting Adapter
         userAdapter =new UserAdapter(this,list);
         recyclerView.setAdapter(userAdapter);
 
         EventChangeListerner();
-
-        /*database.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren() ) {
-
-                    User user = dataSnapshot.getValue(User.class);
-                    list.add(user);
-                }
-                userAdapter.notifyDataSetChanged();
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +82,32 @@ public class  UserList extends AppCompatActivity {
                 startActivity(new Intent(UserList.this,CreateProfile.class));
             }
         });
+
+        /*ActivityResultLauncher<Intent> libraryScreenResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            // There are no request codes
+                            Intent data = result.getData();
+                            // get the user name
+                            String name=data.getStringExtra("name");
+                        }
+                    }
+                });
+*/
+        userAdapter.onRecyclerViewClick(new UserAdapter.onRecyclerViewClick() {
+            @Override
+            public void onItemClick(int position) {
+                //Toast.makeText(UserList.this,"Position: "+position,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(UserList.this, LibraryScreen.class);
+                intent.putExtra("currentKid_ID", list.get(position).getKidID());
+                intent.putExtra("currentKid_Name", list.get(position).getKidsName());
+                //libraryScreenResultLauncher.launch(intent);
+                startActivity(intent);
+            }
+        });
     }
 
     private void EventChangeListerner() {
@@ -98,7 +117,7 @@ public class  UserList extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                     if(error !=null){
-                       Log.e("Firestore error", error.getMessage());
+                       Log.e("Fire Store error", error.getMessage());
                        return;
                     }
                     for(DocumentChange dc: value.getDocumentChanges()){
@@ -106,12 +125,9 @@ public class  UserList extends AppCompatActivity {
                             list.add(dc.getDocument().toObject(User.class));
                         }
                         userAdapter.notifyDataSetChanged();
-
                     }
             }
-
         });
-
     }
 
 }

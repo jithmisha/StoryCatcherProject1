@@ -32,14 +32,14 @@ public class ChangePassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
-        BackBtn=findViewById(R.id.imgBackBtnChange);
-        currentPassword=findViewById(R.id.currentPassword);
-        newPassword=findViewById(R.id.newPassword);
-        confirmNewPassword=findViewById(R.id.confirmNewPassword);
-        saveBtn=findViewById(R.id.btnSave);
-        mAuth=FirebaseAuth.getInstance();
-        FirebaseUser currentUser=mAuth.getCurrentUser();
-        ProgressBar=findViewById(R.id.progressBarChangePassword);
+        BackBtn = findViewById(R.id.imgBackBtnChange);
+        currentPassword = findViewById(R.id.currentPassword);
+        newPassword = findViewById(R.id.newPassword);
+        confirmNewPassword = findViewById(R.id.confirmNewPassword);
+        saveBtn = findViewById(R.id.btnSave);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        ProgressBar = findViewById(R.id.progressBarChangePassword);
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +51,10 @@ public class ChangePassword extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String currentPass=currentPassword.getText().toString().trim();
-                String newPass=newPassword.getText().toString().trim();
-                String confirmPass=confirmNewPassword.getText().toString().trim();
-                String email=currentUser.getEmail();
+                String currentPass = currentPassword.getText().toString().trim();
+                String newPass = newPassword.getText().toString().trim();
+                String confirmPass = confirmNewPassword.getText().toString().trim();
+                String email = currentUser.getEmail();
 
 
                 if(currentPass.isEmpty()){
@@ -83,7 +83,7 @@ public class ChangePassword extends AppCompatActivity {
                     return;
                 }
 
-                AuthCredential credential= EmailAuthProvider.getCredential(email,currentPass);
+                AuthCredential credential = EmailAuthProvider.getCredential(email,currentPass);
                 currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
