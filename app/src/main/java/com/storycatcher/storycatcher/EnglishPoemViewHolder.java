@@ -18,7 +18,15 @@ import java.util.List;
 public class EnglishPoemViewHolder extends RecyclerView.Adapter<EnglishPoemViewHolder.ViewHolder>{
     Context context;
     List<EnglishPoemDataClass> englishPoemsList;
+    private EnglishPoemViewHolder.onRecyclerViewClick listner;
 
+    public interface onRecyclerViewClick{
+        void onItemClick(int position);
+    }
+
+    public void onRecyclerViewClick(EnglishPoemViewHolder.onRecyclerViewClick listner){
+        this.listner = listner;
+    }
     public EnglishPoemViewHolder(Context context, List<EnglishPoemDataClass> englishPoemsList) {
         this.context = context;
         this.englishPoemsList = englishPoemsList;
@@ -36,14 +44,14 @@ public class EnglishPoemViewHolder extends RecyclerView.Adapter<EnglishPoemViewH
         holder.poemName.setText(englishPoemsList.get(position).getTitle());
         Glide.with(context).load(englishPoemsList.get(position).getImageUrl()).into(holder.poemImg);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
+       /* holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),VideoPlayer.class);
                 //intent.putExtra("videoId",item.getId());
                 v.getContext().startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -59,6 +67,15 @@ public class EnglishPoemViewHolder extends RecyclerView.Adapter<EnglishPoemViewH
 
             poemImg= itemView.findViewById(R.id.imgPoem);
             poemName= itemView.findViewById(R.id.txtPoemName);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listner != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                        listner.onItemClick(getAdapterPosition());
+                    }
+                }
+            });
 
         }
     }

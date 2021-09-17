@@ -19,6 +19,15 @@ public class SinhalaBookViewHolder extends RecyclerView.Adapter<SinhalaBookViewH
     public static final String Tag ="RecyclerView";
     private Context bContext;
     private ArrayList<SinhalaBookDataClass> sinhalaBookList;
+    private SinhalaBookViewHolder.onRecyclerViewClick listner;
+
+    public interface onRecyclerViewClick{
+        void onItemClick(int position);
+    }
+
+    public void onRecyclerViewClick(SinhalaBookViewHolder.onRecyclerViewClick listner){
+        this.listner = listner;
+    }
 
     public SinhalaBookViewHolder(Context bContext, ArrayList<SinhalaBookDataClass> bookList) {
         this.bContext = bContext;
@@ -38,14 +47,14 @@ public class SinhalaBookViewHolder extends RecyclerView.Adapter<SinhalaBookViewH
         holder.bookName.setText(sinhalaBookList.get(position).getTitle());
         Glide.with(bContext).load(sinhalaBookList.get(position).getImageUrl()).into(holder.bookImage);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
+        /*holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),VideoPlayer.class);
                 //intent.putExtra("videoId",item.getId());
                 v.getContext().startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -62,6 +71,15 @@ public class SinhalaBookViewHolder extends RecyclerView.Adapter<SinhalaBookViewH
 
             bookImage =itemView.findViewById(R.id.imgBook);
             bookName =itemView.findViewById(R.id.txtBookName);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listner != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                        listner.onItemClick(getAdapterPosition());
+                    }
+                }
+            });
         }
     }
 

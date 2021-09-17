@@ -1,5 +1,6 @@
 package com.storycatcher.storycatcher;
 
+        import android.content.Intent;
         import android.os.Bundle;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -83,6 +84,34 @@ public class SinhalaTabFragment extends Fragment {
 
         sinhalaPoemViewHolder = new SinhalaPoemViewHolder(getActivity(), sinhalaPoemsList);
         poemsRecyclerView.setAdapter(sinhalaPoemViewHolder);
+
+        //Playing the content
+        sinhalaBookViewHolder.onRecyclerViewClick(new SinhalaBookViewHolder.onRecyclerViewClick() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getContext(), VideoPlayer.class);
+                intent.putExtra("video",sinhalaBooksList.get(position).getURL());
+                startActivity(intent);
+            }
+        });
+
+       sinhalaSongViewHolder.onRecyclerViewClick(new SinhalaSongViewHolder.onRecyclerViewClick() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getContext(), VideoPlayer.class);
+                intent.putExtra("video",sinhalaSongsList.get(position).getURL());
+                startActivity(intent);
+            }
+        });
+
+        sinhalaPoemViewHolder.onRecyclerViewClick(new SinhalaPoemViewHolder.onRecyclerViewClick() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getContext(), VideoPlayer.class);
+                intent.putExtra("video",sinhalaPoemsList.get(position).getURL());
+                startActivity(intent);
+            }
+        });
 
         return root;
     }

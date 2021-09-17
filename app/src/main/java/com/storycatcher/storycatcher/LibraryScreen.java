@@ -49,7 +49,7 @@ public class LibraryScreen extends AppCompatActivity {
         kidName.setText(currentKidName);
 
         // --> Toast message
-        Toast.makeText(LibraryScreen.this,"Hi: "+currentKidID,Toast.LENGTH_LONG).show();
+        Toast.makeText(LibraryScreen.this,"Hi "+currentKidName,Toast.LENGTH_LONG).show();
 
         // --> Firebase code to get current kid name from current KidID
         /*fstore.collection("Kids").document(kidID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

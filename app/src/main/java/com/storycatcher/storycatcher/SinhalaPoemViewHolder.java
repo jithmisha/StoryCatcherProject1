@@ -18,6 +18,15 @@ import java.util.List;
 public class SinhalaPoemViewHolder extends RecyclerView.Adapter<SinhalaPoemViewHolder.ViewHolder> {
     Context context;
     List<SinhalaPoemDataClass> sinhalaPoemsList;
+    private SinhalaPoemViewHolder.onRecyclerViewClick listner;
+
+    public interface onRecyclerViewClick{
+        void onItemClick(int position);
+    }
+
+    public void onRecyclerViewClick(SinhalaPoemViewHolder.onRecyclerViewClick listner){
+        this.listner = listner;
+    }
 
     public SinhalaPoemViewHolder(Context context, List<SinhalaPoemDataClass> poemsList) {
         this.context = context;
@@ -36,14 +45,14 @@ public class SinhalaPoemViewHolder extends RecyclerView.Adapter<SinhalaPoemViewH
         holder.poemName.setText(sinhalaPoemsList.get(position).getTitle());
         Glide.with(context).load(sinhalaPoemsList.get(position).getImageUrl()).into(holder.poemImg);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
+        /*holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),VideoPlayer.class);
                 //intent.putExtra("videoId",item.getId());
                 v.getContext().startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -58,6 +67,15 @@ public class SinhalaPoemViewHolder extends RecyclerView.Adapter<SinhalaPoemViewH
             super(itemView);
             poemImg= itemView.findViewById(R.id.imgPoem);
             poemName= itemView.findViewById(R.id.txtPoemName);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listner != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                        listner.onItemClick(getAdapterPosition());
+                    }
+                }
+            });
 
         }
     }

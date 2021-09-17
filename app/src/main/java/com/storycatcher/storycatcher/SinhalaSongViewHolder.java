@@ -19,6 +19,15 @@ public class SinhalaSongViewHolder extends RecyclerView.Adapter<SinhalaSongViewH
 
     Context context;
     List<SinhalaSongDataClass> sinhalaSongsList;
+    private SinhalaSongViewHolder.onRecyclerViewClick listner;
+
+    public interface onRecyclerViewClick{
+        void onItemClick(int position);
+    }
+
+    public void onRecyclerViewClick(SinhalaSongViewHolder.onRecyclerViewClick listner){
+        this.listner = listner;
+    }
 
     public SinhalaSongViewHolder(Context context, List<SinhalaSongDataClass> songsList) {
         this.context = context;
@@ -37,14 +46,14 @@ public class SinhalaSongViewHolder extends RecyclerView.Adapter<SinhalaSongViewH
         holder.name.setText(sinhalaSongsList.get(position).getTitle());
         Glide.with(context).load(sinhalaSongsList.get(position).getImageUrl()).into(holder.SongImg);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
+       /* holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),VideoPlayer.class);
                 //intent.putExtra("videoId",item.getId());
                 v.getContext().startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -60,6 +69,15 @@ public class SinhalaSongViewHolder extends RecyclerView.Adapter<SinhalaSongViewH
             super(itemView);
             SongImg= itemView.findViewById(R.id.imgSong);
             name= itemView.findViewById(R.id.txtSongName);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listner != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                        listner.onItemClick(getAdapterPosition());
+                    }
+                }
+            });
         }
     }
 

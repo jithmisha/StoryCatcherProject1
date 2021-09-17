@@ -26,7 +26,7 @@ import com.google.android.exoplayer2.util.Util;
 
 public class VideoPlayer extends AppCompatActivity {
     //video uri
-
+    Uri videoUri;
     PlayerView playerView;
     ExoPlayer exoPlayer;
     ExtractorsFactory extractorsFactory;
@@ -36,18 +36,20 @@ public class VideoPlayer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setFullscreen();
         setContentView(R.layout.activity_video_player);
-        hideactionBar();
+
+        // -->Error
+        //hideactionBar();
 
         playerView=findViewById(R.id.playerView);
         exo_floating_widget=findViewById(R.id.exo_floating_widget);
 
         Intent intent = getIntent();
         if(intent!=null){
-            String uri_str=intent.getStringExtra("videoUri");
-           // videoUri= Uri.parse(uri_str);
-
+            String uri_str=intent.getStringExtra("video");
+            videoUri= Uri.parse(uri_str);
         }
 
         BandwidthMeter bandwidthMeter=new DefaultBandwidthMeter();
@@ -58,9 +60,10 @@ public class VideoPlayer extends AppCompatActivity {
 
     }
 
-    private void hideactionBar(){
+    // TODO: Error in this method
+    /*private void hideactionBar(){
         getSupportActionBar().hide();
-    }
+    }*/
 
     public void setFullscreen(){
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -71,8 +74,9 @@ public class VideoPlayer extends AppCompatActivity {
         try{
             String playerInfo = Util.getUserAgent(this,"StoryCatcher");
             DefaultDataSourceFactory dataSourceFactory = new DefaultDataSourceFactory(this,playerInfo);
-            //MediaSource mediaSource = new ExtractorMediaSource(videoUrl,dataSourceFactory,extractorsFactory,null,null);
+            MediaSource mediaSource = new ExtractorMediaSource(videoUri,dataSourceFactory,extractorsFactory,null,null);
             playerView.setPlayer(exoPlayer);
+            exoPlayer.prepare(mediaSource);
             exoPlayer.setPlayWhenReady(true);
         }
         catch (Exception e){

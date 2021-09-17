@@ -3,13 +3,15 @@ package com.storycatcher.storycatcher;
 public class SinhalaSongDataClass {
     String imageUrl;
     String Title;
+    String URL;
 
     public SinhalaSongDataClass() {
     }
 
-    public SinhalaSongDataClass(String imageUrl, String name) {
+    public SinhalaSongDataClass(String imageUrl, String name,String URL) {
         this.imageUrl = imageUrl;
         this.Title = name;
+        this.URL=URL;
     }
 
     public String getImageUrl() {
@@ -26,5 +28,13 @@ public class SinhalaSongDataClass {
 
     public void setTitle(String title) {
         this.Title = title;
+    }
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 }
