@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -30,7 +31,6 @@ public class VideoPlayer extends AppCompatActivity {
     PlayerView playerView;
     ExoPlayer exoPlayer;
     ExtractorsFactory extractorsFactory;
-    ImageView exo_floating_widget;
 
 
     @Override
@@ -44,14 +44,12 @@ public class VideoPlayer extends AppCompatActivity {
         //hideactionBar();
 
         playerView=findViewById(R.id.playerView);
-        exo_floating_widget=findViewById(R.id.exo_floating_widget);
 
         Intent intent = getIntent();
         if(intent!=null){
             String uri_str=intent.getStringExtra("video");
             videoUri= Uri.parse(uri_str);
         }
-
         BandwidthMeter bandwidthMeter=new DefaultBandwidthMeter();
         TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
         exoPlayer= ExoPlayerFactory.newSimpleInstance(this,trackSelector);
