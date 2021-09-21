@@ -12,6 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryCatcher">
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".VideoPlayer"></activity>
         <activity android:name=".ScreenTime" />
         <activity
@@ -36,13 +43,7 @@
         <activity android:name=".CreateProfile" />
         <activity android:name=".PasswordActivity" />
         <activity android:name=".SignOrRegister" />
-        <activity android:name=".SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

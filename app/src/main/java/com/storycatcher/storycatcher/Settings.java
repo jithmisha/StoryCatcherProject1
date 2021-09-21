@@ -31,15 +31,10 @@ public class Settings extends AppCompatActivity {
         final MediaPlayer mp=MediaPlayer.create(this,R.raw.goat);
 
         currentKidID = getIntent().getStringExtra("currentKid_ID");
-        Toast.makeText(Settings.this,"Hi: "+currentKidID,Toast.LENGTH_LONG).show();
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              /*Intent intent = new Intent(Settings.this,LibraryScreen.class);
-                intent.putExtra("name",kidID);
-                startActivity(intent);*/
-                //startActivity(new Intent(getApplicationContext(), LibraryScreen.class));
                 finish();
             }
         });
@@ -69,7 +64,9 @@ public class Settings extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Profile.class));
+                Intent intent = new Intent(Settings.this,Profile.class);
+                intent.putExtra("currentKid_ID",currentKidID);
+                startActivity(intent);
             }
         });
 
