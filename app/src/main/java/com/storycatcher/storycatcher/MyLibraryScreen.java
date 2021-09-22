@@ -28,6 +28,10 @@ public class MyLibraryScreen extends AppCompatActivity {
                         return true;
                     case R.id.myLibrary:
                         return true;
+                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
                     case R.id.games:
                         startActivity(new Intent(getApplicationContext(),GamesScreen.class));
                         overridePendingTransition(0,0);
