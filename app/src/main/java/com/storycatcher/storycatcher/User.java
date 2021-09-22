@@ -2,13 +2,13 @@ package com.storycatcher.storycatcher;
 
 public class User {
 
-    String kidID,kidsName;
-    int kidsAge;
+    String kidID,kidsName,kidsAge;
+
 
     public User() {
 
     }
-    public User(String kidID, String kidsName, int kidsAge) {
+    public User(String kidID, String kidsName, String kidsAge) {
         this.kidID = kidID;
         this.kidsName = kidsName;
         this.kidsAge = kidsAge;
@@ -30,11 +30,11 @@ public class User {
         this.kidsName = kidsName;
     }
 
-    public int getKidsAge() {
+    public String getKidsAge() {
         return kidsAge;
     }
 
-    public void setKidsAge(int kidsAge) {
+    public void setKidsAge(String kidsAge) {
         this.kidsAge = kidsAge;
     }
 }

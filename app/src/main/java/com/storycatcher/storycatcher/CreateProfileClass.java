@@ -1,13 +1,12 @@
 package com.storycatcher.storycatcher;
 
 public class CreateProfileClass {
-    public String kidID, kidsName, parentID;
-    public int kidsAge;
+    public String kidID, kidsName, parentID,kidsAge;
 
     public CreateProfileClass() {
     }
 
-    public CreateProfileClass(String kidID, String kidsName,int kidsAge, String parentID) {
+    public CreateProfileClass(String kidID, String kidsName,String kidsAge, String parentID) {
         this.kidID = kidID;
         this.kidsName = kidsName;
         this.parentID = parentID;
@@ -38,11 +37,11 @@ public class CreateProfileClass {
         this.parentID = parentID;
     }
 
-    public int getKidsAge() {
+    public String getKidsAge() {
         return kidsAge;
     }
 
-    public void setKidsAge(int kidsAge) {
+    public void setKidsAge(String kidsAge) {
         this.kidsAge = kidsAge;
     }
 }

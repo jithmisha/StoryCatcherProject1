@@ -70,7 +70,7 @@ public class CreateProfile extends AppCompatActivity {
                 }
 
                 try {
-                    CreateProfileClass kidsProfile = new CreateProfileClass(kidsID, kidsName, Integer.parseInt(kidsAge), parentID);
+                    CreateProfileClass kidsProfile = new CreateProfileClass(kidsID, kidsName, kidsAge, parentID);
                     DocumentReference documentReference = fStore.collection("Kids").document(kidsID);
                     documentReference.set(kidsProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

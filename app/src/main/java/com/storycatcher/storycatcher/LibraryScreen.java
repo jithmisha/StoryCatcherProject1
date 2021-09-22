@@ -45,33 +45,12 @@ public class LibraryScreen extends AppCompatActivity {
         fstore=FirebaseFirestore.getInstance();
 
         currentKidID = getIntent().getStringExtra("currentKid_ID");
-        currentKidName = getIntent().getStringExtra("currentKid_Name");
-        kidName.setText(currentKidName);
+        //currentKidName = getIntent().getStringExtra("currentKid_Name");
+        //kidName.setText(currentKidName);
 
         // --> Toast message
-        Toast.makeText(LibraryScreen.this,"Hi "+currentKidName,Toast.LENGTH_LONG).show();
 
         // --> Firebase code to get current kid name from current KidID
-        /*fstore.collection("Kids").document(kidID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            User user = new User();
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot document=task.getResult();
-                    if(document.exists()){
-                        //Toast.makeText(getApplicationContext(),"Available", Toast.LENGTH_SHORT).show();
-                        String name=document.getString("kidsName");
-                        kidName.setText(name);
-                    }else{
-                        Toast.makeText(getApplicationContext(),"No such document", Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(getApplicationContext(),"Available"+task.getException(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-*/
-
         tabLayout.addTab(tabLayout.newTab().setText("English"));
         tabLayout.addTab(tabLayout.newTab().setText("Sinhala"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -138,6 +117,29 @@ public class LibraryScreen extends AppCompatActivity {
         });
     }
 
+    public void onStart() {
+        super.onStart();
+        fstore.collection("Kids").document(currentKidID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            User user = new User();
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot document=task.getResult();
+                    if(document.exists()){
+                        //Toast.makeText(getApplicationContext(),"Available", Toast.LENGTH_SHORT).show();
+                        String name=document.getString("kidsName");
+                        kidName.setText(name);
+                        Toast.makeText(LibraryScreen.this,"Hi "+name,Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(getApplicationContext(),"No such document", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(),"Available"+task.getException(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
     /*@Override
     public void finish() {
         text= kidName.getText().toString();
