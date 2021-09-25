@@ -127,6 +127,7 @@ public class LibraryScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public void onStart() {

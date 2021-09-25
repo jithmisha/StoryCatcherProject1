@@ -26,8 +26,9 @@ public class GamesScreen extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
-                        Intent intent0=new Intent(GamesScreen.this,LibraryScreen.class);
-                        startActivity(intent0);
+                        /*Intent intent0=new Intent(GamesScreen.this,LibraryScreen.class);
+                        startActivity(intent0);*/
+                        finish();
                         overridePendingTransition(0,0);
                         break;
 
