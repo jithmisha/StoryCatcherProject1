@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -83,29 +84,40 @@ public class LibraryScreen extends AppCompatActivity {
         });
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setSelectedItemId((R.id.home));
+        Menu menu =bottomNavigationView.getMenu();
+        MenuItem menuItem=menu.getItem(0);
+        menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
-                        return true;
+                        break;
+
                     case R.id.myLibrary:
-                        startActivity(new Intent(getApplicationContext(),MyLibraryScreen.class));
+                        Intent intent1=new Intent(LibraryScreen.this,MyLibraryScreen.class);
+                        startActivity(intent1);
                         overridePendingTransition(0,0);
-                        return true;
+                        break;
+
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+                        Intent intent2=new Intent(LibraryScreen.this,SearchActivity.class);
+                        startActivity(intent2);
                         overridePendingTransition(0,0);
-                        return true;
+                        break;
+
                     case R.id.games:
-                        startActivity(new Intent(getApplicationContext(),GamesScreen.class));
+                        Intent intent3=new Intent(LibraryScreen.this,GamesScreen.class);
+                        startActivity(intent3);
                         overridePendingTransition(0,0);
-                        return true;
+                        break;
                 }
+
                 return false;
             }
         });
+
+
 
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override

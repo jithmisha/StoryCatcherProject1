@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -41,26 +42,33 @@ public class SearchActivity extends AppCompatActivity {
 
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setSelectedItemId((R.id.games));
+        Menu menu =bottomNavigationView.getMenu();
+        MenuItem menuItem=menu.getItem(2);
+        menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),LibraryScreen.class));
+                        Intent intent0=new Intent(SearchActivity.this,LibraryScreen.class);
+                        startActivity(intent0);
                         overridePendingTransition(0,0);
-                        return true;
-                    case R.id.myLibrary:
-                        startActivity(new Intent(getApplicationContext(),MyLibraryScreen.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.search:
-                        return true;
-                    case R.id.games:
-                        startActivity(new Intent(getApplicationContext(),GamesScreen.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                        break;
 
+                    case R.id.myLibrary:
+                        Intent intent1=new Intent(SearchActivity.this,MyLibraryScreen.class);
+                        startActivity(intent1);
+                        overridePendingTransition(0,0);
+                        break;
+
+                    case R.id.search:
+                        break;
+
+                    case R.id.games:
+                        Intent intent3=new Intent(SearchActivity.this,GamesScreen.class);
+                        startActivity(intent3);
+                        overridePendingTransition(0,0);
+                        break;
                 }
                 return false;
             }
