@@ -7,39 +7,96 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
     private EditText searchField;
     private ImageButton searchImgBtn;
     private RecyclerView searchRecyclerView;
+    FirebaseFirestore fstore;
+    ArrayList<SearchDataClass> searchDataClassArrayList;
+    SearchDataViewHolder searchDataViewHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        searchField= findViewById(R.id.searchField);
-        searchImgBtn= findViewById(R.id.searchimgbtn);
-        searchRecyclerView= findViewById(R.id.searchRecyclerView);
-        searchRecyclerView.setHasFixedSize(true);
+        searchField = findViewById(R.id.searchField);
+        searchImgBtn = findViewById(R.id.searchimgbtn);
+        searchRecyclerView = findViewById(R.id.searchRecyclerView);
+        fstore = FirebaseFirestore.getInstance();
+
         searchRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        searchRecyclerView.setHasFixedSize(true);
+
+        searchDataClassArrayList = new ArrayList<>();
+
+        searchDataViewHolder = new SearchDataViewHolder(getApplicationContext(), searchDataClassArrayList);
+        searchRecyclerView.setAdapter(searchDataViewHolder);
+
+
+        searchField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString().isEmpty()){
+                    searchDataClassArrayList.clear();
+                    searchDataViewHolder.notifyDataSetChanged();
+                }else{
+                    searchData(s.toString());
+                }
+            }
+        });
+
+        // Playing video
+        searchDataViewHolder.onRecyclerViewClick(new SearchDataViewHolder.onRecyclerViewClick() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getApplicationContext(), VideoPlayer.class);
+                intent.putExtra("video",searchDataClassArrayList.get(position).getURL());
+                startActivity(intent);
+            }
+        });
 
         searchImgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseSearch();
+                //searchData();
             }
         });
-
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
         Menu menu =bottomNavigationView.getMenu();
@@ -76,27 +133,28 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    private void firebaseSearch(){
 
-
-
-    }
-    public class SearchDataViewHolder extends RecyclerView.ViewHolder{
-        View mView;
-
-        public SearchDataViewHolder(@NonNull View itemView) {
-            super(itemView);
-            mView=itemView;
+    private void searchData(String type) {
+        Query query=fstore.collection("Full Library").orderBy("Title").startAt(type).endAt(type+ "\uf8ff");
+        if(!type.isEmpty()){
+            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if(task.isSuccessful() && task.getResult() != null){
+                        searchDataClassArrayList.clear();
+                        searchDataViewHolder.notifyDataSetChanged();
+                        for(DocumentSnapshot doc: task.getResult().getDocuments()){
+                            SearchDataClass searchDataClass =doc.toObject(SearchDataClass.class);
+                            searchDataClassArrayList.add(searchDataClass);
+                            searchDataViewHolder.notifyDataSetChanged();
+                        }
+                    }
+                }
+            });
+        }else{
+            searchDataClassArrayList.clear();
+            searchDataViewHolder.notifyDataSetChanged();
         }
-
-        public void setDetails(String searchName,String searchImage){
-            TextView searchNames =(TextView) mView.findViewById(R.id.txtSearchName);
-            ImageView searchImg = (ImageView) mView.findViewById(R.id.imgSearchItem);
-        }
     }
-
-
-
-
 
 }

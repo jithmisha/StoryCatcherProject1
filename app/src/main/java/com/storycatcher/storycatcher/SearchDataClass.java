@@ -4,11 +4,14 @@ public class SearchDataClass {
     String imageUrl;
     String Title;
     String URL;
+    String ID;
 
-    public SearchDataClass(String imageUrl, String title, String URL) {
+
+    public SearchDataClass(String imageUrl, String title,String URL, String ID) {
         this.imageUrl = imageUrl;
         Title = title;
         this.URL = URL;
+        this.ID = ID;
     }
 
     public SearchDataClass() {
@@ -36,5 +39,13 @@ public class SearchDataClass {
 
     public void setURL(String URL) {
         this.URL = URL;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }
