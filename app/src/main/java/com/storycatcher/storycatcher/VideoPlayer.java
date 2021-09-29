@@ -3,15 +3,18 @@ package com.storycatcher.storycatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.extractor.ExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
@@ -30,7 +33,9 @@ public class VideoPlayer extends AppCompatActivity {
     Uri videoUri;
     PlayerView playerView;
     ExoPlayer exoPlayer;
+    ImageView exoMute,exoFav;
     ExtractorsFactory extractorsFactory;
+
 
 
     @Override
@@ -40,16 +45,29 @@ public class VideoPlayer extends AppCompatActivity {
         setFullscreen();
         setContentView(R.layout.activity_video_player);
 
-        // -->Error
-        //hideactionBar();
-
         playerView=findViewById(R.id.playerView);
+        exoMute=findViewById(R.id.exo_mute);
+        exoFav= findViewById(R.id.exo_fav);
+
 
         Intent intent = getIntent();
         if(intent!=null){
             String uri_str=intent.getStringExtra("video");
             videoUri= Uri.parse(uri_str);
         }
+
+        exoMute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float currentVolume = exoPlayer.getAudioComponent().getVolume();
+                if (currentVolume == 0f) {
+                    exoPlayer.getAudioComponent().setVolume(1f);
+                } else {
+                    exoPlayer.getAudioComponent().setVolume(0f);
+                }
+            }
+        });
+
         BandwidthMeter bandwidthMeter=new DefaultBandwidthMeter();
         TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
         exoPlayer= ExoPlayerFactory.newSimpleInstance(this,trackSelector);
@@ -58,10 +76,18 @@ public class VideoPlayer extends AppCompatActivity {
 
     }
 
-    // TODO: Error in this method
-    /*private void hideactionBar(){
-        getSupportActionBar().hide();
-    }*/
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     public void setFullscreen(){
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -93,4 +119,5 @@ public class VideoPlayer extends AppCompatActivity {
         exoPlayer.setPlayWhenReady(false);
         exoPlayer.release();
     }
+
 }

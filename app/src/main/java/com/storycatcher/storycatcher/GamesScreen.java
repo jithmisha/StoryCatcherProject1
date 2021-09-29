@@ -45,7 +45,6 @@ public class GamesScreen extends AppCompatActivity {
                         break;
 
                     case R.id.games:
-
                         break;
                 }
                 return false;

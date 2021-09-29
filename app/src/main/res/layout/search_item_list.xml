@@ -4,22 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="200dp">
+    android:layout_height="170dp"
+    android:padding="4dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:layout_margin="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardElevation="8dp"
-        app:cardCornerRadius="8dp">
+        android:padding="1dp"
+        app:cardCornerRadius="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-                android:padding="5dp">
+            android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imgSearchItem"
@@ -38,17 +39,15 @@
                     android:layout_marginEnd="84dp"
                     android:textColor="@color/black"
                     android:layout_marginRight="84dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
                     android:text="Name"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.397" />
 
-
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.cardview.widget.CardView>
 

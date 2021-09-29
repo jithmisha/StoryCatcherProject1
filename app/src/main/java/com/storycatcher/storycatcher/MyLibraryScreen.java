@@ -30,7 +30,6 @@ public class MyLibraryScreen extends AppCompatActivity {
                         startActivity(intent0);*/
                         finish();
                         overridePendingTransition(0,0);
-
                         break;
 
                     case R.id.myLibrary:

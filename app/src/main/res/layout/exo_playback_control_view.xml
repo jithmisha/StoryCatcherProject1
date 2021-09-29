@@ -19,6 +19,11 @@
         <ImageButton android:id="@id/exo_prev"
             style="@style/ExoMediaButton.Previous"/>
 
+        <ImageView android:id="@+id/exo_mute"
+            android:src="@drawable/ic_book"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+        </ImageView>
 
         <ImageButton android:id="@id/exo_rew"
             style="@style/ExoMediaButton.Rewind"/>
@@ -37,6 +42,12 @@
 
         <ImageButton android:id="@id/exo_ffwd"
             style="@style/ExoMediaButton.FastForward"/>
+
+        <ImageView android:id="@+id/exo_fav"
+            android:src="@drawable/ic_fav_border"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+        </ImageView>
 
         <ImageButton android:id="@id/exo_next"
             style="@style/ExoMediaButton.Next"/>

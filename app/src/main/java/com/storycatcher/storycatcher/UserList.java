@@ -56,7 +56,6 @@ public class  UserList extends AppCompatActivity {
         createNewProfilebtn=findViewById(R.id.ProfileCreatebtn);
 
 
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
