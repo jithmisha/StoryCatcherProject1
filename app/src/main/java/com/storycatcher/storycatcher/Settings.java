@@ -22,13 +22,13 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        profileBtn=findViewById(R.id.settingsprofilebutton);
-        screentimeBtn=findViewById(R.id.settingsscreentimebutton);
-        changepasswordBtn=findViewById(R.id.settingschangepasswordbutton);
-        aboutBtn=findViewById(R.id.settingaboutbutton);
-        logoutBtn=findViewById(R.id.settingslogoutbutton);
-        backButton=findViewById(R.id.imgBackBtnSettings);
-        final MediaPlayer mp=MediaPlayer.create(this,R.raw.goat);
+        profileBtn = findViewById(R.id.settingsprofilebutton);
+        screentimeBtn = findViewById(R.id.settingsscreentimebutton);
+        changepasswordBtn = findViewById(R.id.settingschangepasswordbutton);
+        aboutBtn = findViewById(R.id.settingaboutbutton);
+        logoutBtn = findViewById(R.id.settingslogoutbutton);
+        backButton = findViewById(R.id.imgBackBtnSettings);
+        final MediaPlayer mp = MediaPlayer.create(this,R.raw.goat);
 
         currentKidID = getIntent().getStringExtra("currentKid_ID");
 

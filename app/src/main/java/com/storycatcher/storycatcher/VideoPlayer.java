@@ -45,9 +45,9 @@ public class VideoPlayer extends AppCompatActivity {
         setFullscreen();
         setContentView(R.layout.activity_video_player);
 
-        playerView=findViewById(R.id.playerView);
-        exoMute=findViewById(R.id.exo_mute);
-        exoFav= findViewById(R.id.exo_fav);
+        playerView = findViewById(R.id.playerView);
+        exoMute = findViewById(R.id.exo_mute);
+        exoFav = findViewById(R.id.exo_fav);
 
 
         Intent intent = getIntent();
@@ -68,10 +68,10 @@ public class VideoPlayer extends AppCompatActivity {
             }
         });
 
-        BandwidthMeter bandwidthMeter=new DefaultBandwidthMeter();
+        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
         TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
         exoPlayer= ExoPlayerFactory.newSimpleInstance(this,trackSelector);
-        extractorsFactory=new DefaultExtractorsFactory();
+        extractorsFactory = new DefaultExtractorsFactory();
         playVideo();
 
     }

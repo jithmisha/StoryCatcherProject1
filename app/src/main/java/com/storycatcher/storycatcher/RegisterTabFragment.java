@@ -23,7 +23,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class RegisterTabFragment extends Fragment {
+public class    RegisterTabFragment extends Fragment {
 
     //variables
     private EditText  registerEmail, registerPassword, confpassword;
@@ -34,7 +34,7 @@ public class RegisterTabFragment extends Fragment {
     private ProgressBar objectProgressBar;
     float v=0;
     String userID;
-//    private DatabaseReference reference;
+//  private DatabaseReference reference;
 
     public RegisterTabFragment(){
     }

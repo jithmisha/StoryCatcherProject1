@@ -38,12 +38,12 @@ public class LibraryScreen extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library_screen);
-        context=this;
-        kidName=findViewById(R.id.txtKidsName);
-        tabLayout=findViewById(R.id.tab_layout);
-        viewPager=findViewById(R.id.view_pager);
-        settingBtn=findViewById(R.id.SettingButton);
-        fstore=FirebaseFirestore.getInstance();
+        context = this;
+        kidName = findViewById(R.id.txtKidsName);
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.view_pager);
+        settingBtn = findViewById(R.id.SettingButton);
+        fstore = FirebaseFirestore.getInstance();
 
         currentKidID = getIntent().getStringExtra("currentKid_ID");
         //currentKidName = getIntent().getStringExtra("currentKid_Name");
@@ -84,8 +84,8 @@ public class LibraryScreen extends AppCompatActivity {
         });
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
-        Menu menu =bottomNavigationView.getMenu();
-        MenuItem menuItem=menu.getItem(0);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -137,10 +137,10 @@ public class LibraryScreen extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-                    DocumentSnapshot document=task.getResult();
+                    DocumentSnapshot document = task.getResult();
                     if(document.exists()){
                         //Toast.makeText(getApplicationContext(),"Available", Toast.LENGTH_SHORT).show();
-                        String name=document.getString("kidsName");
+                        String name = document.getString("kidsName");
                         kidName.setText(name);
                         Toast.makeText(LibraryScreen.this,"Hi "+name,Toast.LENGTH_LONG).show();
                     }else{
