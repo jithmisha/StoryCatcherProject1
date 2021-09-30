@@ -58,6 +58,7 @@ public class ChangePassword extends AppCompatActivity {
             }
         });
     }
+    
     public void changePassword(){
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -70,110 +71,35 @@ public class ChangePassword extends AppCompatActivity {
             currentPasswordTxLayout.setEndIconVisible(false);
             currentPassword.setError("Please enter the current password");
             currentPassword.requestFocus();
-            currentPassword.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    currentPasswordTxLayout.setEndIconVisible(true);
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
+            settingError(currentPassword,currentPasswordTxLayout);
             return;
         }
         if(newPass.isEmpty()){
             newPasswordTxLayout.setEndIconVisible(false);
             newPassword.setError("Please enter new password");
             newPassword.requestFocus();
-            newPassword.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    newPasswordTxLayout.setEndIconVisible(true);
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
+            settingError(newPassword,newPasswordTxLayout);
             return;
         }
         if(newPass.length()<8){
             newPasswordTxLayout.setEndIconVisible(false);
             newPassword.setError("Password length should be more than  8 characters");
             newPassword.requestFocus();
-            newPassword.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    newPasswordTxLayout.setEndIconVisible(true);
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
+            settingError(newPassword,newPasswordTxLayout);
             return;
         }
         if(confirmPass.isEmpty()){
             confirmPasswordTxLayout.setEndIconVisible(false);
             confirmNewPassword.setError("This field cannot be kept empty");
             confirmNewPassword.requestFocus();
-            confirmNewPassword.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    confirmPasswordTxLayout.setEndIconVisible(true);
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
+            settingError(confirmNewPassword,confirmPasswordTxLayout);
             return;
         }
         if(!newPass.equals(confirmPass)){
             confirmPasswordTxLayout.setEndIconVisible(false);
             confirmNewPassword.setError("Password Not matching");
             confirmNewPassword.requestFocus();
-            confirmNewPassword.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    confirmPasswordTxLayout.setEndIconVisible(true);
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
+            settingError(confirmNewPassword,confirmPasswordTxLayout);
             return;
         }
 
@@ -203,24 +129,28 @@ public class ChangePassword extends AppCompatActivity {
                     currentPassword.setError("Incorrect password entered");
                     ProgressBar.setVisibility(View.INVISIBLE);
                     currentPassword.requestFocus();
-                    currentPassword.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            currentPasswordTxLayout.setEndIconVisible(true);
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-
-                        }
-                    });
+                    settingError(currentPassword,currentPasswordTxLayout);
                     return;
                 }
+            }
+        });
+    }
+
+    public  void settingError(EditText editText, TextInputLayout textInputLayout){
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                textInputLayout.setEndIconVisible(true);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
