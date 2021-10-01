@@ -30,6 +30,7 @@ public class GamesScreen extends AppCompatActivity {
                         Intent intent0=new Intent(GamesScreen.this,LibraryScreen.class);
                         intent0.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent0);
+                        finish();
                         overridePendingTransition(0,0);
                         break;
 
@@ -37,6 +38,7 @@ public class GamesScreen extends AppCompatActivity {
                         Intent intent1=new Intent(GamesScreen.this,MyLibraryScreen.class);
                         intent1.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent1);
+                        finish();
                         overridePendingTransition(0,0);
                         break;
 
@@ -44,6 +46,7 @@ public class GamesScreen extends AppCompatActivity {
                         Intent intent2=new Intent(GamesScreen.this,SearchActivity.class);
                         intent2.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent2);
+                        finish();
                         overridePendingTransition(0,0);
                         break;
 
@@ -54,4 +57,14 @@ public class GamesScreen extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        String currentKidID = getIntent().getStringExtra("currentKid_ID");
+        Intent intent0=new Intent(GamesScreen.this,LibraryScreen.class);
+        intent0.putExtra("currentKid_ID",currentKidID);
+        startActivity(intent0);
+        finish();
+    }
+
 }

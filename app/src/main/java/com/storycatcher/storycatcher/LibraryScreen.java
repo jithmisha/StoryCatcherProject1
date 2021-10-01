@@ -98,6 +98,7 @@ public class LibraryScreen extends AppCompatActivity {
                         Intent intent1=new Intent(LibraryScreen.this,MyLibraryScreen.class);
                         intent1.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent1);
+                        finish();
                         overridePendingTransition(0,0);
                         break;
 
@@ -105,6 +106,7 @@ public class LibraryScreen extends AppCompatActivity {
                         Intent intent2=new Intent(LibraryScreen.this,SearchActivity.class);
                         intent2.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent2);
+                        finish();
                         overridePendingTransition(0,0);
                         break;
 
@@ -112,6 +114,7 @@ public class LibraryScreen extends AppCompatActivity {
                         Intent intent3=new Intent(LibraryScreen.this,GamesScreen.class);
                         intent3.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent3);
+                        finish();
                         overridePendingTransition(0,0);
                         break;
                 }
@@ -132,6 +135,7 @@ public class LibraryScreen extends AppCompatActivity {
         });
 
     }
+
 
     public void onStart() {
         super.onStart();
