@@ -29,9 +29,9 @@ public class PasswordActivity extends AppCompatActivity {
         super.onCreate (savedInstanceState);
         setContentView(R.layout.activity_password);
 
-        emailPassword=(EditText)findViewById(R.id.recoverAccountEmail);
-        resetPassword=(Button)findViewById(R.id.btnresetpassword);
-        auth=FirebaseAuth.getInstance();
+        emailPassword = (EditText)findViewById(R.id.recoverAccountEmail);
+        resetPassword = (Button)findViewById(R.id.btnresetpassword);
+        auth = FirebaseAuth.getInstance();
 
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +40,7 @@ public class PasswordActivity extends AppCompatActivity {
             }
         });
 
-        imgButtonBack=(ImageButton)findViewById(R.id.imgBtnBack);
+        imgButtonBack = (ImageButton)findViewById(R.id.imgBtnBack);
         imgButtonBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -87,6 +87,7 @@ public class PasswordActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(PasswordActivity.this,"Please check email to reset password",Toast.LENGTH_LONG).show();
+                    emailPassword.setText("");
                 }
                 else{
                     Toast.makeText(PasswordActivity.this,"Try again! Something went wrong",Toast.LENGTH_LONG).show();

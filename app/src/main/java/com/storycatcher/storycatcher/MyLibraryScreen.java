@@ -16,19 +16,20 @@ public class MyLibraryScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_library_screen);
+        String currentKidID = getIntent().getStringExtra("currentKid_ID");
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
-        Menu menu =bottomNavigationView.getMenu();
-        MenuItem menuItem=menu.getItem(1);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
-                        /*Intent intent0=new Intent(MyLibraryScreen.this,LibraryScreen.class);
-                        startActivity(intent0);*/
-                        finish();
+                        Intent intent0=new Intent(MyLibraryScreen.this,LibraryScreen.class);
+                        intent0.putExtra("currentKid_ID",currentKidID);
+                        startActivity(intent0);
                         overridePendingTransition(0,0);
                         break;
 
@@ -37,12 +38,14 @@ public class MyLibraryScreen extends AppCompatActivity {
 
                     case R.id.search:
                         Intent intent2=new Intent(MyLibraryScreen.this,SearchActivity.class);
+                        intent2.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent2);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.games:
                         Intent intent3=new Intent(MyLibraryScreen.this,GamesScreen.class);
+                        intent3.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent3);
                         overridePendingTransition(0,0);
                         break;

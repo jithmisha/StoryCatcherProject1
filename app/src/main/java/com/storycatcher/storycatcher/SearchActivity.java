@@ -44,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        String currentKidID = getIntent().getStringExtra("currentKid_ID");
         searchField = findViewById(R.id.searchField);
         searchImgBtn = findViewById(R.id.searchimgbtn);
         searchRecyclerView = findViewById(R.id.searchRecyclerView);
@@ -107,14 +107,16 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
-                        //Intent intent0=new Intent(SearchActivity.this,LibraryScreen.class);
-                        //startActivity(intent0);
-                        finish();
+                        Intent intent0=new Intent(SearchActivity.this,LibraryScreen.class);
+                        intent0.putExtra("currentKid_ID",currentKidID);
+                        intent0.putExtra("currentKid_ID",currentKidID);
+                        startActivity(intent0);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.myLibrary:
                         Intent intent1=new Intent(SearchActivity.this,MyLibraryScreen.class);
+                        intent1.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent1);
                         overridePendingTransition(0,0);
                         break;
@@ -124,6 +126,7 @@ public class SearchActivity extends AppCompatActivity {
 
                     case R.id.games:
                         Intent intent3=new Intent(SearchActivity.this,GamesScreen.class);
+                        intent3.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent3);
                         overridePendingTransition(0,0);
                         break;

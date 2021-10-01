@@ -96,18 +96,21 @@ public class LibraryScreen extends AppCompatActivity {
 
                     case R.id.myLibrary:
                         Intent intent1=new Intent(LibraryScreen.this,MyLibraryScreen.class);
+                        intent1.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent1);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.search:
                         Intent intent2=new Intent(LibraryScreen.this,SearchActivity.class);
+                        intent2.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent2);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.games:
                         Intent intent3=new Intent(LibraryScreen.this,GamesScreen.class);
+                        intent3.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent3);
                         overridePendingTransition(0,0);
                         break;

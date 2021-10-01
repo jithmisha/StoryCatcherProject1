@@ -47,15 +47,15 @@ public class SinhalaTabFragment extends Fragment {
         songsRecyclerView=root.findViewById(R.id.songsRecyclerView);
         poemsRecyclerView=root.findViewById(R.id.PoemsRecyclerView);
 
-        GridLayoutManager layoutManager1=new GridLayoutManager(getActivity(),3);
+        GridLayoutManager layoutManager1 = new GridLayoutManager(getActivity(),3);
         booksRecyclerView.setLayoutManager(layoutManager1);
         booksRecyclerView.setHasFixedSize(true);
 
-        GridLayoutManager layoutManager2=new GridLayoutManager(getActivity(),3);
+        GridLayoutManager layoutManager2 = new GridLayoutManager(getActivity(),3);
         songsRecyclerView.setLayoutManager(layoutManager2);
         songsRecyclerView.setHasFixedSize(true);
 
-        GridLayoutManager layoutManager3=new GridLayoutManager(getActivity(),3);
+        GridLayoutManager layoutManager3 = new GridLayoutManager(getActivity(),3);
         poemsRecyclerView.setLayoutManager(layoutManager3);
         poemsRecyclerView.setHasFixedSize(true);
 

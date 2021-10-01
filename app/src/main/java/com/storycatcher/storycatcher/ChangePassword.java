@@ -58,7 +58,7 @@ public class ChangePassword extends AppCompatActivity {
             }
         });
     }
-    
+
     public void changePassword(){
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();

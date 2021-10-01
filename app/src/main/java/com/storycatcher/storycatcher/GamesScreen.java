@@ -16,6 +16,7 @@ public class GamesScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games_screen);
+        String  currentKidID = getIntent().getStringExtra("currentKid_ID");
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
         Menu menu =bottomNavigationView.getMenu();
@@ -26,20 +27,22 @@ public class GamesScreen extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
-                        /*Intent intent0=new Intent(GamesScreen.this,LibraryScreen.class);
-                        startActivity(intent0);*/
-                        finish();
+                        Intent intent0=new Intent(GamesScreen.this,LibraryScreen.class);
+                        intent0.putExtra("currentKid_ID",currentKidID);
+                        startActivity(intent0);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.myLibrary:
                         Intent intent1=new Intent(GamesScreen.this,MyLibraryScreen.class);
+                        intent1.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent1);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.search:
                         Intent intent2=new Intent(GamesScreen.this,SearchActivity.class);
+                        intent2.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent2);
                         overridePendingTransition(0,0);
                         break;
