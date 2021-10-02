@@ -4,15 +4,17 @@ public class EnglishPoemDataClass {
     String imageUrl;
     String Title;
     String URL;
+    String ID;
 
     public EnglishPoemDataClass() {
 
     }
 
-    public EnglishPoemDataClass(String imageUrl, String title, String URL) {
+    public EnglishPoemDataClass(String imageUrl, String title, String URL, String ID) {
         this.imageUrl = imageUrl;
         Title = title;
-        this.URL=URL;
+        this.URL = URL;
+        this.ID = ID;
     }
 
     public String getImageUrl() {
@@ -37,5 +39,13 @@ public class EnglishPoemDataClass {
 
     public void setURL(String URL) {
         this.URL = URL;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

@@ -2,6 +2,7 @@ package com.storycatcher.storycatcher;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class EnglishTabFragment extends Fragment {
     //Recyceler View
     RecyclerView engBooksRecyclerView,engSongsRecyclerView,engPoemsRecyclerView;
 
+    //Firebase
     FirebaseFirestore fstore;
 
     //Book category
@@ -42,9 +44,9 @@ public class EnglishTabFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.english_tab_fragment, container, false);
 
-        //Jithmi do your thing
         engBooksRecyclerView = root.findViewById(R.id.EngStoryBookRecycleView);
         engSongsRecyclerView = root.findViewById(R.id.EngSongsRecyclerView);
         engPoemsRecyclerView = root.findViewById(R.id.EngPoemsRecyclerView);
@@ -61,7 +63,6 @@ public class EnglishTabFragment extends Fragment {
         engPoemsRecyclerView.setLayoutManager(layoutManager3);
         engPoemsRecyclerView.setHasFixedSize(true);
 
-
         //Firebase
         fstore=FirebaseFirestore.getInstance();
 
@@ -69,6 +70,7 @@ public class EnglishTabFragment extends Fragment {
         englishBooksList = new ArrayList<>();
         englishSongsList = new ArrayList<>();
         englishPoemsList = new ArrayList<>();
+
 
         //Get data methods
         GetEBDataFromFirebase();
@@ -89,8 +91,10 @@ public class EnglishTabFragment extends Fragment {
         englishSongViewHolder.onRecyclerViewClick(new EnglishSongViewHolder.onRecyclerViewClick() {
             @Override
             public void onItemClick(int position) {
+                LibraryScreen obj = new LibraryScreen();
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",englishSongsList.get(position).getURL());
+                intent.putExtra("BookID",englishSongsList.get(position).getID());
                 startActivity(intent);
             }
         });
@@ -100,6 +104,7 @@ public class EnglishTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",englishBooksList.get(position).getURL());
+                intent.putExtra("BookID",englishBooksList.get(position).getID());
                 startActivity(intent);
             }
         });
@@ -109,6 +114,7 @@ public class EnglishTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",englishPoemsList.get(position).getURL());
+                intent.putExtra("BookID",englishPoemsList.get(position).getID());
                 startActivity(intent);
             }
         });
@@ -173,3 +179,4 @@ public class EnglishTabFragment extends Fragment {
                 });
     }
 }
+

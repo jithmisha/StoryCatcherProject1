@@ -41,6 +41,7 @@ public class SinhalaTabFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         root = (ViewGroup) inflater.inflate(R.layout.sinhala_tab_fragment, container, false);
 
         booksRecyclerView =root.findViewById(R.id.storyBookRecycleView);
@@ -91,6 +92,7 @@ public class SinhalaTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",sinhalaBooksList.get(position).getURL());
+                intent.putExtra("BookID",sinhalaBooksList.get(position).getID());
                 startActivity(intent);
             }
         });
@@ -100,6 +102,7 @@ public class SinhalaTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",sinhalaSongsList.get(position).getURL());
+                intent.putExtra("BookID",sinhalaSongsList.get(position).getID());
                 startActivity(intent);
             }
         });
@@ -109,6 +112,7 @@ public class SinhalaTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",sinhalaPoemsList.get(position).getURL());
+                intent.putExtra("BookID",sinhalaPoemsList.get(position).getID());
                 startActivity(intent);
             }
         });
@@ -173,7 +177,7 @@ public class SinhalaTabFragment extends Fragment {
                 });
     }
 
-   /* private void clearAll(){
+   /*private void clearAll(){
         if(sinhalaBooksList != null){
             sinhalaBooksList.clear();
             if(sinhalaBookViewHolder !=null){

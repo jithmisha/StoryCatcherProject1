@@ -30,8 +30,6 @@ public class Settings extends AppCompatActivity {
         backButton = findViewById(R.id.imgBackBtnSettings);
         final MediaPlayer mp = MediaPlayer.create(this,R.raw.goat);
 
-        currentKidID = getIntent().getStringExtra("currentKid_ID");
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +63,6 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Settings.this,Profile.class);
-                intent.putExtra("currentKid_ID",currentKidID);
                 startActivity(intent);
             }
         });

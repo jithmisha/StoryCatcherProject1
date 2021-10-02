@@ -3,7 +3,9 @@ package com.storycatcher.storycatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +33,7 @@ public class Profile extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fstore;
     String kidID;
+    private int del= 100;
 
 
     @Override
@@ -47,14 +50,9 @@ public class Profile extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         fstore=FirebaseFirestore.getInstance();
 
-        kidID = getIntent().getStringExtra("currentKid_ID");
-
-        currentKidsId.setText(kidID);
-        currentKidsId.setEnabled(false);
-
-        String mail=mAuth.getCurrentUser().getEmail();
-        userEmail.setText(mail);
-        userEmail.setEnabled(false);
+        //Read from shared preferences
+        SharedPreferences sharedPref = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        kidID = sharedPref.getString("kidID", "error");
 
         displayData();
 
@@ -74,6 +72,13 @@ public class Profile extends AppCompatActivity {
     }
 
     public void displayData(){
+        currentKidsId.setText(kidID);
+        currentKidsId.setEnabled(false);
+
+        String mail=mAuth.getCurrentUser().getEmail();
+        userEmail.setText(mail);
+        userEmail.setEnabled(false);
+
         fstore.collection("Kids").document(kidID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {

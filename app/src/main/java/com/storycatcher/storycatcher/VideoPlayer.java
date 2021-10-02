@@ -2,7 +2,9 @@ package com.storycatcher.storycatcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,14 +31,11 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
 public class VideoPlayer extends AppCompatActivity {
-    //video uri
     Uri videoUri;
     PlayerView playerView;
     ExoPlayer exoPlayer;
     ImageView exoMute,exoFav;
     ExtractorsFactory extractorsFactory;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +48,15 @@ public class VideoPlayer extends AppCompatActivity {
         exoMute = findViewById(R.id.exo_mute);
         exoFav = findViewById(R.id.exo_fav);
 
+        //Read from shared preferences
+        SharedPreferences sharedPref = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        String kidID = sharedPref.getString("kidID", "error");
 
+        //Getting selected bookID
         Intent intent = getIntent();
+        String currentBookID= intent.getStringExtra("BookID");
+        Toast.makeText(getApplicationContext(),kidID,Toast.LENGTH_SHORT).show();
+
         if(intent!=null){
             String uri_str=intent.getStringExtra("video");
             videoUri= Uri.parse(uri_str);
@@ -82,9 +88,9 @@ public class VideoPlayer extends AppCompatActivity {
 
         // Checks the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Landscape", Toast.LENGTH_SHORT).show();
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Portrait", Toast.LENGTH_SHORT).show();
         }
     }
 

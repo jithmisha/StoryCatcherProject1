@@ -109,7 +109,6 @@ public class SearchActivity extends AppCompatActivity {
                     case R.id.home:
                         Intent intent0=new Intent(SearchActivity.this,LibraryScreen.class);
                         intent0.putExtra("currentKid_ID",currentKidID);
-                        intent0.putExtra("currentKid_ID",currentKidID);
                         startActivity(intent0);
                         finish();
                         overridePendingTransition(0,0);

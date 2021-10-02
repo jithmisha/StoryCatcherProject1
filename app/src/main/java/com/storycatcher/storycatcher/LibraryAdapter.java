@@ -10,6 +10,7 @@ public class LibraryAdapter extends FragmentPagerAdapter {
 
     private Context context;
     int totalTabs;
+    UserAdapter userAdapter;
 
     public LibraryAdapter (FragmentManager fm, Context context, int totalTabs){
         super(fm);
@@ -35,5 +36,6 @@ public class LibraryAdapter extends FragmentPagerAdapter {
 
         }
     }
+
 
 }

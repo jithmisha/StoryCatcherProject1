@@ -82,28 +82,12 @@ public class  UserList extends AppCompatActivity {
             }
         });
 
-        /*ActivityResultLauncher<Intent> libraryScreenResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                            // There are no request codes
-                            Intent data = result.getData();
-                            // get the user name
-                            String name=data.getStringExtra("name");
-                        }
-                    }
-                });
-*/
         userAdapter.onRecyclerViewClick(new UserAdapter.onRecyclerViewClick() {
             @Override
             public void onItemClick(int position) {
-                //Toast.makeText(UserList.this,"Position: "+position,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(UserList.this, LibraryScreen.class);
                 intent.putExtra("currentKid_ID", list.get(position).getKidID());
                 intent.putExtra("currentKid_Name", list.get(position).getKidsName());
-                //libraryScreenResultLauncher.launch(intent);
                 startActivity(intent);
             }
         });

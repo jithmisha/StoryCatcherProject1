@@ -4,14 +4,24 @@ public class SinhalaPoemDataClass {
     String imageUrl;
     String Title;
     String URL;
+    String ID;
 
     public SinhalaPoemDataClass() {
 
     }
-    public SinhalaPoemDataClass(String imageUrl, String Title, String URL) {
+    public SinhalaPoemDataClass(String imageUrl, String Title, String URL, String ID) {
         this.imageUrl = imageUrl;
         this.Title = this.Title;
-        this.URL=URL;
+        this.URL = URL;
+        this.ID = ID;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getImageUrl() {

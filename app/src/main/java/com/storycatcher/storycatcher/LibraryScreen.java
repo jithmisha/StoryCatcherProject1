@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -29,7 +30,7 @@ public class LibraryScreen extends AppCompatActivity {
     ViewPager viewPager;
     private ImageButton settingBtn;
     private  TextView kidName;
-    private  String currentKidName, currentKidID;
+    private  String currentKidID;
     FirebaseFirestore fstore;
     float v=0;
 
@@ -46,12 +47,13 @@ public class LibraryScreen extends AppCompatActivity {
         fstore = FirebaseFirestore.getInstance();
 
         currentKidID = getIntent().getStringExtra("currentKid_ID");
-        //currentKidName = getIntent().getStringExtra("currentKid_Name");
-        //kidName.setText(currentKidName);
 
-        // --> Toast message
+        //Write to shared preference
+        SharedPreferences sharedPref = this.getSharedPreferences("pref",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("kidID",currentKidID);
+        editor.apply();
 
-        // --> Firebase code to get current kid name from current KidID
         tabLayout.addTab(tabLayout.newTab().setText("English"));
         tabLayout.addTab(tabLayout.newTab().setText("Sinhala"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -129,13 +131,11 @@ public class LibraryScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LibraryScreen.this,Settings.class);
-                intent.putExtra("currentKid_ID",currentKidID);
                 startActivity(intent);
             }
         });
 
     }
-
 
     public void onStart() {
         super.onStart();
@@ -146,10 +146,9 @@ public class LibraryScreen extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     if(document.exists()){
-                        //Toast.makeText(getApplicationContext(),"Available", Toast.LENGTH_SHORT).show();
                         String name = document.getString("kidsName");
                         kidName.setText(name);
-                        Toast.makeText(LibraryScreen.this,"Hi "+name,Toast.LENGTH_LONG).show();
+                        Toast.makeText(LibraryScreen.this,"Hi "+name,Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getApplicationContext(),"No such document", Toast.LENGTH_SHORT).show();
                     }
@@ -160,16 +159,4 @@ public class LibraryScreen extends AppCompatActivity {
         });
 
     }
-    /*@Override
-    public void finish() {
-        text= kidName.getText().toString();
-        Intent intent = new Intent();
-        intent.putExtra("name", text);
-        setResult(123, intent);
-        super.finish();
-    }*/
-
-
-
-
 }
