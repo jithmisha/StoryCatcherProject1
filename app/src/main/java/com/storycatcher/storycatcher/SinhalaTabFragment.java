@@ -92,7 +92,9 @@ public class SinhalaTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",sinhalaBooksList.get(position).getURL());
-                intent.putExtra("BookID",sinhalaBooksList.get(position).getID());
+                intent.putExtra("ID",sinhalaBooksList.get(position).getID());
+                intent.putExtra("Title",sinhalaBooksList.get(position).getTitle());
+                intent.putExtra("imageUrl",sinhalaBooksList.get(position).getImageUrl());
                 startActivity(intent);
             }
         });
@@ -102,7 +104,9 @@ public class SinhalaTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",sinhalaSongsList.get(position).getURL());
-                intent.putExtra("BookID",sinhalaSongsList.get(position).getID());
+                intent.putExtra("ID",sinhalaSongsList.get(position).getID());
+                intent.putExtra("Title",sinhalaSongsList.get(position).getTitle());
+                intent.putExtra("imageUrl",sinhalaBooksList.get(position).getImageUrl());
                 startActivity(intent);
             }
         });
@@ -112,7 +116,9 @@ public class SinhalaTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",sinhalaPoemsList.get(position).getURL());
-                intent.putExtra("BookID",sinhalaPoemsList.get(position).getID());
+                intent.putExtra("ID",sinhalaPoemsList.get(position).getID());
+                intent.putExtra("Title",sinhalaPoemsList.get(position).getTitle());
+                intent.putExtra("imageUrl",sinhalaPoemsList.get(position).getImageUrl());
                 startActivity(intent);
             }
         });

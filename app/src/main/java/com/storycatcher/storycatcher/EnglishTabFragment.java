@@ -64,7 +64,7 @@ public class EnglishTabFragment extends Fragment {
         engPoemsRecyclerView.setHasFixedSize(true);
 
         //Firebase
-        fstore=FirebaseFirestore.getInstance();
+        fstore = FirebaseFirestore.getInstance();
 
         //Array List
         englishBooksList = new ArrayList<>();
@@ -91,10 +91,11 @@ public class EnglishTabFragment extends Fragment {
         englishSongViewHolder.onRecyclerViewClick(new EnglishSongViewHolder.onRecyclerViewClick() {
             @Override
             public void onItemClick(int position) {
-                LibraryScreen obj = new LibraryScreen();
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",englishSongsList.get(position).getURL());
-                intent.putExtra("BookID",englishSongsList.get(position).getID());
+                intent.putExtra("ID",englishSongsList.get(position).getID());
+                intent.putExtra("Title",englishSongsList.get(position).getTitle());
+                intent.putExtra("imageUrl",englishSongsList.get(position).getImageUrl());
                 startActivity(intent);
             }
         });
@@ -104,7 +105,9 @@ public class EnglishTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",englishBooksList.get(position).getURL());
-                intent.putExtra("BookID",englishBooksList.get(position).getID());
+                intent.putExtra("ID",englishBooksList.get(position).getID());
+                intent.putExtra("Title",englishBooksList.get(position).getTitle());
+                intent.putExtra("imageUrl",englishBooksList.get(position).getImageUrl());
                 startActivity(intent);
             }
         });
@@ -114,7 +117,9 @@ public class EnglishTabFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoPlayer.class);
                 intent.putExtra("video",englishPoemsList.get(position).getURL());
-                intent.putExtra("BookID",englishPoemsList.get(position).getID());
+                intent.putExtra("ID",englishPoemsList.get(position).getID());
+                intent.putExtra("Title",englishPoemsList.get(position).getTitle());
+                intent.putExtra("imageUrl",englishPoemsList.get(position).getImageUrl());
                 startActivity(intent);
             }
         });

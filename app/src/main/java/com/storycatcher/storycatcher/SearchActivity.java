@@ -87,6 +87,9 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getApplicationContext(), VideoPlayer.class);
                 intent.putExtra("video",searchDataClassArrayList.get(position).getURL());
+                intent.putExtra("ID",searchDataClassArrayList.get(position).getID());
+                intent.putExtra("Title",searchDataClassArrayList.get(position).getTitle());
+                intent.putExtra("imageUrl",searchDataClassArrayList.get(position).getImageUrl());
                 startActivity(intent);
             }
         });
