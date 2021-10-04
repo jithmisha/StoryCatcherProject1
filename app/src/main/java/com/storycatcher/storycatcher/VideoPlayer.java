@@ -72,18 +72,11 @@ public class VideoPlayer extends AppCompatActivity {
                 Long timestamp = System.currentTimeMillis();
                 HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("ID", currentBookID);
-                hashMap.put("Tittle", currentBookTitle);
+                hashMap.put("Title", currentBookTitle);
                 hashMap.put("imageUrl", bookImage);
                 hashMap.put("timeStamp", timestamp);
-                hashMap.put("vide", uri_str );
+                hashMap.put("URL", uri_str );
 
-                /*fstore.collection("Favourites").document(kidID).collection(currentBookID)
-                        .add(hashMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(VideoPlayer.this, "Profile created successfully", Toast.LENGTH_SHORT).show();
-                    }
-                });*/
                 fstore.collection("Kids").document(kidID).collection("Favourites").document(currentBookID)
                         .set(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
