@@ -55,7 +55,7 @@ public class LibraryScreen extends AppCompatActivity {
         editor.apply();
 
         tabLayout.addTab(tabLayout.newTab().setText("English"));
-        tabLayout.addTab(tabLayout.newTab().setText("Sinhala"));
+        tabLayout.addTab(tabLayout.newTab().setText("සිංහල"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final LibraryAdapter adapter = new LibraryAdapter(getSupportFragmentManager(),this,tabLayout.getTabCount());
