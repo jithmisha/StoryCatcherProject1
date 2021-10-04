@@ -14,8 +14,10 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -47,7 +49,7 @@ public class MyLibraryScreen extends AppCompatActivity {
         myLibraryDataViewHolder = new MyLibraryDataViewHolder(getApplicationContext(), myLibraryDataList);
         myLibraryRecyclerView.setAdapter(myLibraryDataViewHolder);
 
-        fstore.collection("Favourites").document(currentKidID)
+        /*fstore.collection("Favourites").document(currentKidID).
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -58,11 +60,26 @@ public class MyLibraryScreen extends AppCompatActivity {
                                 myLibraryDataList.add(data);
                                 myLibraryDataViewHolder.notifyDataSetChanged();
                             }
-                        }else {
-                            Toast.makeText(getContext(),"Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+*/
+        MyLibraryDataClass obj = new MyLibraryDataClass();
+        String ID = obj.getID();
+
+        fstore.collection("Kids").document(currentKidID).collection("Favourites")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot doc:task.getResult()){
+                        MyLibraryDataClass data = doc.toObject(MyLibraryDataClass.class);
+                        myLibraryDataList.add(data);
+                        myLibraryDataViewHolder.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
 
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);

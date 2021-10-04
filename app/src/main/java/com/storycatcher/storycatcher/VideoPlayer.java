@@ -77,10 +77,18 @@ public class VideoPlayer extends AppCompatActivity {
                 hashMap.put("timeStamp", timestamp);
                 hashMap.put("vide", uri_str );
 
-                fstore.collection("Favourites").document(kidID).collection(currentBookID).add(hashMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                /*fstore.collection("Favourites").document(kidID).collection(currentBookID)
+                        .add(hashMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(VideoPlayer.this, "Profile created successfully", Toast.LENGTH_SHORT).show();
+                    }
+                });*/
+                fstore.collection("Kids").document(kidID).collection("Favourites").document(currentBookID)
+                        .set(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(VideoPlayer.this, "Added successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
