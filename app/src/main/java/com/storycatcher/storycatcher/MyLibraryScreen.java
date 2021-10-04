@@ -35,7 +35,7 @@ public class MyLibraryScreen extends AppCompatActivity {
         String currentKidID = getIntent().getStringExtra("currentKid_ID");
         fstore = FirebaseFirestore.getInstance();
 
-        //myLibraryRecyclerView = findViewById(R.id);
+        myLibraryRecyclerView = findViewById(R.id.myLibraryRecyclerView);
 
 
         GridLayoutManager layoutManager1=new GridLayoutManager(getApplicationContext(),3);
