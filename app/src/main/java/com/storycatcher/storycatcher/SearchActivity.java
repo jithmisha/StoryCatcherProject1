@@ -34,7 +34,7 @@ import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
     private EditText searchField;
-    private ImageButton searchImgBtn;
+    private ImageButton settingsBtn;
     private RecyclerView searchRecyclerView;
     FirebaseFirestore fstore;
     ArrayList<SearchDataClass> searchDataClassArrayList;
@@ -46,7 +46,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         String currentKidID = getIntent().getStringExtra("currentKid_ID");
         searchField = findViewById(R.id.searchField);
-        searchImgBtn = findViewById(R.id.searchimgbtn);
+        settingsBtn = findViewById(R.id.settingsBtn);
         searchRecyclerView = findViewById(R.id.searchRecyclerView);
         fstore = FirebaseFirestore.getInstance();
 
@@ -94,12 +94,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        searchImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //searchData();
-            }
-        });
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
         Menu menu =bottomNavigationView.getMenu();
@@ -137,6 +131,14 @@ public class SearchActivity extends AppCompatActivity {
                         break;
                 }
                 return false;
+            }
+        });
+
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchActivity.this,Settings.class);
+                startActivity(intent);
             }
         });
     }
