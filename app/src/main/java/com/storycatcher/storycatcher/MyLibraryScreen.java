@@ -49,23 +49,6 @@ public class MyLibraryScreen extends AppCompatActivity {
         myLibraryDataViewHolder = new MyLibraryDataViewHolder(getApplicationContext(), myLibraryDataList);
         myLibraryRecyclerView.setAdapter(myLibraryDataViewHolder);
 
-        /*fstore.collection("Favourites").document(currentKidID).
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for (QueryDocumentSnapshot document:task.getResult()){
-                                MyLibraryDataClass data = document.toObject(MyLibraryDataClass.class);
-                                myLibraryDataList.add(data);
-                                myLibraryDataViewHolder.notifyDataSetChanged();
-                            }
-                        }
-                    }
-                });
-*/
-        MyLibraryDataClass obj = new MyLibraryDataClass();
-        String ID = obj.getID();
 
         fstore.collection("Kids").document(currentKidID).collection("Favourites")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -81,6 +64,18 @@ public class MyLibraryScreen extends AppCompatActivity {
             }
         });
 
+        //Playing Video
+        myLibraryDataViewHolder.onRecyclerViewClick(new MyLibraryDataViewHolder.onRecyclerViewClick() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getApplicationContext(), VideoPlayer.class);
+                intent.putExtra("video",myLibraryDataList.get(position).getURL());
+                intent.putExtra("ID",myLibraryDataList.get(position).getID());
+                intent.putExtra("Title",myLibraryDataList.get(position).getTitle());
+                intent.putExtra("imageUrl",myLibraryDataList.get(position).getImageUrl());
+                startActivity(intent);
+            }
+        });
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
         Menu menu = bottomNavigationView.getMenu();

@@ -57,7 +57,7 @@ public class SearchDataViewHolder extends RecyclerView.Adapter<SearchDataViewHol
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.imgSearchItem);
-            title= itemView.findViewById(R.id.txtSearchName);
+            title = itemView.findViewById(R.id.txtSearchName);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

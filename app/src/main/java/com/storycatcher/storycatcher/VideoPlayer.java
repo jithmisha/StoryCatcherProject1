@@ -1,5 +1,7 @@
 package com.storycatcher.storycatcher;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -29,9 +31,13 @@ import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 
@@ -42,6 +48,8 @@ public class VideoPlayer extends AppCompatActivity {
     ImageView exoMute,exoFav;
     ExtractorsFactory extractorsFactory;
     FirebaseFirestore fstore;
+    String kidID, currentBookID, currentBookTitle, bookImage, uri_str;
+    boolean isInFavourites = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,37 +65,29 @@ public class VideoPlayer extends AppCompatActivity {
 
         //Read from shared preferences
         SharedPreferences sharedPref = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
-        String kidID = sharedPref.getString("kidID", "error");
+        kidID = sharedPref.getString("kidID", "error");
 
         //Getting selected book data
         Intent intent = getIntent();
-        String currentBookID = intent.getStringExtra("ID");
-        String currentBookTitle = intent.getStringExtra("Title");
-        String bookImage = intent.getStringExtra("imageUrl");
-        String uri_str=intent.getStringExtra("video");
+        currentBookID = intent.getStringExtra("ID");
+        currentBookTitle = intent.getStringExtra("Title");
+        bookImage = intent.getStringExtra("imageUrl");
+        uri_str = intent.getStringExtra("video");
+
+        checkFavourites();
 
         exoFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Long timestamp = System.currentTimeMillis();
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("ID", currentBookID);
-                hashMap.put("Title", currentBookTitle);
-                hashMap.put("imageUrl", bookImage);
-                hashMap.put("timeStamp", timestamp);
-                hashMap.put("URL", uri_str );
-
-                fstore.collection("Kids").document(kidID).collection("Favourites").document(currentBookID)
-                        .set(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(VideoPlayer.this, "Added successfully", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                if(isInFavourites){
+                    removeFromFavourites();
+                }else{
+                    addToFavourites();
+                }
             }
         });
 
-        if(intent!=null){
+        if(intent != null){
             videoUri= Uri.parse(uri_str);
         }
 
@@ -108,6 +108,60 @@ public class VideoPlayer extends AppCompatActivity {
         exoPlayer= ExoPlayerFactory.newSimpleInstance(this,trackSelector);
         extractorsFactory = new DefaultExtractorsFactory();
         playVideo();
+
+    }
+
+    public void checkFavourites(){
+        fstore.collection("Kids").document(kidID).collection("Favourites").document(currentBookID).
+                addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                        isInFavourites = value.exists();
+                        if(isInFavourites){
+                            exoFav.setBackgroundResource(R.drawable.ic_fav);
+                        }else{
+                            exoFav.setBackgroundResource(R.drawable.ic_fav_border);
+                        }
+                    }
+                });
+    }
+
+    public void addToFavourites(){
+        Long timestamp = System.currentTimeMillis();
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("ID", currentBookID);
+        hashMap.put("Title", currentBookTitle);
+        hashMap.put("imageUrl", bookImage);
+        hashMap.put("timeStamp", timestamp);
+        hashMap.put("URL", uri_str );
+
+        fstore.collection("Kids").document(kidID).collection("Favourites").document(currentBookID)
+                .set(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(VideoPlayer.this, "Added To My Library", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(VideoPlayer.this, "Could Not Add to My Library", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void removeFromFavourites(){
+        fstore.collection("Kids").document(kidID).collection("Favourites").document(currentBookID)
+                .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(VideoPlayer.this, "Removed From My Library", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(VideoPlayer.this, "Could Not Remove From My Library", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

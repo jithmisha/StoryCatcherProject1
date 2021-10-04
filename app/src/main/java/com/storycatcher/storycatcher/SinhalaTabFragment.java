@@ -106,7 +106,7 @@ public class SinhalaTabFragment extends Fragment {
                 intent.putExtra("video",sinhalaSongsList.get(position).getURL());
                 intent.putExtra("ID",sinhalaSongsList.get(position).getID());
                 intent.putExtra("Title",sinhalaSongsList.get(position).getTitle());
-                intent.putExtra("imageUrl",sinhalaBooksList.get(position).getImageUrl());
+                intent.putExtra("imageUrl",sinhalaSongsList.get(position).getImageUrl());
                 startActivity(intent);
             }
         });
@@ -134,7 +134,7 @@ public class SinhalaTabFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             for (QueryDocumentSnapshot document:task.getResult()){
-                                SinhalaBookDataClass data= document.toObject(SinhalaBookDataClass.class);
+                                SinhalaBookDataClass data = document.toObject(SinhalaBookDataClass.class);
                                 sinhalaBooksList.add(data);
                                 sinhalaBookViewHolder.notifyDataSetChanged();
                             }
@@ -153,7 +153,7 @@ public class SinhalaTabFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             for (QueryDocumentSnapshot document:task.getResult()){
-                                SinhalaSongDataClass data= document.toObject(SinhalaSongDataClass.class);
+                                SinhalaSongDataClass data = document.toObject(SinhalaSongDataClass.class);
                                 sinhalaSongsList.add(data);
                                 sinhalaSongViewHolder.notifyDataSetChanged();
                             }
@@ -172,7 +172,7 @@ public class SinhalaTabFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             for (QueryDocumentSnapshot document:task.getResult()){
-                                SinhalaPoemDataClass data= document.toObject(SinhalaPoemDataClass.class);
+                                SinhalaPoemDataClass data = document.toObject(SinhalaPoemDataClass.class);
                                 sinhalaPoemsList.add(data);
                                 sinhalaPoemViewHolder.notifyDataSetChanged();
                             }
