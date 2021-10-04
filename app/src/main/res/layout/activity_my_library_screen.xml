@@ -24,7 +24,7 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="421dp"
+        android:layout_width="match_parent"
         android:layout_height="518dp"
         android:src="@drawable/bg_curve_green"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
