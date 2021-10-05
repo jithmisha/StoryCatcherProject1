@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryCatcher">
+        <activity android:name=".profilePictureActivity"></activity>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VideoPlayer"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
+        <activity
+            android:name=".VideoPlayer"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden" />
         <activity android:name=".ScreenTime" />
         <activity
             android:name=".Profile"
@@ -36,11 +38,12 @@
         <activity
             android:name=".Settings"
             android:exported="true" />
-        <activity android:name=".GamesScreen"></activity>
-        <activity android:name=".MyLibraryScreen"></activity>
-        <activity android:name=".SearchActivity" android:windowSoftInputMode="adjustPan">
-        </activity>
-        <activity android:name=".LibraryScreen"></activity>
+        <activity android:name=".GamesScreen" />
+        <activity android:name=".MyLibraryScreen" />
+        <activity
+            android:name=".SearchActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".LibraryScreen" />
         <activity android:name=".UserList" />
         <activity android:name=".CreateProfile" />
         <activity android:name=".PasswordActivity" />

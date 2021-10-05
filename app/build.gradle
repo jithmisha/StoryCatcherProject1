@@ -49,6 +49,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     //Firebase Ui
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.0'
     implementation 'com.firebaseui:firebase-ui-database:8.0.0'

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFD85B"
+    tools:context=".profilePictureActivity">
+
+    <TextView
+        android:id="@+id/profiletxt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/risque"
+        android:text="PROFILE"
+        android:textColor="#6B302F"
+        android:textSize="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/profiletxt2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBackBtn" />
+
+    <ImageButton
+        android:id="@+id/imgBackBtn"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#FFD85B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/yellowback" />
+
+    <TextView
+        android:id="@+id/profiletxt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/risque"
+        android:text="PICTURE"
+        android:textColor="#6B302F"
+        android:textSize="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/pictureRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/savebtn"
+        android:layout_width="324dp"
+        android:layout_height="56dp"
+        android:text="SAVE"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#FFBB33"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pictureRecyclerView"
+        android:layout_width="231dp"
+        android:layout_height="471dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/savebtn"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/mainPicImg"
+        android:layout_width="130dp"
+        android:layout_height="132dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/dragon_1"
+        app:civ_circle_background_color="#FFF996"
+        app:layout_constraintBottom_toTopOf="@+id/savebtn"
+        app:layout_constraintEnd_toStartOf="@+id/pictureRecyclerView"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profiletxt2"
+        app:layout_constraintVertical_bias="0.304" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

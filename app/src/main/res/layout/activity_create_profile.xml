@@ -60,7 +60,7 @@
         android:layout_width="317dp"
         android:layout_height="56dp"
         android:layout_marginBottom="4dp"
-        android:text="CREATE"
+        android:text="NEXT"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="#FFBB33"
