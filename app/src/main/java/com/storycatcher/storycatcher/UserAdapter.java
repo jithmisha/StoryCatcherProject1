@@ -1,22 +1,23 @@
 package com.storycatcher.storycatcher;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<User> list; //User class
+    ArrayList<UserDataClass> list; //User class
     private onRecyclerViewClick listner;
 
     public interface onRecyclerViewClick{
@@ -27,7 +28,7 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>
         this.listner = listner;
     }
 
-    public UserAdapter(Context context, ArrayList<User> list) {
+    public UserAdapter(Context context, ArrayList<UserDataClass> list) {
         this.context = context;
         this.list = list;
     }
@@ -42,10 +43,12 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        User user = list.get(position);
-        holder.kidsId.setText(user.getKidID());
-        holder.kidsName.setText(user.getKidsName());
-        holder.kidsAge.setText(String.valueOf(user.getKidsAge()));
+        UserDataClass userDataClass = list.get(position);
+        holder.kidsId.setText(userDataClass.getKidID());
+        holder.kidsName.setText(userDataClass.getKidsName());
+        holder.kidsAge.setText(String.valueOf(userDataClass.getKidsAge()));
+        Glide.with(context).load(list.get(position).getPicUrl()).into(holder.profilePic);
+
     }
 
     @Override
@@ -56,6 +59,7 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView kidsId,kidsName,kidsAge;
+        ImageView profilePic;
 
 
         public MyViewHolder(@NonNull View itemView, onRecyclerViewClick listner) {
@@ -64,6 +68,8 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>
             kidsId = itemView.findViewById(R.id.txtviewKidsId);
             kidsName = itemView.findViewById(R.id.txtviewKidsName);
             kidsAge = itemView.findViewById(R.id.txtviewKidsAge);
+            profilePic = itemView.findViewById(R.id.profilePic);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

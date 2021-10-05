@@ -24,7 +24,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/profilePic"
                 android:layout_width="123dp"
                 android:layout_height="112dp"
                 android:layout_margin="5dp"
@@ -48,7 +48,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/txtviewKidsName"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/profilePic"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -64,7 +64,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/txtviewKidsAge"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2" />
+                app:layout_constraintEnd_toStartOf="@+id/profilePic" />
 
             <TextView
                 android:id="@+id/txtviewKidsAge"
@@ -78,7 +78,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2" />
+                app:layout_constraintEnd_toStartOf="@+id/profilePic" />
 
             <TextView
                 android:id="@+id/textView"

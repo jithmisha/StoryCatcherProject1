@@ -1,38 +1,24 @@
 package com.storycatcher.storycatcher;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 
 public class  UserList extends AppCompatActivity {
@@ -40,7 +26,7 @@ public class  UserList extends AppCompatActivity {
     RecyclerView recyclerView;
     FirebaseAuth mAuth;
     UserAdapter userAdapter;
-    ArrayList<User> list;
+    ArrayList<UserDataClass> list;
     FirebaseFirestore fStore;
     private ImageButton backbutton;
     private Button createNewProfilebtn;
@@ -105,7 +91,7 @@ public class  UserList extends AppCompatActivity {
                     }
                     for(DocumentChange dc: value.getDocumentChanges()){
                         if(dc.getType() == DocumentChange.Type.ADDED){
-                            list.add(dc.getDocument().toObject(User.class));
+                            list.add(dc.getDocument().toObject(UserDataClass.class));
                         }
                         userAdapter.notifyDataSetChanged();
                     }

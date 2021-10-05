@@ -1,11 +1,11 @@
 package com.storycatcher.storycatcher;
 
-public class UserClass {
+public class ParentClass {
     public String emailAddress;
 
-    public UserClass() {
+    public ParentClass() {
     }
-    public UserClass(String emailAddress) {
+    public ParentClass(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 

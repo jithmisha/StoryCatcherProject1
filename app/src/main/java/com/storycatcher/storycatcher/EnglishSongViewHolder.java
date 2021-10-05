@@ -46,15 +46,6 @@ public class EnglishSongViewHolder extends RecyclerView.Adapter<EnglishSongViewH
         holder.name.setText(englishSongList.get(position).getTitle());
         Glide.with(bContext).load(englishSongList.get(position).getImageUrl()).into(holder.SongImg);
 
-        /*holder.itemView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),VideoPlayer.class);
-                //intent.putExtra("videoId",item.getId());
-                intent.putExtra("video",englishSongList.get(position).getURL());
-                v.getContext().startActivity(intent);
-            }
-        });*/
     }
 
     @Override
@@ -69,8 +60,8 @@ public class EnglishSongViewHolder extends RecyclerView.Adapter<EnglishSongViewH
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            SongImg= itemView.findViewById(R.id.imgSong);
-            name= itemView.findViewById(R.id.txtSongName);
+            SongImg = itemView.findViewById(R.id.imgSong);
+            name = itemView.findViewById(R.id.txtSongName);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

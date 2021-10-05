@@ -1,14 +1,14 @@
 package com.storycatcher.storycatcher;
 
-public class User {
+public class UserDataClass {
 
     String kidID,kidsName,kidsAge,picID,picUrl;
 
 
-    public User() {
+    public UserDataClass() {
 
     }
-    public User(String kidID, String kidsName, String kidsAge, String picUrl, String picID) {
+    public UserDataClass(String kidID, String kidsName, String kidsAge, String picUrl, String picID) {
         this.kidID = kidID;
         this.kidsName = kidsName;
         this.kidsAge = kidsAge;

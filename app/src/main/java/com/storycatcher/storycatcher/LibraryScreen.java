@@ -22,7 +22,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class LibraryScreen extends AppCompatActivity {
     Context context;
@@ -140,7 +139,7 @@ public class LibraryScreen extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         fstore.collection("Kids").document(currentKidID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            User user = new User();
+            UserDataClass userDataClass = new UserDataClass();
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){

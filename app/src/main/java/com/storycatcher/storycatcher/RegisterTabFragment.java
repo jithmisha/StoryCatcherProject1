@@ -79,7 +79,7 @@ public class    RegisterTabFragment extends Fragment {
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                        UserClass userInfo= new UserClass(mail);
+                                        ParentClass userInfo = new ParentClass(mail);
                                         userID=mAuth.getCurrentUser().getUid();
                                         DocumentReference documentReference=fstore.collection("Users").document(userID);
                                         documentReference.set(userInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
