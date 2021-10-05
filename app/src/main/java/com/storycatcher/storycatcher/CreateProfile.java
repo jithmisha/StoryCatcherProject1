@@ -75,7 +75,8 @@ public class CreateProfile extends AppCompatActivity {
                     documentReference.set(kidsProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(CreateProfile.this, "Profile created successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateProfile.this, "Profile details added successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(CreateProfile.this, ProfilePictureActivity.class));
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {

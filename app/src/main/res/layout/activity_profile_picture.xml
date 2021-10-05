@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFD85B"
-    tools:context=".profilePictureActivity">
+    tools:context=".ProfilePictureActivity">
 
     <TextView
         android:id="@+id/profiletxt1"

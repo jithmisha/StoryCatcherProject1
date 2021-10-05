@@ -2,20 +2,29 @@ package com.storycatcher.storycatcher;
 
 public class ProfilePictureDataClass {
 
-    String profilePicUrl;
+    String picUrl,picID;
 
     public ProfilePictureDataClass() {
     }
 
-    public ProfilePictureDataClass(String profilePicUrl) {
-        this.profilePicUrl = profilePicUrl;
+    public ProfilePictureDataClass(String picUrl, String picID) {
+        this.picUrl = picUrl;
+        this.picID = picID;
     }
 
-    public String getProfilePicUrl() {
-        return profilePicUrl;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setProfilePicUrl(String profilePicUrl) {
-        this.profilePicUrl = profilePicUrl;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public String getPicID() {
+        return picID;
+    }
+
+    public void setPicID(String picID) {
+        this.picID = picID;
     }
 }
