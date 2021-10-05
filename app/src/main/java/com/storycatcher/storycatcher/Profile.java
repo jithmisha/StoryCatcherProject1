@@ -99,8 +99,8 @@ public class Profile extends AppCompatActivity {
     }
 
     public void updateProfile(){
-        String kidNameUpdate=currentKidsName.getText().toString();
-        String kidAgeUpdate=currentKidsAge.getText().toString();
+        String kidNameUpdate = currentKidsName.getText().toString();
+        String kidAgeUpdate = currentKidsAge.getText().toString();
 
         final DocumentReference sfDocRef = fstore.collection("Kids").document(kidID);
         fstore.runTransaction(new Transaction.Function<Void>() {

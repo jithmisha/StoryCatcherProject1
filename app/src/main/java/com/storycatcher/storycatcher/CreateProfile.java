@@ -51,6 +51,8 @@ public class CreateProfile extends AppCompatActivity {
                 String kidsName = kidName.getText().toString();
                 String kidsAge = kidAge.getText().toString();
                 String parentID = mAuth.getCurrentUser().getUid();
+                String picID = "";
+                String picUrl = "";
 
 
                 if (kidsID.isEmpty()) {
@@ -70,7 +72,7 @@ public class CreateProfile extends AppCompatActivity {
                 }
 
                 try {
-                    CreateProfileClass kidsProfile = new CreateProfileClass(kidsID, kidsName, kidsAge, parentID);
+                    CreateProfileClass kidsProfile = new CreateProfileClass(kidsID, kidsName, kidsAge, parentID, picID, picUrl);
                     DocumentReference documentReference = fStore.collection("Kids").document(kidsID);
                     documentReference.set(kidsProfile).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

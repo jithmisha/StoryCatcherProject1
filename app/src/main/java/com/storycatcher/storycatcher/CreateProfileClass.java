@@ -1,16 +1,18 @@
 package com.storycatcher.storycatcher;
 
 public class CreateProfileClass {
-    public String kidID, kidsName, parentID,kidsAge;
+    public String kidID, kidsName, parentID,kidsAge,picID,picUrl;
 
     public CreateProfileClass() {
     }
 
-    public CreateProfileClass(String kidID, String kidsName,String kidsAge, String parentID) {
+    public CreateProfileClass(String kidID, String kidsName,String kidsAge, String parentID, String picUrl, String picID) {
         this.kidID = kidID;
         this.kidsName = kidsName;
         this.parentID = parentID;
         this.kidsAge = kidsAge;
+        this.picUrl = picUrl;
+        this.picID = picID;
     }
 
     public String getKidID() {
@@ -43,5 +45,21 @@ public class CreateProfileClass {
 
     public void setKidsAge(String kidsAge) {
         this.kidsAge = kidsAge;
+    }
+
+    public String getPicID() {
+        return picID;
+    }
+
+    public void setPicID(String picID) {
+        this.picID = picID;
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 }

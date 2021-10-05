@@ -16,11 +16,15 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Transaction;
 
 import java.security.PrivateKey;
 import java.util.ArrayList;
@@ -91,11 +95,22 @@ public class ProfilePictureActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProfilePictureDataClass data = new ProfilePictureDataClass(selectedPicID,selectedPicID);
-                fstore.collection("Kids").document(kidID).set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                DocumentReference sfDocRef = fstore.collection("Kids").document(kidID);
+                fstore.runTransaction(new Transaction.Function<Void>() {
+                    @Nullable
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(ProfilePictureActivity.this, "added successfully", Toast.LENGTH_SHORT).show();
+                    public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
+                        DocumentSnapshot snapshot = transaction.get(sfDocRef);
+                        transaction.update(sfDocRef,"picID",selectedPicID);
+                        transaction.update(sfDocRef,"picUrl",selectedPicUrl);
+                        return null;
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(ProfilePictureActivity.this, "Profile Picture Added successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfilePictureActivity.this, "Profile Created Successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ProfilePictureActivity.this, UserList.class));
                     }
                 });
             }
