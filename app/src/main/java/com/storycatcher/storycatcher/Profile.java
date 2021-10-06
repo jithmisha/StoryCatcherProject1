@@ -36,7 +36,7 @@ public class Profile extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fstore;
     String kidID;
-    private CircleImageView mainPicImg;
+    private ImageButton mainPicImg;
     private int del= 100;
 
 
