@@ -98,7 +98,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-                    DocumentSnapshot documentSnapshot=task.getResult();
+                    DocumentSnapshot documentSnapshot = task.getResult();
                     String kidNameResult = task.getResult().getString("kidsName");
                     String kidAgeResult  = task.getResult().getString("kidsAge");
                     String kidProfilePic = task.getResult().getString("picUrl");
