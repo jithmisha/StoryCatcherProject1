@@ -99,9 +99,4 @@ public class  UserList extends AppCompatActivity {
         });
     }
 
-    public void onStart() {
-        super.onStart();
-
-    }
-
 }

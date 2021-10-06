@@ -86,7 +86,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 selectedPicID = profilePictureArrayList.get(position).getPicID();
                 selectedPicUrl = profilePictureArrayList.get(position).getPicUrl();
-                if(selectedPicUrl !=null ){
+                if(selectedPicUrl != null ){
                     Glide.with(getApplicationContext()).load(selectedPicUrl).into(mainPicImg);
                 }
             }

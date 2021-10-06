@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +27,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Transaction;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Profile extends AppCompatActivity {
     private ImageButton BackButton;
     private Button saveButton;
@@ -33,6 +36,7 @@ public class Profile extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fstore;
     String kidID;
+    private CircleImageView mainPicImg;
     private int del= 100;
 
 
@@ -41,20 +45,20 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        BackButton=findViewById(R.id.imgBackBtnProfile);
-        userEmail=findViewById(R.id.UserEmail);
-        currentKidsName =findViewById(R.id.kidsNamePro);
-        currentKidsId =findViewById(R.id.kidsIdPro);
-        currentKidsAge =findViewById(R.id.kidsAgePro);
-        saveButton=findViewById(R.id.btnSavePro);
-        mAuth=FirebaseAuth.getInstance();
-        fstore=FirebaseFirestore.getInstance();
+        BackButton = findViewById(R.id.imgBackBtnProfile);
+        userEmail = findViewById(R.id.UserEmail);
+        currentKidsName = findViewById(R.id.kidsNamePro);
+        currentKidsId = findViewById(R.id.kidsIdPro);
+        currentKidsAge = findViewById(R.id.kidsAgePro);
+        saveButton = findViewById(R.id.btnSavePro);
+        mAuth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
+        mainPicImg = findViewById(R.id.imgProfilePicture);
 
         //Read from shared preferences
         SharedPreferences sharedPref = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
         kidID = sharedPref.getString("kidID", "error");
 
-        displayData();
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,19 +88,24 @@ public class Profile extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot documentSnapshot=task.getResult();
-                    String kidNameResult=task.getResult().getString("kidsName");
-                    String kidAgeResult=task.getResult().getString("kidsAge");
+                    String kidNameResult = task.getResult().getString("kidsName");
+                    String kidAgeResult  = task.getResult().getString("kidsAge");
+                    String kidProfilePic = task.getResult().getString("picUrl");
 
                     currentKidsName.setText(kidNameResult);
                     currentKidsName.setSelection(kidNameResult.length());
 
                     currentKidsAge.setText(kidAgeResult);
+
+                    Glide.with(getApplicationContext()).load(kidProfilePic).into(mainPicImg);
                 }else{
                     Toast.makeText(getApplicationContext(),"No such document", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
+
 
     public void updateProfile(){
         String kidNameUpdate = currentKidsName.getText().toString();
@@ -124,5 +133,11 @@ public class Profile extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        displayData();
     }
 }
