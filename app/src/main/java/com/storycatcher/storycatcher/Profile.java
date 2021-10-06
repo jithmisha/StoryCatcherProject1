@@ -35,9 +35,10 @@ public class Profile extends AppCompatActivity {
     private EditText userEmail, currentKidsName, currentKidsId, currentKidsAge;
     FirebaseAuth mAuth;
     FirebaseFirestore fstore;
-    String kidID;
+    String kidID, string = "b";
     private ImageButton mainPicImg;
     private int del= 100;
+
 
 
     @Override
@@ -79,6 +80,7 @@ public class Profile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Profile.this, ProfilePictureActivity.class);
                 intent.putExtra("kidID",kidID);
+                intent.putExtra("num", string);
                 startActivity(intent);
             }
         });

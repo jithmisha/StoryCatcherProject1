@@ -42,9 +42,10 @@ public class ProfilePictureActivity extends AppCompatActivity {
     ProfilePictureViewHolder profilePictureViewHolder;
     ArrayList<ProfilePictureDataClass> profilePictureArrayList;
     FirebaseFirestore fstore;
-    String selectedPicUrl, selectedPicID, kidID, img;
+    String selectedPicUrl, selectedPicID, kidID;
     private Button saveButton;
     private ImageButton backButton;
+
 
 
     @Override
@@ -60,7 +61,8 @@ public class ProfilePictureActivity extends AppCompatActivity {
         //Getting kids ID
         Intent intent = getIntent();
         kidID = intent.getStringExtra("kidID");
-        //Toast.makeText(ProfilePictureActivity.this, kidID, Toast.LENGTH_SHORT).show();
+        String chk = intent.getStringExtra("num");
+        Toast.makeText(ProfilePictureActivity.this, chk, Toast.LENGTH_SHORT).show();
 
         GridLayoutManager layoutManager1 = new GridLayoutManager(getApplicationContext(),2);
         pictureRecyclerView.setLayoutManager(layoutManager1);
@@ -129,14 +131,28 @@ public class ProfilePictureActivity extends AppCompatActivity {
                         transaction.update(sfDocRef,"picUrl",selectedPicUrl);
                         return null;
                     }
-                }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                }).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(ProfilePictureActivity.this, "Profile Picture Added successfully", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(ProfilePictureActivity.this, "Profile Created Successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ProfilePictureActivity.this, UserList.class));
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            if(chk.equals("a")){
+                                Toast.makeText(ProfilePictureActivity.this, "Profile Picture Added successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfilePictureActivity.this, "Profile Created Successfully", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(ProfilePictureActivity.this, UserList.class));
+                            }else{
+                                Toast.makeText(ProfilePictureActivity.this, "Profile Picture Updated successfully", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
                     }
                 });
+            /*.addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+
+                    }
+                });*/
             }
         });
     }

@@ -29,6 +29,7 @@ public class CreateProfile extends AppCompatActivity {
     private EditText kidID, kidName, kidAge;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
+    String string = "a";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,7 @@ public class CreateProfile extends AppCompatActivity {
                             Toast.makeText(CreateProfile.this, "Profile details added successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), ProfilePictureActivity.class);
                             intent.putExtra("kidID",kidsID);
+                            intent.putExtra("num", string);
                             startActivity(intent);
 
                         }
