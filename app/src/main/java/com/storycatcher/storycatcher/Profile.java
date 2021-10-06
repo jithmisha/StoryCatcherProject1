@@ -73,6 +73,15 @@ public class Profile extends AppCompatActivity {
                 finish();
             }
         });
+
+        mainPicImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, ProfilePictureActivity.class);
+                intent.putExtra("kidID",kidID);
+                startActivity(intent);
+            }
+        });
     }
 
     public void displayData(){
@@ -104,8 +113,6 @@ public class Profile extends AppCompatActivity {
             }
         });
     }
-
-
 
     public void updateProfile(){
         String kidNameUpdate = currentKidsName.getText().toString();

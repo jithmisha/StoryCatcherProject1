@@ -1,6 +1,7 @@
 package com.storycatcher.storycatcher;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,8 +18,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -50,7 +56,7 @@ public class MyLibraryScreen extends AppCompatActivity {
         myLibraryRecyclerView.setAdapter(myLibraryDataViewHolder);
 
 
-        fstore.collection("Kids").document(currentKidID).collection("Favourites")
+        /*fstore.collection("Kids").document(currentKidID).collection("Favourites")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -62,8 +68,19 @@ public class MyLibraryScreen extends AppCompatActivity {
                     }
                 }
             }
+        });*/
+        CollectionReference colRef = fstore.collection("Kids").document(currentKidID).collection("Favourites");
+        colRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                for(DocumentChange dc: value.getDocumentChanges()){
+                    if(dc.getType() == DocumentChange.Type.ADDED){
+                        myLibraryDataList.add(dc.getDocument().toObject(MyLibraryDataClass.class));
+                    }
+                    myLibraryDataViewHolder.notifyDataSetChanged();
+                }
+            }
         });
-
         //Playing Video
         myLibraryDataViewHolder.onRecyclerViewClick(new MyLibraryDataViewHolder.onRecyclerViewClick() {
             @Override

@@ -51,8 +51,8 @@ public class CreateProfile extends AppCompatActivity {
                 String kidsName = kidName.getText().toString();
                 String kidsAge = kidAge.getText().toString();
                 String parentID = mAuth.getCurrentUser().getUid();
-                String picID = "";
-                String picUrl = "";
+                String picID = null;
+                String picUrl = null;
 
 
                 if (kidsID.isEmpty()) {

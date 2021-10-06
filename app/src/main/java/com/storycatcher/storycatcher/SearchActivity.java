@@ -155,7 +155,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
     private void searchData(String type) {
-        Query query=fstore.collection("Full Library").orderBy("Title").startAt(type).endAt(type+ "\uf8ff");
+        Query query = fstore.collection("Full Library").orderBy("Title").startAt(type).endAt(type+ "\uf8ff");
         if(!type.isEmpty()){
             query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
