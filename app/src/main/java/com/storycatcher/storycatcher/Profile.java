@@ -120,6 +120,17 @@ public class Profile extends AppCompatActivity {
         String kidNameUpdate = currentKidsName.getText().toString();
         String kidAgeUpdate = currentKidsAge.getText().toString();
 
+        if(kidNameUpdate.isEmpty()){
+            currentKidsName.setError("Name Cannot Be Left Empty");
+            currentKidsName.requestFocus();
+            return;
+        }
+        if(kidAgeUpdate.isEmpty()){
+            currentKidsAge.setError("Age Cannot Be Left Empty");
+            currentKidsAge.requestFocus();
+            return;
+        }
+
         final DocumentReference sfDocRef = fstore.collection("Kids").document(kidID);
         fstore.runTransaction(new Transaction.Function<Void>() {
             @Override
