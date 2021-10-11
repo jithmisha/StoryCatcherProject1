@@ -156,6 +156,11 @@ public class LibraryScreen extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LibraryScreen.this,UserList.class);
+        startActivity(intent);
     }
 }

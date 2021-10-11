@@ -42,7 +42,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
     ProfilePictureViewHolder profilePictureViewHolder;
     ArrayList<ProfilePictureDataClass> profilePictureArrayList;
     FirebaseFirestore fstore;
-    String selectedPicUrl, selectedPicID, kidID, img;
+    String selectedPicUrl, selectedPicID, kidID;
     private Button saveButton;
     private ImageButton backButton;
 
@@ -93,21 +93,19 @@ public class ProfilePictureActivity extends AppCompatActivity {
             }
         });
 
-        /*fstore.collection("kids").document(kidID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        //display current profile picture if user already has a profile picture
+        fstore.collection("Kids").document(kidID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-                    DocumentSnapshot documentSnapshot=task.getResult();
-                    String immg = task.getResult().getString("picID");
-                    Toast.makeText(ProfilePictureActivity.this, immg, Toast.LENGTH_SHORT).show();
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    String kidProfilePic = task.getResult().getString("picUrl");
+                    if(kidProfilePic != null) {
+                        Glide.with(getApplicationContext()).load(kidProfilePic).into(mainPicImg);
+                    }
                 }
             }
         });
-
-        if(img != null){
-            Glide.with(getApplicationContext()).load(img).into(mainPicImg);
-        }*/
-
 
         //select profile pic
         profilePictureViewHolder.onRecyclerViewClick(new ProfilePictureViewHolder.onRecyclerViewClick() {

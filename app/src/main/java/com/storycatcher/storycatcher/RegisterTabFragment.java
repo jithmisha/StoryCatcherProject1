@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.regex.Pattern;
+
 
 public class    RegisterTabFragment extends Fragment {
 
@@ -33,6 +35,8 @@ public class    RegisterTabFragment extends Fragment {
     private Button objectButton;//Register button
     private ProgressBar objectProgressBar;
     float v=0;
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile("(?=\\S+$)");
+
     String userID;
 //  private DatabaseReference reference;
 
@@ -40,11 +44,9 @@ public class    RegisterTabFragment extends Fragment {
     }
 
     public void createUser(){
-        String mail=registerEmail.getText().toString().trim();
-        String pass=registerPassword.getText().toString().trim();
-        String conpass=confpassword.getText().toString().trim();
-        String noWhiteSpace="\\A\\w{4,20}\\z";
-
+        String mail = registerEmail.getText().toString().trim();
+        String pass = registerPassword.getText().toString().trim();
+        String conpass = confpassword.getText().toString().trim();
 
         if(mail.isEmpty()){
             registerEmail.setError("Please enter email address");
@@ -65,6 +67,11 @@ public class    RegisterTabFragment extends Fragment {
             registerPassword.setError("Password length should be more than  8 characters");
             registerPassword.requestFocus();
             return;
+        }
+        if(!PASSWORD_PATTERN.matcher(pass).matches()){
+             registerPassword.setError("Password cannot have whitespaces");
+             registerPassword.requestFocus();
+             return;
         }
         if(!pass.equals(conpass)){
             confpassword.setError("Password Not matching");
