@@ -18,7 +18,8 @@
         app:layout_constraintBottom_toTopOf="@+id/profiletxt2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBackBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBackBtn"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/imgBackBtn"
@@ -37,12 +38,14 @@
         android:id="@+id/profiletxt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="460dp"
         android:fontFamily="@font/risque"
         android:text="PICTURE"
         android:textColor="#6B302F"
         android:textSize="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/pictureRecyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/savebtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -59,20 +62,24 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pictureRecyclerView"
-        android:layout_width="231dp"
-        android:layout_height="471dp"
+        android:layout_width="207dp"
+        android:layout_height="439dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/savebtn"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profiletxt2"
+        app:layout_constraintVertical_bias="1.0" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/mainPicImg"
-        android:layout_width="130dp"
-        android:layout_height="132dp"
+        android:layout_width="128dp"
+        android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:src="@drawable/dragon_1"
         app:civ_circle_background_color="#FFF996"
         app:layout_constraintBottom_toTopOf="@+id/savebtn"

@@ -11,16 +11,16 @@
         android:id="@+id/textView4"
         android:layout_width="328dp"
         android:layout_height="49dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/risque"
         android:gravity="center"
         android:text="PROFILE"
         android:textColor="#D9F6FC"
         android:textSize="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/imgProfilePicture"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBackBtnProfile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imgBackBtnProfile"
@@ -49,7 +49,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/kidsIdPro"
@@ -92,7 +95,7 @@
         android:id="@+id/UserEmail"
         android:layout_width="317dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/edit_text_bg"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
@@ -110,7 +113,6 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:fontFamily="@font/rosarivo"
         android:text="KIDS NAME"
         android:textColor="@color/black"
@@ -118,9 +120,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/kidsNamePro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintHorizontal_bias="0.248"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProfilePicture" />
+        app:layout_constraintTop_toBottomOf="@+id/imgProfilePicture"
+        app:layout_constraintVertical_bias="0.762" />
 
     <TextView
         android:id="@+id/textView12"
@@ -185,13 +188,14 @@
         android:id="@+id/imgProfilePicture"
         android:layout_width="117dp"
         android:layout_height="105dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintBottom_toTopOf="@+id/kidsNamePro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.133" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toTopOf="@+id/selectprofiletxt2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBackBtnSelectProfile"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
@@ -38,7 +38,7 @@
         android:id="@+id/selectprofiletxt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="36dp"
         android:fontFamily="@font/risque"
         android:text="PROFILE"
         android:textColor="#6B302F"
