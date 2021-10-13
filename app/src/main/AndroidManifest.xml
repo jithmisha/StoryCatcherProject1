@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryCatcher">
-        <activity android:name=".ProfilePictureActivity"></activity>
+        <activity android:name=".GameAdvanced"></activity>
+        <activity android:name=".GameIntermediate" />
+        <activity android:name=".GameLevels" />
+        <activity android:name=".GameEasy" />
+        <activity android:name=".ProfilePictureActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +46,7 @@
         <activity android:name=".MyLibraryScreen" />
         <activity
             android:name=".SearchActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".LibraryScreen" />
         <activity android:name=".UserList" />
         <activity android:name=".CreateProfile" />

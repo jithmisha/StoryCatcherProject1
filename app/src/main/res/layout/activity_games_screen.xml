@@ -23,53 +23,40 @@
         app:menu="@menu/menu_navigation" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="258dp"
-        android:layout_height="199dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        android:id="@+id/imgBtnGame1"
+        android:layout_width="329dp"
+        android:layout_height="223dp"
+        android:layout_marginTop="104dp"
+        android:backgroundTint="#AEC6CF"
+        android:src="@drawable/guess_the_words"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="260dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <ImageButton
         android:id="@+id/settingsbtn"
         android:layout_width="57dp"
         android:layout_height="51dp"
         android:backgroundTint="#FFE1A8"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/imgBtnGame1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.207"
+        app:layout_constraintVertical_bias="0.089"
         app:srcCompat="@drawable/settings" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/seoul_hangang_cb"
         android:text="GAMES"
         android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/imgBtnGame1"
         app:layout_constraintEnd_toStartOf="@+id/settingsbtn"
         app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"

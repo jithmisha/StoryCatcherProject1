@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class GamesScreen extends AppCompatActivity {
 
-    private ImageButton settingBtn;
+    private ImageButton settingBtn,imgBtnGame1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,8 @@ public class GamesScreen extends AppCompatActivity {
         setContentView(R.layout.activity_games_screen);
 
         settingBtn = findViewById(R.id.settingsbtn);
+        imgBtnGame1 = findViewById(R.id.imgBtnGame1);
+
         String  currentKidID = getIntent().getStringExtra("currentKid_ID");
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
@@ -67,6 +69,14 @@ public class GamesScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GamesScreen.this,Settings.class);
+                startActivity(intent);
+            }
+        });
+
+        imgBtnGame1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GamesScreen.this,GameLevels.class);
                 startActivity(intent);
             }
         });
