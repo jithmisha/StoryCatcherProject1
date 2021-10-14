@@ -2,10 +2,12 @@ package com.storycatcher.storycatcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -18,6 +20,7 @@ public class GameEasy extends AppCompatActivity {
     private TextView txtViewWord,txtViewInfo,txtCount;
     private EditText editTxtGuess;
     private Button btnCheck,btnNew;
+    private ImageButton imgBackBtn;
 
     private String currentWord;
     private int count=0;
@@ -39,6 +42,7 @@ public class GameEasy extends AppCompatActivity {
         editTxtGuess=findViewById(R.id.editTxtGuess);
         btnCheck=findViewById(R.id.btnCheck);
         btnNew=findViewById(R.id.btnNew);
+        imgBackBtn=findViewById(R.id.imgBackBtnEasy);
 
         r=new Random();
         newGame();
@@ -68,6 +72,14 @@ public class GameEasy extends AppCompatActivity {
             public void onClick(View v) {
                 newGame();
                 txtViewInfo.setText("");
+            }
+        });
+
+        imgBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GameEasy.this, GameLevels.class));
+
             }
         });
 
