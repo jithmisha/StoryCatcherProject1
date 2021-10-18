@@ -164,7 +164,7 @@ public class SearchActivity extends AppCompatActivity {
                         searchDataClassArrayList.clear();
                         searchDataViewHolder.notifyDataSetChanged();
                         for(DocumentSnapshot doc: task.getResult().getDocuments()){
-                            SearchDataClass searchDataClass =doc.toObject(SearchDataClass.class);
+                            SearchDataClass searchDataClass = doc.toObject(SearchDataClass.class);
                             searchDataClassArrayList.add(searchDataClass);
                             searchDataViewHolder.notifyDataSetChanged();
                         }

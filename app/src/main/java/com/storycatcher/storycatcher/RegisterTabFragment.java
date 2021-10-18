@@ -73,6 +73,11 @@ public class    RegisterTabFragment extends Fragment {
              registerPassword.requestFocus();
              return;
         }
+        if(conpass.isEmpty()){
+            confpassword.setError("Cannot be left empty");
+            confpassword.requestFocus();
+            return;
+        }
         if(!pass.equals(conpass)){
             confpassword.setError("Password Not matching");
             confpassword.requestFocus();
