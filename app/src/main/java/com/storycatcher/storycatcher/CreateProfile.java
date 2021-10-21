@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.regex.Pattern;
+
 public class CreateProfile extends AppCompatActivity {
 
     private Button createButton;
@@ -69,6 +71,16 @@ public class CreateProfile extends AppCompatActivity {
                 if (kidsAge.isEmpty()) {
                     kidAge.setError("Enter kids age");
                     kidAge.requestFocus();
+                    return;
+                }
+                if(kidsID.length() > 9){
+                    kidID.setError("Maximum characters allowed is 8");
+                    kidID.requestFocus();
+                    return;
+                }
+                if(kidsName.length() > 12){
+                    kidName.setError("Maximum characters allowed is 11");
+                    kidName.requestFocus();
                     return;
                 }
 

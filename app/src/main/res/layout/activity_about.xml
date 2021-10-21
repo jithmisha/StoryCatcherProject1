@@ -110,7 +110,7 @@
         android:layout_width="356dp"
         android:layout_height="375dp"
         android:inputType="textMultiLine"
-        android:text="Spend your time enjoyable \nand profitably with \nStory Catcher. Let the kids \nspend their free time in a learning enviorenment reading stories and listening to songs and pems.The library \nconsists of children's material in English and Sinhala. We focus on time spent profitably with fun and leisure experience.In addition. kids devolop their reading and listening skill in early childhood."
+        android:text="Spend your time enjoyable \nand profitably with \nStory Catcher. Let the kids \nspend their free time in a learning environment reading stories and listening to songs and poems.The library \nconsists of children's material in English and Sinhala. We focus on time spent profitably with fun and leisure experience.In addition. kids develop their reading and listening skill in early childhood."
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

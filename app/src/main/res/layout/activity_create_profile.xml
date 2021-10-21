@@ -140,7 +140,7 @@
         android:layout_height="43dp"
         android:layout_marginBottom="20dp"
         android:autofillHints=""
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:background="@drawable/edit_text_bg"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif"
