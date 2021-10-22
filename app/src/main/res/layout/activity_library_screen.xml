@@ -65,6 +65,7 @@
         android:layout_height="52dp"
         android:textColor="@color/black"
         android:textSize="36dp"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.095"
