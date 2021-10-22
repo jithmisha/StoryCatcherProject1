@@ -35,7 +35,7 @@ public class    RegisterTabFragment extends Fragment {
     private Button objectButton;//Register button
     private ProgressBar objectProgressBar;
     float v=0;
-    private static final Pattern PASSWORD_PATTERN = Pattern.compile("(?=\\S+$)");
+    //private static final Pattern PASSWORD_PATTERN = Pattern.compile("(?=\\S+$)");
 
     String userID;
 //  private DatabaseReference reference;
@@ -68,11 +68,6 @@ public class    RegisterTabFragment extends Fragment {
             registerPassword.requestFocus();
             return;
         }
-        if(!PASSWORD_PATTERN.matcher(pass).matches()){
-             registerPassword.setError("Password cannot have whitespaces");
-             registerPassword.requestFocus();
-             return;
-        }
         if(conpass.isEmpty()){
             confpassword.setError("Cannot be left empty");
             confpassword.requestFocus();
@@ -83,6 +78,11 @@ public class    RegisterTabFragment extends Fragment {
             confpassword.requestFocus();
             return;
         }
+        /*if(!PASSWORD_PATTERN.matcher(pass).matches()){
+            registerPassword.setError("Password cannot have whitespaces");
+            registerPassword.requestFocus();
+            return;
+        }*/
 
         try{
             objectProgressBar.setVisibility(View.VISIBLE);
