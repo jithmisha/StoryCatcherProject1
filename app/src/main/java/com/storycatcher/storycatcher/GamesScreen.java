@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -65,13 +68,48 @@ public class GamesScreen extends AppCompatActivity {
             }
         });
 
-        settingBtn.setOnClickListener(new View.OnClickListener() {
+
+        settingBtn.setOnTouchListener(new View.OnTouchListener() {
+            View v;
+            private GestureDetector gestureDetector = new GestureDetector(GamesScreen.this, new GestureDetector.OnGestureListener() {
+                @Override
+                public boolean onDown(MotionEvent e) {
+                    return false;
+                }
+
+                @Override
+                public void onShowPress(MotionEvent e) {
+
+                }
+
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    Toast.makeText(GamesScreen.this,"Long Press to enter Settings",Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                @Override
+                public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                    return false;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    Intent intent = new Intent(GamesScreen.this,Settings.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                    return false;
+                }
+            });
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GamesScreen.this,Settings.class);
-                startActivity(intent);
+            public boolean onTouch(View v, MotionEvent event) {
+                gestureDetector.onTouchEvent(event);
+                return false;
             }
         });
+
 
         imgBtnGame1.setOnClickListener(new View.OnClickListener() {
             @Override

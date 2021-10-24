@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -125,14 +127,53 @@ public class LibraryScreen extends AppCompatActivity {
         });
 
 
+        settingBtn.setOnTouchListener(new View.OnTouchListener() {
+            View v;
+            private GestureDetector gestureDetector = new GestureDetector(LibraryScreen.this, new GestureDetector.OnGestureListener() {
+                @Override
+                public boolean onDown(MotionEvent e) {
+                    return false;
+                }
 
-        settingBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onShowPress(MotionEvent e) {
+
+                }
+
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    Toast.makeText(LibraryScreen.this,"Long Press to enter Settings",Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                @Override
+                public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                    return false;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    Intent intent = new Intent(LibraryScreen.this,Settings.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                    return false;
+                }
+            });
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                gestureDetector.onTouchEvent(event);
+                return false;
+            }
+        });
+        /*settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LibraryScreen.this,Settings.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 
@@ -147,7 +188,7 @@ public class LibraryScreen extends AppCompatActivity {
                     if(document.exists()){
                         String name = document.getString("kidsName");
                         kidName.setText(name);
-                        Toast.makeText(LibraryScreen.this,"Hi "+name,Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LibraryScreen.this,"Hi "+name,Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getApplicationContext(),"No such document", Toast.LENGTH_SHORT).show();
                     }

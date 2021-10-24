@@ -44,7 +44,8 @@ public class PasswordActivity extends AppCompatActivity {
         imgButtonBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                openLoginAdapterActivity();
+                finish();
+                //openLoginAdapterActivity();
             }
         });
         //animation
@@ -98,9 +99,9 @@ public class PasswordActivity extends AppCompatActivity {
     }
 
     //back button
-    public void openLoginAdapterActivity(){
+    /*public void openLoginAdapterActivity(){
         Intent intent=new Intent(this,SignOrRegister.class);
         startActivity(intent);
-    }
+    }*/
 
 }

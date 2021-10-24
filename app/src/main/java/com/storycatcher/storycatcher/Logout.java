@@ -11,14 +11,18 @@ import android.widget.ImageButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Logout extends AppCompatActivity {
-    private Button cancelButton;
+    private Button cancelButton, yesBtn;
     private ImageButton backButton;
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
         cancelButton = findViewById(R.id.cancelBtn);
         backButton = findViewById(R.id.imgBackBtnLogout);
+        yesBtn = findViewById(R.id.yesBtn);
+        mAuth = FirebaseAuth.getInstance();
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,10 +38,14 @@ public class Logout extends AppCompatActivity {
             }
         });
 
-    }
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(),SignOrRegister.class));
+                finish();
+            }
+        });
 
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),SignOrRegister.class));
     }
 }
