@@ -2,6 +2,7 @@ package com.storycatcher.storycatcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -12,15 +13,15 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class ScreenTime extends AppCompatActivity {
-    private static final long START_TIME_IN_MILLIS = 6000;
+
     private ImageButton backBtn, min15 ,min20, min25, min30, min35, min40;
     private Button savePauseBtn, resetBtn;
     private TextView timeText;
     private CountDownTimer countDownTimer;
     private boolean timeRunning;
-    //private long startTime;
-    private  long timeLeftInMilliseconds = START_TIME_IN_MILLIS;
-    //private long endTime;
+    private  long startTime;
+    private  long timeLeftInMilliseconds;
+    private long endTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,47 @@ public class ScreenTime extends AppCompatActivity {
             }
         });
 
+        min15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTime(10000);
+             }
+        });
+
+        min20.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTime(20*60000);
+            }
+        });
+
+        min25.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTime(25*60000);
+            }
+        });
+
+        min30.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTime(30*60000);
+            }
+        });
+
+        min35.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTime(35*60000);
+            }
+        });
+
+        min40.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTime(40*60000);
+            }
+        });
         //reset Button
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +107,15 @@ public class ScreenTime extends AppCompatActivity {
                 resetTimer();
             }
         });
+    }
 
-        updateCountDownText();
+    public  void setTime(long milliSeconds){
+        startTime = milliSeconds;
+        resetTimer();
     }
 
     private void starTimer(){
+        endTime = System.currentTimeMillis() + timeLeftInMilliseconds;
         countDownTimer = new CountDownTimer(timeLeftInMilliseconds,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -79,37 +125,105 @@ public class ScreenTime extends AppCompatActivity {
             @Override
             public void onFinish() {
                 timeRunning = false;
-                savePauseBtn.setText("SAVE");
-                savePauseBtn.setVisibility(View.INVISIBLE);
-                resetBtn.setVisibility(View.VISIBLE);
+                updateButtons();
 
             }
         }.start();
         timeRunning = true;
-        savePauseBtn.setText("PAUSE");
-        resetBtn.setVisibility(View.INVISIBLE);
+        updateButtons();
 
     }
 
     private void pauseTimer(){
         countDownTimer.cancel();
         timeRunning = false;
-        savePauseBtn.setText("SAVE");
-        resetBtn.setVisibility(View.VISIBLE);
+        updateButtons();
     }
 
     private void resetTimer(){
-        timeLeftInMilliseconds = START_TIME_IN_MILLIS;
+        timeLeftInMilliseconds = startTime;
         updateCountDownText();
-        resetBtn.setVisibility(View.INVISIBLE);
-        savePauseBtn.setVisibility(View.VISIBLE);
-
+        updateButtons();
     }
 
     public void updateCountDownText(){
-        int minutes= (int)timeLeftInMilliseconds/ 60000;
-        int seconds= (int)timeLeftInMilliseconds% 60000/1000;
+        /*int minutes= (int)timeLeftInMilliseconds/ 60000;
+        int seconds= (int)timeLeftInMilliseconds% 60000/1000;*/
+        int minutes = (int) (timeLeftInMilliseconds / 1000) / 60;
+        int seconds = (int) (timeLeftInMilliseconds / 1000) % 60;
+
         String timeLeftText = String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+
         timeText.setText(timeLeftText);
     }
+
+    private  void updateButtons(){
+        if(timeRunning){
+            min15.setEnabled(false);
+            resetBtn.setVisibility(View.INVISIBLE);
+            savePauseBtn.setText("PAUSE");
+        }else{
+            min15.setEnabled(true);
+            savePauseBtn.setText("SAVE");
+            if(timeLeftInMilliseconds < 1000){
+                savePauseBtn.setVisibility(View.INVISIBLE);
+            }else {
+                savePauseBtn.setVisibility(View.VISIBLE);
+            }
+            if(timeLeftInMilliseconds < startTime){
+                resetBtn.setVisibility(View.VISIBLE);
+            }else {
+                resetBtn.setVisibility(View.INVISIBLE);
+            }
+        }
+
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putLong("startTime", startTime);
+        editor.putLong("millisLeft", timeLeftInMilliseconds);
+        editor.putBoolean("timerRunning", timeRunning);
+        editor.putLong("endTime", endTime);
+
+        editor.apply();
+
+        if(countDownTimer != null){
+            countDownTimer.cancel();
+        }
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+
+        startTime = prefs.getLong("startTime", 0);
+        timeLeftInMilliseconds = prefs.getLong("millisLeft", startTime);
+        timeRunning = prefs.getBoolean("timerRunning", false);
+        updateButtons();
+        updateButtons();
+
+        if(timeRunning){
+            endTime = prefs.getLong("endTime", 0);
+            timeLeftInMilliseconds = endTime - System.currentTimeMillis();
+
+            if(timeLeftInMilliseconds < 0){
+                timeLeftInMilliseconds = 0;
+                timeRunning = false;
+                updateCountDownText();
+                updateButtons();
+            }else {
+                starTimer();
+            }
+        }
+    }
+
+
 }
