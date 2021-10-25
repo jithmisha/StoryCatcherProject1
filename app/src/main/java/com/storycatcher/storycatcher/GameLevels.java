@@ -49,8 +49,9 @@ public class GameLevels extends AppCompatActivity {
         imgBackBtnLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GameLevels.this, GamesScreen.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(GameLevels.this, GamesScreen.class);
+                startActivity(intent);*/
+                finish();
             }
         });
     }
