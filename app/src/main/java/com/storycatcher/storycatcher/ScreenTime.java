@@ -2,6 +2,10 @@ package com.storycatcher.storycatcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -11,12 +15,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ScreenTime extends AppCompatActivity {
 
     private ImageButton backBtn, min15 ,min20, min25, min30, min35, min40;
     private Button savePauseBtn, resetBtn;
-    private TextView timeText;
+    private TextView timeText, chk;
     private CountDownTimer countDownTimer;
     private boolean timeRunning;
     private  long startTime;
@@ -38,6 +44,8 @@ public class ScreenTime extends AppCompatActivity {
         savePauseBtn = findViewById(R.id.btnSaveScreenTime);
         resetBtn = findViewById(R.id.btnResetScreenTime);
         timeText = findViewById(R.id.timeText);
+        chk = findViewById(R.id.textViewScreen);
+        //AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 
         //Back Button
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +61,7 @@ public class ScreenTime extends AppCompatActivity {
             public void onClick(View v) {
                 if (timeRunning) {
                     pauseTimer();
+                    //setAlarm();
                 } else {
                     starTimer();
                 }
@@ -109,12 +118,29 @@ public class ScreenTime extends AppCompatActivity {
         });
     }
 
+    /*public  void setAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                //finishAffinity();
+                Intent i = new Intent(ScreenTime.this, TheBroadcastReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(ScreenTime.this, 24444, i, 0);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, timeLeftInMilliseconds, pendingIntent);
+
+            }
+        };
+        timer.schedule(task, 11000);
+    }*/
+
     public  void setTime(long milliSeconds){
         startTime = milliSeconds;
         resetTimer();
     }
 
     private void starTimer(){
+        //AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         endTime = System.currentTimeMillis() + timeLeftInMilliseconds;
         countDownTimer = new CountDownTimer(timeLeftInMilliseconds,1000) {
             @Override
@@ -126,6 +152,23 @@ public class ScreenTime extends AppCompatActivity {
             public void onFinish() {
                 timeRunning = false;
                 updateButtons();
+                finishAffinity();
+               /* Intent i = new Intent(ScreenTime.this,TheBroadcastReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(ScreenTime.this, 24444,i,0);
+                alarmManager.set(AlarmManager.RTC_WAKEUP,timeLeftInMilliseconds,pendingIntent);*/
+                /*Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        //finishAffinity();
+                        Intent i = new Intent(ScreenTime.this,TheBroadcastReceiver.class);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(ScreenTime.this, 24444,i,0);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP,timeLeftInMilliseconds,pendingIntent);
+
+                    }
+                };
+                timer.schedule(task, 1);*/
+
 
             }
         }.start();
@@ -178,7 +221,6 @@ public class ScreenTime extends AppCompatActivity {
         }
 
     }
-
 
     @Override
     protected void onStop() {

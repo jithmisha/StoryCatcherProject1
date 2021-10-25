@@ -51,6 +51,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation "io.grpc:grpc-okhttp:1.32.2"
     //Firebase Ui
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.0'
     implementation 'com.firebaseui:firebase-ui-database:8.0.0'
