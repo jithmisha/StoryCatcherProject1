@@ -28,7 +28,7 @@ public class Settings extends AppCompatActivity {
         aboutBtn = findViewById(R.id.settingaboutbutton);
         logoutBtn = findViewById(R.id.settingslogoutbutton);
         backButton = findViewById(R.id.imgBackBtnSettings);
-        final MediaPlayer mp = MediaPlayer.create(this,R.raw.goat);
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +40,6 @@ public class Settings extends AppCompatActivity {
         aboutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mp.start();
                 startActivity(new Intent(getApplicationContext(), About.class));
             }
         });

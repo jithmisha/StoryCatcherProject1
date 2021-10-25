@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,11 +34,14 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 
@@ -50,6 +54,8 @@ public class VideoPlayer extends AppCompatActivity {
     FirebaseFirestore fstore;
     String kidID, currentBookID, currentBookTitle, bookImage, uri_str;
     boolean isInFavourites = false;
+    FirebaseAuth mAuth;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,7 @@ public class VideoPlayer extends AppCompatActivity {
         exoMute = findViewById(R.id.exo_mute);
         exoFav = findViewById(R.id.exo_fav);
 
+
         //Read from shared preferences
         SharedPreferences sharedPref = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
         kidID = sharedPref.getString("kidID", "error");
@@ -74,7 +81,11 @@ public class VideoPlayer extends AppCompatActivity {
         bookImage = intent.getStringExtra("imageUrl");
         uri_str = intent.getStringExtra("video");
 
-        checkFavourites();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            checkFavourites();
+        }
+
 
         exoFav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,15 +127,32 @@ public class VideoPlayer extends AppCompatActivity {
                 addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        isInFavourites = value.exists();
-                        if(isInFavourites){
-                            exoFav.setBackgroundResource(R.drawable.ic_fav);
-                        }else{
-                            exoFav.setBackgroundResource(R.drawable.ic_fav_border);
+                            isInFavourites = value.exists();
+                            if(isInFavourites){
+                                exoFav.setBackgroundResource(R.drawable.ic_fav);
+                            }else{
+                                exoFav.setBackgroundResource(R.drawable.ic_fav_border);
+                            }
                         }
-                    }
+
                 });
     }
+    /*public void checkFavourites(){
+        fstore.collection("Kids").document(kidID).collection("Favourites").document(currentBookID)
+                .addSnapshotListener((Activity) context, new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                isInFavourites = documentSnapshots.exists();
+                isInFavourites = documentSnapshots.equals(null);
+                if(isInFavourites){
+                    exoFav.setBackgroundResource(R.drawable.ic_fav);
+                }else{
+                    exoFav.setBackgroundResource(R.drawable.ic_fav_border);
+                }
+            }
+        });
+    }*/
+
 
     public void addToFavourites(){
         Long timestamp = System.currentTimeMillis();
