@@ -78,7 +78,7 @@ public class GameEasy extends AppCompatActivity {
         imgBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GameEasy.this, GameLevels.class));
+                finish();
 
             }
         });

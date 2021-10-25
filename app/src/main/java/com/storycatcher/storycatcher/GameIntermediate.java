@@ -77,7 +77,7 @@ public class GameIntermediate extends AppCompatActivity {
         imgBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GameIntermediate.this, GameLevels.class));
+                finish();
 
             }
         });
