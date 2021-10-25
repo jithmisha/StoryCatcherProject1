@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE1A8"
+    android:background="@drawable/gamebackground"
     tools:context=".GamesScreen">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,7 +27,7 @@
         android:layout_width="329dp"
         android:layout_height="223dp"
         android:layout_marginTop="104dp"
-        android:backgroundTint="#AEC6CF"
+        android:background="@drawable/button_border"
         android:src="@drawable/guess_the_words"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:id="@+id/settingsbtn"
         android:layout_width="57dp"
         android:layout_height="51dp"
-        android:backgroundTint="#FFE1A8"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/imgBtnGame1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
