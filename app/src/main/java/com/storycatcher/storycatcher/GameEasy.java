@@ -27,7 +27,7 @@ public class GameEasy extends AppCompatActivity {
 
     Random r;
     String [] dictionary = {
-            "WALL","FOX","SKY","ONE","TWO","DAY","SUN","PIG","OLD","SEA","","RED","MOP","DOG","NEW","SIX","MAT",
+            "FOX","SKY","ONE","TWO","DAY","SUN","PIG","OLD","SEA","BUG","RED","MOP","DOG","NEW","SIX","MAT",
             "BAT","CAT","COW","CAR"
     };
 
