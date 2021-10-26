@@ -49,7 +49,6 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.979" />
@@ -88,7 +87,6 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -120,16 +118,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/kidsNamePro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgProfilePicture"
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintVertical_bias="0.784" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/rosarivo"
         android:text="KIDS ID"
         android:textColor="@color/black"
@@ -137,14 +135,14 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/kidsIdPro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/rosarivo"
         android:text="AGE"
         android:textColor="@color/black"
@@ -152,7 +150,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/kidsAgePro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -167,14 +165,14 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/UserEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSavePro"
         android:layout_width="317dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:text="SAVE"
         android:textSize="16sp"
         android:textStyle="bold"
